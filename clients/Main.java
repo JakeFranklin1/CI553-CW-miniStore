@@ -51,6 +51,7 @@ class Main
   * start the Customer client, -search product
   * @param mlf A factory to create objects to access the stock list
   */
+  @SuppressWarnings("deprecation")
   public void startCustomerGUI_MVC(MiddleFactory mlf )
   {
     JFrame  window = new JFrame();
@@ -71,6 +72,7 @@ class Main
    * start the cashier client - customer check stock, buy product
    * @param mlf A factory to create objects to access the stock list
    */
+  @SuppressWarnings("deprecation")
   public void startCashierGUI_MVC(MiddleFactory mlf )
   {
     JFrame  window = new JFrame();
