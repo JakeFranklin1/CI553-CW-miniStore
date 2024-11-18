@@ -176,7 +176,7 @@ public class Order implements OrderProcessing
   public synchronized Map<String, List<Integer> > getOrderState()
          throws OrderException
   {
-    //DEBUG.trace( "DEBUG: get state of order system" );
+    DEBUG.trace( "DEBUG: get state of order system" );
     Map < String, List<Integer> > res = new HashMap<>();
 
     res.put( "Waiting",       orderNums(State.Waiting) );

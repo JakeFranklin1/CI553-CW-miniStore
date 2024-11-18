@@ -168,7 +168,7 @@ public class StockR implements StockReader
       throw new StockException( "SQL getImage: " + e.getMessage() );
     }
     
-    //DEBUG.trace( "DB StockR: getImage -> %s", filename );
+    DEBUG.trace( "DB StockR: getImage -> %s", filename );
     return new ImageIcon( filename );
   }
 

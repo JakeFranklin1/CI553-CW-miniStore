@@ -13,6 +13,7 @@ import java.util.Locale;
  * @version 2.2
  *
  */
+@SuppressWarnings("unused")
 public class Basket extends ArrayList<Product> implements Serializable
 {
   private static final long serialVersionUID = 1;
