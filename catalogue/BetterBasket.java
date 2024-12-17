@@ -5,8 +5,8 @@ import java.util.Collections;
 
 /**
  * Write a description of class BetterBasket here.
- * 
- * @author  Your Name 
+ *
+ * @author  Your Name
  * @version 1.0
  */
 public class BetterBasket extends Basket implements Serializable
@@ -18,5 +18,5 @@ public class BetterBasket extends Basket implements Serializable
   // merge the items for same product,
   // or sort the item based on the product number
 
-  
+
 }
