@@ -34,7 +34,7 @@ class Main
   }
 
   /**
-   * Starts the system (Non distributed)
+   * Starts the system (Non-distributed)
    */
   public void begin()
   {

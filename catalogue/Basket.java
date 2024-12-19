@@ -99,7 +99,7 @@ public class Basket extends ArrayList<Product> implements Serializable
     ArrayList<Product> mergedProducts = mergeProducts();
     mergedProducts.sort((p1, p2) -> p1.getProductNum().compareTo(p2.getProductNum()));
 
-    if (mergedProducts.size() > 0)
+    if (!mergedProducts.isEmpty())
     {
       for (Product pr : mergedProducts)
       {

@@ -1,0 +1,43 @@
+{
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-reporting-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-jupiter-api-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/apiguardian-api-1.1.0.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_it.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-console-standalone-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-testkit-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_ja_JP.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_ko_KR.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-jupiter-engine-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-vintage-engine-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_ru.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_cs.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_hu.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyrun.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derby.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyoptionaltools.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbynet.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_zh_CN.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-launcher-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyclient.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-console-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_pt_BR.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_de_DE.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-jupiter-migrationsupport-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_es.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-suite-api-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-commons-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-jupiter-params-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_fr.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-runner-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/opentest4j-1.2.0.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_pl.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-jupiter-5.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbytools.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/junit5-5.6.2/junit-platform-engine-1.6.2.jar",
+        "/Users/jake/university-year-2/CI553-Project/CI553-CW-miniStore/lib/db-derby-10.14.2.0-lib/lib/derbyLocale_zh_TW.jar"
+    ]
+}
