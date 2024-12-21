@@ -15,6 +15,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             primaryStage.setTitle("MiniStore");
             primaryStage.setScene(scene);
+            primaryStage.centerOnScreen(); // Center the stage on the screen
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

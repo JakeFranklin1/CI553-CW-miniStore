@@ -79,7 +79,7 @@ public class StockR implements StockReader {
     }
 
     public synchronized byte[] getImage(String pNum) throws StockException { // Change return type to byte[]
-        String filename = "default.jpg";
+        String filename = "default.png";
         try {
             ResultSet rs = getStatementObject().executeQuery(
                     "select picture from ProductTable " +

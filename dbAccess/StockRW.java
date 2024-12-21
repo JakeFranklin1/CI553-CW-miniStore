@@ -51,7 +51,7 @@ public class StockRW extends StockR implements StockReadWriter {
                         "insert into ProductTable values ('" +
                                 detail.getProductNum() + "', " +
                                 "'" + detail.getDescription() + "', " +
-                                "'images/Pic" + detail.getProductNum() + ".jpg', " +
+                                "'images/Pic" + detail.getProductNum() + ".png', " +
                                 "'" + detail.getPrice() + "' " + ")"
                 );
                 getStatementObject().executeUpdate(

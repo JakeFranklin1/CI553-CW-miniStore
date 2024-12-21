@@ -40,6 +40,7 @@ public class MinistoreStartController {
 
             Stage stage = (Stage) check_stock_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen(); // Center the stage on the screen
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,6 +51,7 @@ public class MinistoreStartController {
             Parent root = FXMLLoader.load(getClass().getResource("/res/layout/ministore_place_order.fxml"));
             Stage stage = (Stage) start_order_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen(); // Center the stage on the screen
         } catch (IOException e) {
             e.printStackTrace();
         }

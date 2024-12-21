@@ -14,6 +14,8 @@ import middle.MiddleFactory;
 import debug.DEBUG;
 import java.io.IOException;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class CustomerCheckStockController {
     @FXML private TextField check_stock_message;
@@ -33,6 +35,9 @@ public class CustomerCheckStockController {
             check_stock_message.textProperty().bindBidirectional(model.messageProperty());
             check_stock_reply.textProperty().bind(model.replyProperty());
 
+            // Add event handler for Enter key press
+            check_stock_message.setOnKeyPressed(this::handleKeyPress);
+
         } catch (Exception e) {
             DEBUG.error("CustomerCheckStockController::setMiddleFactory\n%s", e.getMessage());
         }
@@ -43,6 +48,12 @@ public class CustomerCheckStockController {
         Button button = (Button) event.getSource();
         String buttonText = button.getText();
         process(buttonText);
+    }
+
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            processEnter();
+        }
     }
 
     private void process(String action) {
@@ -61,6 +72,9 @@ public class CustomerCheckStockController {
             case "CLEAR":
                 processClear();
                 break;
+            case "CLEAR ORDER":
+                processClearOrder();
+                break;
             case "MENU":
                 processMenu();
                 break;
@@ -77,7 +91,11 @@ public class CustomerCheckStockController {
     }
 
     private void processNumber(String number) {
-        model.messageProperty().set(model.messageProperty().get() + number);
+        String currentMessage = model.messageProperty().get();
+        if (currentMessage == null) {
+            currentMessage = "";
+        }
+        model.messageProperty().set(currentMessage + number);
     }
 
     private void processEnter() {
@@ -86,13 +104,20 @@ public class CustomerCheckStockController {
     }
 
     private void processClear() {
+        String currentMessage = model.messageProperty().get();
+        if (currentMessage != null && currentMessage.length() > 0) {
+            model.messageProperty().set(currentMessage.substring(0, currentMessage.length() - 1));
+        }
+    }
+
+    private void processClearOrder() {
         model.messageProperty().set("");
         model.replyProperty().set("");
         check_stock_image.setImage(null);
     }
 
     private void processCancel() {
-        processClear();
+        processClearOrder();
     }
 
     private void processCheck() {
@@ -115,6 +140,7 @@ public class CustomerCheckStockController {
             Parent root = loader.load();
             Stage stage = (Stage) check_stock_message.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen();
         } catch (IOException e) {
             DEBUG.error("CustomerCheckStockController::processMenu\n%s", e.getMessage());
         }

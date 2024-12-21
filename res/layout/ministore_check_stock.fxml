@@ -29,7 +29,7 @@
                         <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Button id="screen-buttons" fx:id="check_stock_check_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CHECK" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
+                        <Button id="screen-buttons" fx:id="check_stock_check_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CHECK STOCK" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
@@ -37,7 +37,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="screen-buttons" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <Button id="screen-buttons" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR ORDER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -57,7 +57,7 @@
                 </GridPane>
                 <AnchorPane layoutX="85.0" layoutY="14.0" prefHeight="306.0" prefWidth="533.0">
                     <children>
-                        <TextField fx:id="check_stock_message" alignment="CENTER" layoutY="39.0" prefHeight="61.0" prefWidth="533.0">
+                        <TextField fx:id="check_stock_message" alignment="CENTER" layoutY="39.0" prefHeight="61.0" prefWidth="533.0" promptText="Product Number">
                             <font>
                                 <Font size="28.0" />
                             </font>
@@ -206,7 +206,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="clear-button" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="clear-button" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold Italic" size="24.0" />
                             </font>
