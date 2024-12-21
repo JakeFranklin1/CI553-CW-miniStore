@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 import middle.MiddleFactory;
 import middle.StockReader;
 import middle.StockException;
+
+import java.io.ByteArrayInputStream;
+
 import catalogue.Product;
 import debug.DEBUG;
 
@@ -60,17 +63,35 @@ public class CustomerModel {
             if (stockReader.exists(productNum)) {
                 Product product = stockReader.getDetails(productNum);
                 if (product.getQuantity() > 0) {
-                    reply.set(String.format("%s : %7.2f (%2d)", product.getDescription(), product.getPrice(), product.getQuantity()));
+                    String formattedText = String.format("""
+                        Product Number: %s
+                        Description: %s
+                        Price: £%.2f
+                        Quantity in Stock: %d""",
+                        productNum,
+                        product.getDescription(),
+                        product.getPrice(),
+                        product.getQuantity());
+
+                    reply.set(formattedText);
+
+                    byte[] imgBytes = stockReader.getImage(productNum);
+                    if (imgBytes != null) {
+                        productImage = new Image(new ByteArrayInputStream(imgBytes));
+                    } else {
+                        productImage = null;
+                    }
                 } else {
-                    reply.set(product.getDescription() + " not in stock");
+                    reply.set("Product: " + product.getDescription() + " is currently out of stock");
                     productImage = null;
                 }
             } else {
-                reply.set("Unknown product number " + productNum);
+                reply.set("Error: Unknown product number " + productNum);
                 productImage = null;
             }
         } catch (StockException e) {
-            reply.set("Error: " + e.getMessage());
+            reply.set("System Error: " + e.getMessage());
+            productImage = null;
         }
     }
 }

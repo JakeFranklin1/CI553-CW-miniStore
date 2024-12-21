@@ -11,9 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import middle.MiddleFactory;
-import middle.RemoteMiddleFactory;
 import debug.DEBUG;
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 public class CustomerCheckStockController {
     @FXML private TextField check_stock_message;
@@ -101,12 +101,12 @@ public class CustomerCheckStockController {
     }
 
     private void updateImage() {
-        // Image image = model.getProductImage();
-        // if (image != null) {
-        //     check_stock_image.setImage(image);
-        // } else {
-        //     check_stock_image.setImage(null);
-        // }
+        Image image = model.getProductImage();
+        if (image != null) {
+            check_stock_image.setImage(image);
+        } else {
+            check_stock_image.setImage(null);
+        }
     }
 
     private void processMenu() {
