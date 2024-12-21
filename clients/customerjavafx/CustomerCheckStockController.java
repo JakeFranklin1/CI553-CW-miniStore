@@ -24,11 +24,9 @@ public class CustomerCheckStockController {
 
     private CustomerModel model;
 
-    @FXML
-    public void initialize() {
+    public void setMiddleFactory(MiddleFactory mf) {
         try {
-            // Initialize model with RemoteMiddleFactory
-            MiddleFactory mf = new RemoteMiddleFactory();
+            // Initialize model with provided MiddleFactory
             model = new CustomerModel(mf);
 
             // Bind text properties
@@ -36,7 +34,7 @@ public class CustomerCheckStockController {
             check_stock_reply.textProperty().bind(model.replyProperty());
 
         } catch (Exception e) {
-            DEBUG.error("CustomerCheckStockController::initialize\n%s", e.getMessage());
+            DEBUG.error("CustomerCheckStockController::setMiddleFactory\n%s", e.getMessage());
         }
     }
 
@@ -84,6 +82,7 @@ public class CustomerCheckStockController {
 
     private void processEnter() {
         model.doCheck(check_stock_message.getText());
+        updateImage();
     }
 
     private void processClear() {
@@ -98,6 +97,16 @@ public class CustomerCheckStockController {
 
     private void processCheck() {
         model.doCheck(check_stock_message.getText());
+        updateImage();
+    }
+
+    private void updateImage() {
+        // Image image = model.getProductImage();
+        // if (image != null) {
+        //     check_stock_image.setImage(image);
+        // } else {
+        //     check_stock_image.setImage(null);
+        // }
     }
 
     private void processMenu() {

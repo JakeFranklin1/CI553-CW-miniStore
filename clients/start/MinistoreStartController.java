@@ -6,6 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import middle.LocalMiddleFactory;
+import middle.MiddleFactory;
+import clients.customerjavafx.CustomerCheckStockController;
+
 import java.io.IOException;
 
 public class MinistoreStartController {
@@ -16,8 +20,11 @@ public class MinistoreStartController {
     @FXML
     private Button start_order_btn;
 
+    private MiddleFactory mlf;
+
     @FXML
     public void initialize() {
+        mlf = new LocalMiddleFactory();
         check_stock_btn.setOnAction(event -> loadCheckStock());
         start_order_btn.setOnAction(event -> loadPlaceOrder());
     }
@@ -26,6 +33,11 @@ public class MinistoreStartController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_check_stock.fxml"));
             Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            CustomerCheckStockController controller = loader.getController();
+            controller.setMiddleFactory(mlf);
+
             Stage stage = (Stage) check_stock_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (IOException e) {
