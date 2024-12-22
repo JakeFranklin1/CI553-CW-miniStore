@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
 import clients.customerjavafx.CustomerCheckStockController;
+import clients.cashierjavafx.CashierPlaceOrderController;
 
 import java.io.IOException;
 
@@ -48,7 +49,13 @@ public class MinistoreStartController {
 
     private void loadPlaceOrder() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/res/layout/ministore_place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_place_order.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            CashierPlaceOrderController controller = loader.getController();
+            controller.setMiddleFactory(mlf);
+
             Stage stage = (Stage) start_order_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen(); // Center the stage on the screen
