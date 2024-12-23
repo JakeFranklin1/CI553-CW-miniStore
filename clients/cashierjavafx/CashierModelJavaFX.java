@@ -106,4 +106,16 @@ public class CashierModelJavaFX {
     public void clearBasket() {
         basket.clear();
     }
+
+    // Method to remove the last item added to the basket
+      public void removeLastItem() {
+        basket.removeLastItem();
+        reply.set(basket.getDetails());
+      }
+
+    // Method to remove a specific item from the basket by product number
+    public void removeItemByProductNum(String productNum) {
+        basket.removeByProductNum(productNum);
+        reply.set(basket.getDetails());
+    }
 }

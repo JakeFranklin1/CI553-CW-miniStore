@@ -61,6 +61,23 @@ public class Basket extends ArrayList<Product> implements Serializable
   }
 
   /**
+   * Remove the last product added to the Basket.
+   */
+  public void removeLastItem() {
+    if (!isEmpty()) {
+      remove(size() - 1);
+    }
+  }
+
+  /**
+   * Remove a specific product from the Basket by product number.
+   * @param productNum The product number of the product to remove
+   */
+  public void removeByProductNum(String productNum) {
+    removeIf(product -> product.getProductNum().equals(productNum));
+  }
+
+  /**
    * Merges products with the same product number into a single product with the combined quantity.
    * @return a list of merged products
    */

@@ -201,11 +201,17 @@ public class CashierPlaceOrderController {
     }
 
     private void processClearLast() {
-        // Implement logic to clear the last item added to the basket
+        model.removeLastItem();
     }
 
     private void processRemoveItem() {
-        // Implement logic to remove a specific item from the basket
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Remove Item");
+        dialog.setHeaderText("Enter the product number of the item to remove:");
+        dialog.setContentText("Product Number:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(productNum -> model.removeItemByProductNum(productNum));
     }
 
     private void processMenu() {
