@@ -25,7 +25,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="screen-buttons" fx:id="stock_management_check_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="CHECK STOCK" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                  <Button id="screen-buttons" fx:id="stock_management_check_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CHECK STOCK" wrapText="true" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="screen-buttons" fx:id="stock_management_add_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="ADD STOCK" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                  <Button id="screen-buttons" fx:id="stock_management_add_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="ADD STOCK" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -41,7 +41,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="screen-buttons" fx:id="stock_management_correct_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="CORRECT" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                  <Button id="screen-buttons" fx:id="stock_management_correct_stock_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CORRECT" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -61,7 +61,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="screen-buttons" fx:id="stock_management_new_product_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="NEW PRODUCT" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                  <Button id="screen-buttons" fx:id="stock_management_new_product_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="NEW PRODUCT" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -69,7 +69,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="screen-buttons" fx:id="stock_management_add_image_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="ADD IMAGE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Button id="screen-buttons" fx:id="stock_management_add_image_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="ADD IMAGE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -77,7 +77,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="screen-buttons" fx:id="stock_management_finished_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="FINISHED" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                  <Button id="screen-buttons" fx:id="stock_management_finished_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="FINISHED" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -106,7 +106,7 @@
       </AnchorPane>
       <AnchorPane layoutX="15.0" layoutY="405.0" prefHeight="380.0" prefWidth="695.0" style="-fx-border-color: black; -fx-background-color: white;">
          <children>
-            <GridPane fx:id="keypadGrid" layoutX="15.0" layoutY="12.0" prefHeight="355.0" prefWidth="475.0">
+            <GridPane fx:id="keypadGrid" layoutX="15.0" layoutY="12.0" prefHeight="355.0" prefWidth="475.0" stylesheets="@../css/atm.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -151,7 +151,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="keypad-button" fx:id="threeBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                  <Button id="keypad-button" fx:id="threeBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -225,7 +225,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="enter-button" fx:id="enter_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="ENTER" GridPane.halignment="CENTER">
+                  <Button id="enter-button" fx:id="enter_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="ENTER" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -233,7 +233,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="clear-button" fx:id="clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="CLEAR" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button id="clear-button" fx:id="clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
@@ -241,7 +241,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="cancel-button" fx:id="cancel_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="CANCEL" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Button id="cancel-button" fx:id="cancel_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/atm.css" text="CANCEL" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -249,7 +249,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="logout-button" fx:id="logout_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="LOGOUT" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button id="logout-button" fx:id="logout_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/atm.css" text="LOGOUT" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

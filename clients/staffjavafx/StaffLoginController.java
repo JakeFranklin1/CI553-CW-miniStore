@@ -1,15 +1,22 @@
 package clients.staffjavafx;
 
+import dbAccess.UserDAO;
+import middle.StockException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 
 public class StaffLoginController {
     @FXML
@@ -24,18 +31,39 @@ public class StaffLoginController {
     @FXML
     private Text staff_go_back_btn;
 
+    private UserDAO userDAO;
+
     @FXML
     public void initialize() {
+        try {
+            userDAO = new UserDAO();
+        } catch (StockException e) {
+            showAlert(Alert.AlertType.ERROR, "Database Error", "An error occurred while initializing the database connection.");
+            e.printStackTrace();
+        }
+
         staff_login_button.setOnAction(event -> handleLoginAction());
         staff_go_back_btn.setOnMouseClicked(event -> handleBackAction());
     }
 
     @FXML
     private void handleLoginAction() {
-        // Implement login logic here
         String username = staff_account_field.getText();
         String password = staff_password_field.getText();
-        // Validate credentials and proceed
+
+        try {
+            boolean isValidUser = userDAO.validateUser(username, password);
+            if (isValidUser) {
+                // Login successful
+                showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + username + "!");
+            } else {
+                // Login failed
+                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
+            }
+        } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", "An error occurred while accessing the database.");
+        }
     }
 
     @FXML
@@ -49,5 +77,13 @@ public class StaffLoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
