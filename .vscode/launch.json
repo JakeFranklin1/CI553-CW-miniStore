@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "oldmain",
+        "request": "launch",
+        "mainClass": "clients.oldmain",
+        "projectName": "CI553-CW-miniStore_4194e6dd"
+    },
+    {
+        "type": "java",
+        "name": "Setup",
+        "request": "launch",
+        "mainClass": "clients.Setup",
+        "projectName": "CI553-CW-miniStore_4194e6dd"
+    },
+    {
+        "type": "java",
+        "name": "oldmain",
+        "request": "launch",
+        "mainClass": "clients.oldmain",
+        "projectName": "CI553-CW-miniStore_b5dc574c"
+    },
+    {
+        "type": "java",
+        "name": "Setup",
+        "request": "launch",
+        "mainClass": "clients.Setup",
+        "projectName": "CI553-CW-miniStore_b5dc574c"
+    },
+    {
+        "type": "java",
+        "name": "Launch Main",
+        "request": "launch",
+        "mainClass": "clients.Main",
+        "vmArgs": "--module-path lib/javafx-macos/lib --add-modules javafx.controls,javafx.fxml"
+    }
+]
+}

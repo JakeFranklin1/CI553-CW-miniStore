@@ -1,7 +1,7 @@
 package clients.backDoor;
 
 import catalogue.Basket;
-import catalogue.BetterBasket;
+// import catalogue.BetterBasket;
 import catalogue.Product;
 import debug.DEBUG;
 import middle.MiddleFactory;
@@ -27,8 +27,8 @@ public class BackDoorModel extends Observable
 
   public BackDoorModel(MiddleFactory mf)
   {
-    try                                           // 
-    {      
+    try                                           //
+    {
       theStock = mf.makeStockReadWriter();        // Database access
     } catch ( Exception e )
     {
@@ -37,7 +37,7 @@ public class BackDoorModel extends Observable
 
     theBasket = makeBasket();                     // Initial Basket
   }
-  
+
   /**
    * Get the Basket of products
    * @return basket
@@ -57,7 +57,7 @@ public class BackDoorModel extends Observable
   }
 
   /**
-   * Query 
+   * Query
    * @param productNum The product number of the item
    */
   public void doQuery(String productNum )
@@ -69,7 +69,7 @@ public class BackDoorModel extends Observable
       if ( theStock.exists( pn ) )              // Stock Exists?
       {                                         // T
         Product pr = theStock.getDetails( pn ); //  Product
-        theAction =                             //   Display 
+        theAction =                             //   Display
           String.format( "%s : %7.2f (%2d) ",   //
           pr.getDescription(),                  //    description
           pr.getPrice(),                        //    price
@@ -77,7 +77,7 @@ public class BackDoorModel extends Observable
       } else {                                  //  F
         theAction =                             //   Inform
           "Unknown product number " + pn;       //  product number
-      } 
+      }
     } catch( StockException e )
     {
       theAction = e.getMessage();
@@ -86,7 +86,7 @@ public class BackDoorModel extends Observable
   }
 
   /**
-   * Re stock 
+   * Re stock
    * @param productNum The product number of the item
    * @param quantity How many to be added
    */
@@ -112,17 +112,17 @@ public class BackDoorModel extends Observable
         setChanged(); notifyObservers(theAction);
         return;
       }
-  
+
       if ( theStock.exists( pn ) )              // Stock Exists?
       {                                         // T
         theStock.addStock(pn, amount);          //  Re stock
         Product pr = theStock.getDetails(pn);   //  Get details
         theBasket.add(pr);                      //
-        theAction = "";                         // Display 
+        theAction = "";                         // Display
       } else {                                  // F
         theAction =                             //  Inform Unknown
           "Unknown product number " + pn;       //  product number
-      } 
+      }
     } catch( StockException e )
     {
       theAction = e.getMessage();
@@ -140,7 +140,7 @@ public class BackDoorModel extends Observable
     theAction = "Enter Product Number";       // Set display
     setChanged(); notifyObservers(theAction);  // inform the observer view that model changed
   }
-  
+
   /**
    * return an instance of a Basket
    * @return a new instance of a Basket
@@ -150,4 +150,3 @@ public class BackDoorModel extends Observable
     return new Basket();
   }
 }
-
