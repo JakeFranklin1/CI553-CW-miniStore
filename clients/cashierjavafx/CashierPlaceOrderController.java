@@ -27,30 +27,18 @@ import javafx.geometry.Insets;
 import javafx.util.Pair;
 
 public class CashierPlaceOrderController {
-    @FXML
-    private TextField message;
-    @FXML
-    private TextArea reply;
-    @FXML
-    private Button place_order_check_stock_btn;
-    @FXML
-    private Button place_order_add_to_order_btn;
-    @FXML
-    private Button place_order_purchase_btn;
-    @FXML
-    private Button place_order_clear_last_btn;
-    @FXML
-    private Button place_order_clear_order_btn;
-    @FXML
-    private Button place_order_remove_item_btn;
-    @FXML
-    private Button place_order_enter_btn;
-    @FXML
-    private Button place_order_clear_btn;
-    @FXML
-    private Button place_order_cancel_btn;
-    @FXML
-    private Button place_order_menu_btn;
+    @FXML private TextField message;
+    @FXML private TextArea reply;
+    @FXML private Button place_order_check_stock_btn;
+    @FXML private Button place_order_add_to_order_btn;
+    @FXML private Button place_order_purchase_btn;
+    @FXML private Button place_order_clear_last_btn;
+    @FXML private Button place_order_clear_order_btn;
+    @FXML private Button place_order_remove_item_btn;
+    @FXML private Button place_order_enter_btn;
+    @FXML private Button place_order_clear_btn;
+    @FXML private Button place_order_cancel_btn;
+    @FXML private Button place_order_menu_btn;
 
     private CashierModelJavaFX model;
     private OrderState state;
@@ -72,7 +60,7 @@ public class CashierPlaceOrderController {
 
             // Add listener for message text changes
             message.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!oldValue.equals(newValue)) {
+                if (oldValue != null && !oldValue.equals(newValue)) {
                     state = OrderState.ENTERING_PRODUCT;
                 }
             });
@@ -80,7 +68,7 @@ public class CashierPlaceOrderController {
             // Add shutdown hook to handle closing the screen without pressing "purchase"
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 if (state != OrderState.PURCHASING) {
-                    model.clearBasket();
+                    model.clearBasket(true);
                 }
             }));
 
@@ -184,7 +172,7 @@ public class CashierPlaceOrderController {
     }
 
     private void processClearOrder() {
-        model.clearBasket();
+        model.clearBasket(true);
         model.messageProperty().set("");
         model.replyProperty().set("");
         state = OrderState.ENTERING_PRODUCT;
@@ -237,7 +225,7 @@ public class CashierPlaceOrderController {
         // Complete the purchase
         model.purchase();
         model.messageProperty().set("");
-        model.replyProperty().set("");
+        // model.replyProperty().set("");
         state = OrderState.ENTERING_PRODUCT;
     }
 
@@ -317,5 +305,11 @@ public class CashierPlaceOrderController {
         } catch (IOException e) {
             DEBUG.error("CashierPlaceOrderController::processMenu\n%s", e.getMessage());
         }
+    }
+
+    public void addProductToOrder(String productNum) {
+        model.setCurrentQuantity(1); // Default quantity to 1
+        model.addToOrder(productNum);
+        state = OrderState.ENTERING_PRODUCT;
     }
 }

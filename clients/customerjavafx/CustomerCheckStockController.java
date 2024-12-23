@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import middle.MiddleFactory;
 import debug.DEBUG;
 import java.io.IOException;
+
+import clients.cashierjavafx.CashierPlaceOrderController;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -81,8 +83,11 @@ public class CustomerCheckStockController {
             case "CANCEL":
                 processCancel();
                 break;
-            case "CHECK":
+            case "CHECK STOCK":
                 processCheck();
+                break;
+            case "START ORDER":
+                processDetails();
                 break;
             default:
                 DEBUG.trace("Unknown button: " + action);
@@ -131,6 +136,30 @@ public class CustomerCheckStockController {
             check_stock_image.setImage(image);
         } else {
             check_stock_image.setImage(null);
+        }
+    }
+
+        private void processDetails() {
+        String productNum = check_stock_message.getText();
+        if (productNum != null && !productNum.isEmpty()) {
+            switchToPlaceOrder(productNum);
+        }
+    }
+
+    private void switchToPlaceOrder(String productNum) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_place_order.fxml"));
+            Parent root = loader.load();
+
+            CashierPlaceOrderController controller = loader.getController();
+            controller.setMiddleFactory(model.getMiddleFactory());
+            controller.addProductToOrder(productNum);
+
+            Stage stage = (Stage) check_stock_message.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            DEBUG.error("CustomerCheckStockController::switchToPlaceOrder\n%s", e.getMessage());
         }
     }
 

@@ -17,33 +17,50 @@ import java.util.Map;
 @SuppressWarnings("unused")
 public class Basket extends ArrayList<Product> implements Serializable {
     private static final long serialVersionUID = 1;
-    private int theOrderNum = 0; // Order number
+    private int theOrderNum; // Order number
+    private static int nextOrderNumber = 1;
 
     /**
      * Constructor for a basket which is
      * used to represent a customer order/ wish list
      */
     public Basket() {
-        theOrderNum = 0;
+        theOrderNum = nextOrderNumber; // Initialize with the next order number
     }
 
     /**
-     * Set the customers unique order number
-     * Valid order Numbers 1 .. N
+     * Sets the order number for this basket.
      *
-     * @param anOrderNum A unique order number
+     * @param anOrderNum The order number to set
      */
     public void setOrderNum(int anOrderNum) {
         theOrderNum = anOrderNum;
     }
 
     /**
-     * Returns the customers unique order number
+     * Gets the current order number of this basket.
      *
-     * @return the customers order number
+     * @return The order number of this basket
      */
     public int getOrderNum() {
         return theOrderNum;
+    }
+
+    /**
+     * Gets the next available order number without incrementing it.
+     *
+     * @return The next order number that will be assigned
+     */
+    public static int getNextOrderNumber() {
+        return nextOrderNumber;
+    }
+
+    /**
+     * Increments the next order number.
+     * Called after an order is completed to prepare for the next order.
+     */
+    public static void incrementOrderNumber() {
+        nextOrderNumber++;
     }
 
     /**

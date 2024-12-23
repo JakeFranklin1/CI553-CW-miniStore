@@ -17,15 +17,22 @@ public class CustomerModel {
     private final StringProperty reply = new SimpleStringProperty();
     private Image productImage;
     private final StockReader stockReader;
+    private final MiddleFactory middleFactory;
 
     public CustomerModel(MiddleFactory mf) {
         try {
+            this.middleFactory = mf; // Store middleware factory
             this.stockReader = mf.makeStockReader();
             DEBUG.trace("CustomerModel: StockReader created successfully");
         } catch (Exception e) {
             DEBUG.error("CustomerModel: Failed to create stock reader: %s", e.getMessage());
             throw new RuntimeException("Failed to create stock reader", e);
         }
+    }
+
+    // Getter for MiddleFactory
+    public MiddleFactory getMiddleFactory() {
+        return middleFactory;
     }
 
     // Properties for binding
@@ -63,19 +70,18 @@ public class CustomerModel {
             if (stockReader.exists(productNum)) {
                 Product product = stockReader.getDetails(productNum);
                 if (product.getQuantity() > 0) {
-                    String stockWarning = product.getQuantity() < 5 ?
-                        "\nWarning: Low Stock!" : "";
+                    String stockWarning = product.getQuantity() < 5 ? "\nWarning: Low Stock!" : "";
 
                     String formattedText = String.format("""
-                        Product Number: %s
-                        Description: %s
-                        Price: £%.2f
-                        Quantity in Stock: %d%s""",
-                        productNum,
-                        product.getDescription(),
-                        product.getPrice(),
-                        product.getQuantity(),
-                        stockWarning);
+                            Product Number: %s
+                            Description: %s
+                            Price: £%.2f
+                            Quantity in Stock: %d%s""",
+                            productNum,
+                            product.getDescription(),
+                            product.getPrice(),
+                            product.getQuantity(),
+                            stockWarning);
 
                     reply.set(formattedText);
 

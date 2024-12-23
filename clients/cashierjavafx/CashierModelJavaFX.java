@@ -14,12 +14,11 @@ public class CashierModelJavaFX {
     private final StringProperty reply = new SimpleStringProperty();
     private final StockReadWriter stockReader;
     private Basket basket;
-    private int nextOrderNumber = 1; // Start with order number 1
-    private int currentQuantity = 1; // Default quantity to add to the order
+    private int currentQuantity = 1;
 
     public CashierModelJavaFX(MiddleFactory mf) {
         try {
-            this.stockReader = mf.makeStockReadWriter(); // Change to makeStockReadWriter
+            this.stockReader = mf.makeStockReadWriter();
             DEBUG.trace("CashierModelJavaFX: StockReader created successfully");
             this.basket = new Basket();
         } catch (Exception e) {
@@ -74,13 +73,11 @@ public class CashierModelJavaFX {
             if (stockReader.exists(productNum)) {
                 Product product = stockReader.getDetails(productNum);
                 if (product.getQuantity() >= currentQuantity) {
-                    // Try to buy the stock first
                     boolean stockBought = stockReader.buyStock(productNum, currentQuantity);
 
                     if (stockBought) {
                         product.setQuantity(currentQuantity);
                         basket.add(product);
-                        basket.setOrderNum(nextOrderNumber);
                         reply.set(basket.getDetails());
                     } else {
                         reply.set("Failed to purchase " + product.getDescription());
@@ -97,10 +94,11 @@ public class CashierModelJavaFX {
     }
 
     public void purchase() {
-        // Implement purchase logic here
-        reply.set("Purchase completed. Order Number: " + basket.getOrderNum());
-        nextOrderNumber++;
-        clearBasket();
+        int completedOrderNum = basket.getOrderNum();
+        clearBasket(false); // Clear without adding stock back
+        reply.set(String.format("Purchase completed. Order Number: %03d", completedOrderNum));
+        Basket.incrementOrderNumber(); // Increment for next order
+        basket.setOrderNum(Basket.getNextOrderNumber()); // Set the new order number in the basket
     }
 
     // Method to add stock back to the database
@@ -114,8 +112,10 @@ public class CashierModelJavaFX {
         }
     }
 
-    public void clearBasket() {
-        addStockBackToDatabase();
+    public void clearBasket(boolean addStockBack) {
+        if (addStockBack) {
+            addStockBackToDatabase();
+        }
         basket.clear();
     }
 
@@ -149,7 +149,7 @@ public class CashierModelJavaFX {
     public int getProductQuantityInBasket(String productNum) {
         return basket.getProductQuantity(productNum);
     }
-    
+
     public void removeQuantityFromBasket(String productNum, int quantity) {
         basket.removeQuantityByProductNum(productNum, quantity);
         try {
@@ -159,6 +159,4 @@ public class CashierModelJavaFX {
         }
         reply.set(basket.getDetails());
     }
-
-
 }

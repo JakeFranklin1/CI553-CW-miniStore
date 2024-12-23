@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,51 +13,39 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
     xmlns="http://javafx.com/javafx/21"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.start.MinistoreStartController">
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.staffjavafx.StaffLoginController">
     <children>
         <AnchorPane id="login-pane" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: e5f4e5;">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                <Label layoutX="10.0" layoutY="318.0" prefHeight="41.0" prefWidth="150.0" text="Forgot your password? Email the internal IT team." wrapText="true" />
+                <Label layoutX="10.0" layoutY="366.0" text="Email: it@ministore.com" />
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../img/store.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="11.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any issues using this software, our customer service team is always happy to help." wrappingWidth="187.21630859375">
-                    <font>
-                        <Font name="Arial" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="11.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: support@ministore.com" wrappingWidth="169.71444702148438">
-                    <font>
-                        <Font name="Arial" size="12.0" />
-                    </font>
-                </Text>
-                <Text layoutX="51.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons provided by freepik">
+                <Text layoutX="55.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons provided by freepik">
                     <font>
                         <Font size="9.0" />
                     </font>
                 </Text>
             </children>
         </AnchorPane>
-        <Button fx:id="check_stock_btn" defaultButton="true" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Check Stock">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <font>
-                <Font name="Arial" size="22.0" />
-            </font>
-        </Button>
-        <Label ellipsisString="" layoutX="221.0" layoutY="14.0" prefHeight="114.0" prefWidth="353.0" text="Welcome to MiniStore" wrapText="true">
+        <Label ellipsisString="" layoutX="232.0" layoutY="14.0" prefHeight="114.0" prefWidth="337.0" text="MiniStore Staff Login" wrapText="true">
             <font>
                 <Font name="Arial" size="36.0" />
             </font>
         </Label>
-        <Text layoutX="215.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff member?" wrappingWidth="120.0">
-            <font>
-                <Font name="Arial" size="18.0" />
-            </font>
-        </Text>
-        <Text fx:id="staff_log_in_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="342.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in here." underline="true" wrappingWidth="98.0">
+        <TextField fx:id="staff_account_field" alignment="CENTER" layoutX="235.0" layoutY="195.0" prefHeight="26.0" prefWidth="350.0" promptText="Account Number" />
+        <PasswordField fx:id="staff_password_field" alignment="CENTER" layoutX="235.0" layoutY="265.0" prefHeight="26.0" prefWidth="350.0" promptText="Password" />
+        <Button fx:id="staff_login_button" defaultButton="true" layoutX="235.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="350.0" style="-fx-color: e5f4e5;" text="Login">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Label layoutX="235.0" layoutY="170.0" text="Account Number:" />
+        <Label layoutX="235.0" layoutY="235.0" text="Password:" />
+        <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="424.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
             <font>
                 <Font name="Helvetica" size="18.0" />
             </font>
@@ -63,13 +53,10 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Text>
-        <Button fx:id="start_order_btn" defaultButton="true" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Start Order">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
+        <Text layoutX="238.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't want to be here?" wrappingWidth="189.66290283203125">
             <font>
-                <Font name="Arial" size="22.0" />
+                <Font name="Arial" size="18.0" />
             </font>
-        </Button>
+        </Text>
     </children>
 </AnchorPane>
