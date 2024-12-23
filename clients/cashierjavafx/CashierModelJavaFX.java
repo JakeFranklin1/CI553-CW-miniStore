@@ -19,7 +19,7 @@ public class CashierModelJavaFX {
 
     public CashierModelJavaFX(MiddleFactory mf) {
         try {
-            this.stockReader = mf.makeStockReadWriter();  // Change to makeStockReadWriter
+            this.stockReader = mf.makeStockReadWriter(); // Change to makeStockReadWriter
             DEBUG.trace("CashierModelJavaFX: StockReader created successfully");
             this.basket = new Basket();
         } catch (Exception e) {
@@ -48,14 +48,14 @@ public class CashierModelJavaFX {
                 Product product = stockReader.getDetails(productNum);
                 if (product.getQuantity() > 0) {
                     String formattedText = String.format("""
-                        Product Number: %s
-                        Description: %s
-                        Price: £%.2f
-                        Quantity in Stock: %d""",
-                        productNum,
-                        product.getDescription(),
-                        product.getPrice(),
-                        product.getQuantity());
+                            Product Number: %s
+                            Description: %s
+                            Price: £%.2f
+                            Quantity in Stock: %d""",
+                            productNum,
+                            product.getDescription(),
+                            product.getPrice(),
+                            product.getQuantity());
 
                     reply.set(formattedText);
                 } else {
@@ -103,19 +103,62 @@ public class CashierModelJavaFX {
         clearBasket();
     }
 
+    // Method to add stock back to the database
+    private void addStockBackToDatabase() {
+        for (Product product : basket) {
+            try {
+                stockReader.addStock(product.getProductNum(), product.getQuantity());
+            } catch (StockException e) {
+                DEBUG.error("Failed to add stock back to database: %s", e.getMessage());
+            }
+        }
+    }
+
     public void clearBasket() {
+        addStockBackToDatabase();
         basket.clear();
     }
 
     // Method to remove the last item added to the basket
-      public void removeLastItem() {
-        basket.removeLastItem();
-        reply.set(basket.getDetails());
-      }
+    public void removeLastItem() {
+        if (!basket.isEmpty()) {
+            Product lastProduct = basket.get(basket.size() - 1);
+            try {
+                stockReader.addStock(lastProduct.getProductNum(), lastProduct.getQuantity());
+            } catch (StockException e) {
+                DEBUG.error("Failed to add stock back to database: %s", e.getMessage());
+            }
+            basket.removeLastItem();
+            reply.set(basket.getDetails());
+        }
+    }
 
-    // Method to remove a specific item from the basket by product number
     public void removeItemByProductNum(String productNum) {
-        basket.removeByProductNum(productNum);
+        int quantity = basket.getProductQuantity(productNum);
+        if (quantity > 0) {
+            try {
+                stockReader.addStock(productNum, quantity);
+            } catch (StockException e) {
+                DEBUG.error("Failed to add stock back to database: %s", e.getMessage());
+            }
+            basket.removeByProductNum(productNum);
+            reply.set(basket.getDetails());
+        }
+    }
+
+    public int getProductQuantityInBasket(String productNum) {
+        return basket.getProductQuantity(productNum);
+    }
+    
+    public void removeQuantityFromBasket(String productNum, int quantity) {
+        basket.removeQuantityByProductNum(productNum, quantity);
+        try {
+            stockReader.addStock(productNum, quantity);
+        } catch (StockException e) {
+            DEBUG.error("Failed to add stock back to database: %s", e.getMessage());
+        }
         reply.set(basket.getDetails());
     }
+
+
 }

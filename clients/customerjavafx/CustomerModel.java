@@ -63,15 +63,19 @@ public class CustomerModel {
             if (stockReader.exists(productNum)) {
                 Product product = stockReader.getDetails(productNum);
                 if (product.getQuantity() > 0) {
+                    String stockWarning = product.getQuantity() < 5 ?
+                        "\nWarning: Low Stock!" : "";
+
                     String formattedText = String.format("""
                         Product Number: %s
                         Description: %s
                         Price: £%.2f
-                        Quantity in Stock: %d""",
+                        Quantity in Stock: %d%s""",
                         productNum,
                         product.getDescription(),
                         product.getPrice(),
-                        product.getQuantity());
+                        product.getQuantity(),
+                        stockWarning);
 
                     reply.set(formattedText);
 
