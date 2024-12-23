@@ -8,16 +8,19 @@ import middle.StockReadWriter;
 import catalogue.Basket;
 import catalogue.Product;
 import debug.DEBUG;
+import middle.OrderProcessing;
 
 public class CashierModelJavaFX {
     private final StringProperty message = new SimpleStringProperty();
     private final StringProperty reply = new SimpleStringProperty();
     private final StockReadWriter stockReader;
+    private final MiddleFactory middleFactory;
     private Basket basket;
     private int currentQuantity = 1;
 
     public CashierModelJavaFX(MiddleFactory mf) {
         try {
+            this.middleFactory = mf; // Store middleware factory
             this.stockReader = mf.makeStockReadWriter();
             DEBUG.trace("CashierModelJavaFX: StockReader created successfully");
             this.basket = new Basket();
@@ -25,6 +28,10 @@ public class CashierModelJavaFX {
             DEBUG.error("CashierModelJavaFX: Failed to create stock reader: %s", e.getMessage());
             throw new RuntimeException("Failed to create stock reader", e);
         }
+    }
+
+    public MiddleFactory getMiddleFactory() {
+        return middleFactory;
     }
 
     // Properties for binding
@@ -94,11 +101,24 @@ public class CashierModelJavaFX {
     }
 
     public void purchase() {
-        int completedOrderNum = basket.getOrderNum();
-        clearBasket(false); // Clear without adding stock back
-        reply.set(String.format("Purchase completed. Order Number: %03d", completedOrderNum));
-        Basket.incrementOrderNumber(); // Increment for next order
-        basket.setOrderNum(Basket.getNextOrderNumber()); // Set the new order number in the basket
+        try {
+            OrderProcessing orderProcessing = middleFactory.makeOrderProcessing();
+            // Set order number before sending
+            basket.setOrderNum(Basket.getNextOrderNumber());
+            // Send basket to order processing
+            orderProcessing.newOrder(basket);
+
+            int completedOrderNum = basket.getOrderNum();
+            reply.set(String.format("Purchase completed. Order Number: %03d",
+                    completedOrderNum));
+
+            // Create new basket for next order
+            basket = new Basket();
+            Basket.incrementOrderNumber();
+        } catch (Exception e) {
+            DEBUG.error("CashierModelJavaFX::purchase\n%s", e.getMessage());
+            reply.set("Error processing order: " + e.getMessage());
+        }
     }
 
     // Method to add stock back to the database

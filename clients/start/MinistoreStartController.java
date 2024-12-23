@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
 import clients.customerjavafx.CustomerCheckStockController;
 import clients.cashierjavafx.CashierPlaceOrderController;
+import clients.staffjavafx.StaffLoginController;
 
 import java.io.IOException;
 
@@ -28,11 +28,14 @@ public class MinistoreStartController {
 
     @FXML
     public void initialize() {
-        mlf = new LocalMiddleFactory();
         check_stock_btn.setOnAction(event -> loadCheckStock());
         start_order_btn.setOnAction(event -> loadPlaceOrder());
         // setOnMouseClicked is used instead of setOnAction because this button is actually a Text
         staff_log_in_btn.setOnMouseClicked(event -> loadStaffLogin());
+    }
+
+    public void setMiddleFactory(MiddleFactory mlf) {
+        this.mlf = mlf;
     }
 
     private void loadCheckStock() {
@@ -73,6 +76,11 @@ public class MinistoreStartController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_login.fxml"));
             Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            StaffLoginController controller = loader.getController();
+            controller.setMiddleFactory(mlf);
+
             Stage stage = (Stage) staff_log_in_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen();

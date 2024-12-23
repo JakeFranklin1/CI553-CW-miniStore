@@ -26,6 +26,8 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.util.Pair;
 
+import clients.start.MinistoreStartController;
+
 public class CashierPlaceOrderController {
     @FXML private TextField message;
     @FXML private TextArea reply;
@@ -42,8 +44,10 @@ public class CashierPlaceOrderController {
 
     private CashierModelJavaFX model;
     private OrderState state;
+    private MiddleFactory mlf;
 
     public void setMiddleFactory(MiddleFactory mf) {
+        this.mlf = mf;
         try {
             // Initialize model with provided MiddleFactory
             model = new CashierModelJavaFX(mf);
@@ -299,6 +303,11 @@ public class CashierPlaceOrderController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
             Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            MinistoreStartController controller = loader.getController();
+            controller.setMiddleFactory(mlf);
+
             Stage stage = (Stage) message.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen();

@@ -14,6 +14,7 @@ import middle.MiddleFactory;
 import debug.DEBUG;
 import java.io.IOException;
 
+import clients.start.MinistoreStartController;
 import clients.cashierjavafx.CashierPlaceOrderController;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -167,6 +168,11 @@ public class CustomerCheckStockController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
             Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            MinistoreStartController controller = loader.getController();
+            controller.setMiddleFactory(model.getMiddleFactory());  // Use model's MiddleFactory instance
+
             Stage stage = (Stage) check_stock_message.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen();

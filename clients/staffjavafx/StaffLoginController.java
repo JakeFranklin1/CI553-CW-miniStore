@@ -13,10 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import middle.MiddleFactory;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
+
+import clients.staffjavafx.dashboard.DashboardController;
+import clients.start.MinistoreStartController;
 
 public class StaffLoginController {
     @FXML
@@ -32,6 +36,7 @@ public class StaffLoginController {
     private Text staff_go_back_btn;
 
     private UserDAO userDAO;
+    private MiddleFactory mlf;
 
     @FXML
     public void initialize() {
@@ -46,6 +51,10 @@ public class StaffLoginController {
         staff_go_back_btn.setOnMouseClicked(event -> handleBackAction());
     }
 
+    public void setMiddleFactory(MiddleFactory mlf) {
+        this.mlf = mlf;
+    }
+
     @FXML
     private void handleLoginAction() {
         String username = staff_account_field.getText();
@@ -54,7 +63,8 @@ public class StaffLoginController {
         try {
             boolean isValidUser = userDAO.validateUser(username, password);
             if (isValidUser) {
-                // Login successful
+                // Login successful, load the staff dashboard
+                loadStaffDashboard();
                 showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + username + "!");
             } else {
                 // Login failed
@@ -66,11 +76,34 @@ public class StaffLoginController {
         }
     }
 
+    private void loadStaffDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_dashboard.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            DashboardController controller = loader.getController();
+            controller.setMiddleFactory(mlf);
+
+            Stage stage = (Stage) staff_login_button.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Loading Error", "An error occurred while loading the staff dashboard.");
+        }
+    }
+
     @FXML
     private void handleBackAction() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
             Parent root = loader.load();
+
+            // Get the controller and pass the MiddleFactory instance
+            MinistoreStartController controller = loader.getController();
+            controller.setMiddleFactory(mlf);  // Pass the MiddleFactory instance
+
             Stage stage = (Stage) staff_go_back_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen();
