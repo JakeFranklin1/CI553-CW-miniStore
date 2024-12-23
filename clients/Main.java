@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import debug.DEBUG;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        DEBUG.set(true);
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/res/layout/ministore_start.fxml"));
             Scene scene = new Scene(root);

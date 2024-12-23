@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "oldmain",
+        "request": "launch",
+        "mainClass": "clients.oldmain",
+        "projectName": "CI553-CW-miniStore_4194e6dd"
+    },
+    {
+        "type": "java",
         "name": "Setup",
         "request": "launch",
         "mainClass": "clients.Setup",
