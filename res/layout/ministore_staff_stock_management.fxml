@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,9 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="725.0" style="-fx-background-color: e5f4e5;"
-    xmlns="http://javafx.com/javafx/21"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.staffjavafx.stockmanagement.StockManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="725.0" style="-fx-background-color: e5f4e5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.staffjavafx.stockmanagement.StockManagementController">
     <children>
         <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="380.0" prefWidth="695.0" style="-fx-border-color: black; -fx-background-color: white;">
             <children>
@@ -102,6 +101,7 @@
                                 <Font name="Arial" size="24.0" />
                             </font>
                         </Text>
+                  <ImageView fx:id="stock_image" fitHeight="80.0" fitWidth="103.0" layoutX="239.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
             </children>
@@ -121,7 +121,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button id="keypad-button" fx:id="oneBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="oneBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -129,7 +129,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="twoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="twoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -137,7 +137,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="fourBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="fourBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -145,7 +145,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="fiveBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="keypad-button" fx:id="fiveBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -161,7 +161,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="sevenBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="sevenBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -169,7 +169,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="eightBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button id="keypad-button" fx:id="eightBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -177,7 +177,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="sixBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="keypad-button" fx:id="sixBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -185,7 +185,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="nineBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button id="keypad-button" fx:id="nineBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -193,12 +193,12 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="blankBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="blankBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="zeroBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="zeroBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -206,7 +206,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="zeroTimesTwoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@javafx-scenebuilder-test/scenebuilder%20test/src/atm.css" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="zeroTimesTwoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>

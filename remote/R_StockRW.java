@@ -7,11 +7,6 @@ import middle.StockException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-/**
- * Implements Read/Write access to the stock list,
- * the stock list is held in a relational DataBase.
- * @version 2.1
- */
 public class R_StockRW extends UnicastRemoteObject implements RemoteStockRW_I {
     private static final long serialVersionUID = 1;
     private StockRW aStockRW = null;
@@ -42,5 +37,10 @@ public class R_StockRW extends UnicastRemoteObject implements RemoteStockRW_I {
 
     public synchronized void modifyStock(Product product) throws RemoteException, StockException {
         aStockRW.modifyStock(product);
+    }
+
+    @Override
+    public synchronized void setStock(String productNum, int quantity) throws RemoteException, StockException {
+        aStockRW.setStock(productNum, quantity);
     }
 }

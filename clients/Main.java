@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
+import clients.staffjavafx.dashboard.DashboardController;
 import clients.start.MinistoreStartController;
 import debug.DEBUG;
 
@@ -20,11 +21,11 @@ public class Main extends Application {
             MiddleFactory mlf = new LocalMiddleFactory();
 
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_dashboard.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
-            MinistoreStartController controller = loader.getController();
+            DashboardController controller = loader.getController();
             controller.setMiddleFactory(mlf);
 
             // Set the scene

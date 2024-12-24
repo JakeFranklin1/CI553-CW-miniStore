@@ -8,11 +8,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import middle.MiddleFactory;
+import middle.StockException;
 
 import java.io.IOException;
+import java.util.Optional;
 
+import catalogue.Product;
 import clients.staffjavafx.dashboard.DashboardController;
 import debug.DEBUG;
 
@@ -41,8 +49,11 @@ public class StockManagementController {
     @FXML
     private TextArea stock_management_reply;
 
-    private StockManagementModel model;
+    @FXML
+    private ImageView stock_image;
 
+    private StockManagementModel model;
+    private OrderState state;
     private MiddleFactory mlf;
 
     public void setMiddleFactory(MiddleFactory mlf) {
@@ -54,6 +65,25 @@ public class StockManagementController {
             // Bind text properties
             stock_management_message.textProperty().bindBidirectional(model.messageProperty());
             stock_management_reply.textProperty().bind(model.replyProperty());
+
+            // Initialize state
+            state = OrderState.ENTERING_PRODUCT;
+
+            // Add event handler for Enter key press
+            stock_management_message.setOnKeyPressed(this::handleKeyPress);
+
+            // Add listener for message text changes
+            // stock_management_message.textProperty().addListener((observable, oldValue,
+            // newValue) -> {
+            // if (oldValue != null && !oldValue.equals(newValue)) {
+            // if (state != OrderState.ENTERING_PRODUCT) {
+            // state = OrderState.ENTERING_PRODUCT;
+            // String currentReply = model.replyProperty().get();
+            // model.replyProperty().set(currentReply + "\nProduct Number changed, please
+            // check stock again.");
+            // }
+            // }
+            // });
 
         } catch (Exception e) {
             DEBUG.error("StockManagementController::setMiddleFactory\n%s", e.getMessage());
@@ -67,27 +97,72 @@ public class StockManagementController {
         process(buttonText);
     }
 
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            processEnter();
+        }
+    }
+
+    private void processEnter() {
+        switch (state) {
+            case ENTERING_PRODUCT:
+                processCheck();
+                break;
+            case MANAGING_STOCK:
+                processAddStock();
+                break;
+            default:
+                break;
+        }
+    }
+
     private void process(String action) {
         DEBUG.trace("StockManagementController::process: action = " + action);
 
         switch (action) {
+
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "0":
+            case "00":
+                processNumber(action);
+                break;
+            case "ENTER":
+                processEnter();
+                break;
+            case "CLEAR":
+                processClear();
+                break;
+            case "CLEAR ORDER":
+                processClearOrder();
+                break;
+            case "CANCEL":
+                processCancel();
+                break;
             case "CHECK STOCK":
-                handleCheckStock();
+                processCheck();
                 break;
             case "ADD STOCK":
-                handleAddStock();
+                processAddStock();
                 break;
-            case "CORRECT STOCK":
-                handleCorrectStock();
+            case "CORRECT":
+                processCorrectStock();
                 break;
             case "NEW PRODUCT":
-                handleNewProduct();
+                processNewProduct();
                 break;
             case "ADD IMAGE":
-                handleAddImage();
+                processAddImage();
                 break;
             case "FINISHED":
-                handleFinished();
+                processClearOrder();
                 break;
             case "MENU":
                 processMenu();
@@ -98,29 +173,161 @@ public class StockManagementController {
         }
     }
 
-    private void handleCheckStock() {
+    private void updateImage() {
+        Image image = model.getProductImage();
+        if (image != null) {
+            stock_image.setImage(image);
+        } else {
+            stock_image.setImage(null);
+        }
+    }
+
+    private void processNumber(String number) {
+        String currentMessage = model.messageProperty().get();
+        if (currentMessage == null) {
+            currentMessage = "";
+        }
+        model.messageProperty().set(currentMessage + number);
+    }
+
+    private void processClear() {
+        String currentMessage = model.messageProperty().get();
+        if (currentMessage != null && currentMessage.length() > 0) {
+            model.messageProperty().set(currentMessage.substring(0, currentMessage.length() - 1));
+        }
+    }
+
+    private void processClearOrder() {
+        // model.clearBasket(true);
+        model.messageProperty().set("");
+        model.replyProperty().set("");
+        // state = OrderState.ENTERING_PRODUCT;
+    }
+
+    private void processCancel() {
+        processClearOrder();
+    }
+
+    private void processCheck() {
         model.doCheck(stock_management_message.getText());
+        updateImage();
+        state = OrderState.MANAGING_STOCK;
     }
 
-    private void handleAddStock() {
-        model.doAdd(stock_management_message.getText());
+    private void processAddStock() {
+        String productNum = stock_management_message.getText().trim();
+
+        if (productNum.isEmpty()) {
+            model.replyProperty().set("Please enter a product number first");
+            return;
+        }
+
+        if (!model.validateProduct(productNum)) {
+            return;
+        }
+
+        model.doCheck(productNum);
+        state = OrderState.MANAGING_STOCK;
+        Optional<Integer> quantity = promptForQuantity();
+
+        if (quantity.isPresent()) {
+            model.setCurrentQuantity(quantity.get());
+            model.doAdd(productNum);
+            updateImage();
+            state = OrderState.ENTERING_PRODUCT;
+        }
     }
 
-    private void handleCorrectStock() {
-        model.doCorrect(stock_management_message.getText());
+    private Optional<Integer> promptForQuantity() {
+        String productNum = stock_management_message.getText().trim();
+
+        TextInputDialog dialog = new TextInputDialog("1");
+        dialog.setTitle("Add Stock");
+
+        try {
+            // Get product details from stock reader
+            Product product = model.getStockReader().getDetails(productNum);
+            dialog.setHeaderText(String.format("""
+                    New stock arrived for product: %s?
+                    Current stock level: %d
+                    Enter quantity to add:""",
+                    product.getDescription(),
+                    product.getQuantity()));
+
+        } catch (StockException e) {
+            dialog.setHeaderText("Enter quantity to add:");
+        }
+
+        dialog.setContentText("Quantity:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            try {
+                int quantity = Integer.parseInt(result.get());
+                if (quantity > 0) {
+                    return Optional.of(quantity);
+                } else {
+                    model.replyProperty().set("Quantity must be positive");
+                }
+            } catch (NumberFormatException e) {
+                model.replyProperty().set("Invalid quantity entered");
+            }
+        }
+        return Optional.empty();
     }
 
-    private void handleNewProduct() {
+    private void processCorrectStock() {
+        String productNum = stock_management_message.getText().trim();
+
+        if (productNum.isEmpty()) {
+            model.replyProperty().set("Please enter a product number first");
+            return;
+        }
+
+        if (!model.validateProduct(productNum)) {
+            return;
+        }
+
+        try {
+            Product product = model.getStockReader().getDetails(productNum);
+            int currentStock = product.getQuantity();
+
+            // Create dialog to prompt for new stock quantity
+            TextInputDialog dialog = new TextInputDialog(String.valueOf(currentStock));
+            dialog.setTitle("Correct Stock");
+            dialog.setHeaderText(String.format("Correct stock for product: %s\nCurrent stock level: %d",
+                    product.getDescription(), currentStock));
+            dialog.setContentText("New stock quantity:");
+
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                try {
+                    int newStock = Integer.parseInt(result.get());
+                    if (newStock >= 0) {
+                        model.doCorrectStock(productNum, newStock);
+                    } else {
+                        model.replyProperty().set("Quantity must be non-negative");
+                    }
+                } catch (NumberFormatException e) {
+                    model.replyProperty().set("Invalid quantity entered");
+                }
+            }
+        } catch (StockException e) {
+            model.replyProperty().set("System Error: " + e.getMessage());
+        }
+    }
+
+    private void processNewProduct() {
         model.doNewProduct(stock_management_message.getText());
     }
 
-    private void handleAddImage() {
+    private void processAddImage() {
         model.doAddImage(stock_management_message.getText());
     }
 
-    private void handleFinished() {
-        model.doFinish();
-    }
+    // private void processFinished() {
+    // model.doFinish();
+    // }
 
     private void processMenu() {
         try {

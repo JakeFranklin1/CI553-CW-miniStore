@@ -76,4 +76,15 @@ public class StockRW extends StockR implements StockReadWriter {
             throw new StockException("SQL modifyStock: " + e.getMessage());
         }
     }
+
+    @Override
+    public synchronized void setStock(String productNum, int quantity) throws StockException {
+        try {
+            Product product = getDetails(productNum);
+            product.setQuantity(quantity);
+            modifyStock(product);
+        } catch (StockException e) {
+            throw new StockException("Error setting stock: " + e.getMessage());
+        }
+    }
 }

@@ -11,6 +11,7 @@ import debug.DEBUG;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+@SuppressWarnings("unused")
 public class PackingModel {
     private final StringProperty message = new SimpleStringProperty();
     private final StringProperty reply = new SimpleStringProperty();

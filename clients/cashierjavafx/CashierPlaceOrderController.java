@@ -29,18 +29,30 @@ import javafx.util.Pair;
 import clients.start.MinistoreStartController;
 
 public class CashierPlaceOrderController {
-    @FXML private TextField message;
-    @FXML private TextArea reply;
-    @FXML private Button place_order_check_stock_btn;
-    @FXML private Button place_order_add_to_order_btn;
-    @FXML private Button place_order_purchase_btn;
-    @FXML private Button place_order_clear_last_btn;
-    @FXML private Button place_order_clear_order_btn;
-    @FXML private Button place_order_remove_item_btn;
-    @FXML private Button place_order_enter_btn;
-    @FXML private Button place_order_clear_btn;
-    @FXML private Button place_order_cancel_btn;
-    @FXML private Button place_order_menu_btn;
+    @FXML
+    private TextField message;
+    @FXML
+    private TextArea reply;
+    @FXML
+    private Button place_order_check_stock_btn;
+    @FXML
+    private Button place_order_add_to_order_btn;
+    @FXML
+    private Button place_order_purchase_btn;
+    @FXML
+    private Button place_order_clear_last_btn;
+    @FXML
+    private Button place_order_clear_order_btn;
+    @FXML
+    private Button place_order_remove_item_btn;
+    @FXML
+    private Button place_order_enter_btn;
+    @FXML
+    private Button place_order_clear_btn;
+    @FXML
+    private Button place_order_cancel_btn;
+    @FXML
+    private Button place_order_menu_btn;
 
     private CashierModelJavaFX model;
     private OrderState state;
@@ -147,14 +159,6 @@ public class CashierPlaceOrderController {
         }
     }
 
-    private void processNumber(String number) {
-        String currentMessage = model.messageProperty().get();
-        if (currentMessage == null) {
-            currentMessage = "";
-        }
-        model.messageProperty().set(currentMessage + number);
-    }
-
     private void processEnter() {
         switch (state) {
             case ENTERING_PRODUCT:
@@ -166,6 +170,14 @@ public class CashierPlaceOrderController {
             default:
                 break;
         }
+    }
+
+    private void processNumber(String number) {
+        String currentMessage = model.messageProperty().get();
+        if (currentMessage == null) {
+            currentMessage = "";
+        }
+        model.messageProperty().set(currentMessage + number);
     }
 
     private void processClear() {
