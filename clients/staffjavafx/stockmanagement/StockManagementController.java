@@ -13,11 +13,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import middle.MiddleFactory;
 import middle.StockException;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 import catalogue.Product;
@@ -318,11 +322,98 @@ public class StockManagementController {
     }
 
     private void processNewProduct() {
-        model.doNewProduct(stock_management_message.getText());
+        TextInputDialog descriptionDialog = new TextInputDialog();
+        descriptionDialog.setTitle("New Product");
+        descriptionDialog.setHeaderText("Enter the product description:");
+        descriptionDialog.setContentText("Description:");
+
+        Optional<String> descriptionResult = descriptionDialog.showAndWait();
+        if (descriptionResult.isPresent() && !descriptionResult.get().trim().isEmpty()) {
+            String description = descriptionResult.get().trim();
+
+            TextInputDialog priceDialog = new TextInputDialog("0.00");
+            priceDialog.setTitle("New Product");
+            priceDialog.setHeaderText("Enter the product price:");
+            priceDialog.setContentText("Price:");
+
+            Optional<String> priceResult = priceDialog.showAndWait();
+            if (priceResult.isPresent()) {
+                try {
+                    double price = Double.parseDouble(priceResult.get().trim());
+                    // Format price to always show 2 decimal places
+                    price = Math.round(price * 100.0) / 100.0;
+
+                    TextInputDialog quantityDialog = new TextInputDialog("1");
+                    quantityDialog.setTitle("New Product");
+                    quantityDialog.setHeaderText(String.format("Enter quantity to add for £%.2f product:", price));
+                    quantityDialog.setContentText("Quantity:");
+
+                    Optional<String> quantityResult = quantityDialog.showAndWait();
+                    if (quantityResult.isPresent()) {
+                        try {
+                            int quantity = Integer.parseInt(quantityResult.get().trim());
+                            if (quantity > 0) {
+                                model.doNewProduct(description, price, quantity);
+                            } else {
+                                model.replyProperty().set("Quantity must be positive");
+                            }
+                        } catch (NumberFormatException e) {
+                            model.replyProperty().set("Invalid quantity entered");
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    model.replyProperty().set("Invalid price entered");
+                }
+            }
+        } else {
+            model.replyProperty().set("Description cannot be empty");
+        }
     }
 
-    private void processAddImage() {
-        model.doAddImage(stock_management_message.getText());
+        private void processAddImage() {
+        String productNum = stock_management_message.getText().trim();
+
+        if (productNum.isEmpty()) {
+            model.replyProperty().set("Please enter a product number first");
+            return;
+        }
+
+        if (!model.validateProduct(productNum)) {
+            return;
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Product Image");
+
+        // Set initial directory to images folder
+        File imagesDir = new File("images");
+        if (!imagesDir.exists()) {
+            imagesDir.mkdirs();
+        }
+        fileChooser.setInitialDirectory(imagesDir);
+
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(stock_management_message.getScene().getWindow());
+        if (selectedFile != null) {
+            try {
+                // Create destination file
+                String destFileName = "Pic" + productNum + ".png";
+                File destFile = new File(imagesDir, destFileName);
+
+                // Copy file
+                Files.copy(selectedFile.toPath(), destFile.toPath(),
+                          StandardCopyOption.REPLACE_EXISTING);
+
+                // Update database and display
+                model.updateProductImage(productNum, "images/" + destFileName);
+                updateImage();
+            } catch (IOException e) {
+                model.replyProperty().set("Error copying image file: " + e.getMessage());
+            }
+        }
     }
 
     // private void processFinished() {

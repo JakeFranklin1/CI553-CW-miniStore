@@ -6,6 +6,7 @@ import middle.StockException;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 public class R_StockRW extends UnicastRemoteObject implements RemoteStockRW_I {
     private static final long serialVersionUID = 1;
@@ -42,5 +43,21 @@ public class R_StockRW extends UnicastRemoteObject implements RemoteStockRW_I {
     @Override
     public synchronized void setStock(String productNum, int quantity) throws RemoteException, StockException {
         aStockRW.setStock(productNum, quantity);
+    }
+
+    @Override
+    public synchronized void addProduct(Product product) throws RemoteException, StockException {
+        aStockRW.addProduct(product);
+    }
+
+    @Override
+    public synchronized List<Product> getProducts() throws RemoteException, StockException {
+        return aStockRW.getProducts();
+    }
+
+    @Override
+    public synchronized void updateProductImage(String productNum, String imagePath)
+            throws RemoteException, StockException {
+        aStockRW.updateProductImage(productNum, imagePath);
     }
 }

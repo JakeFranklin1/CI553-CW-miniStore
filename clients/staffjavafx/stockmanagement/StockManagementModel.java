@@ -1,6 +1,9 @@
 package clients.staffjavafx.stockmanagement;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 import catalogue.Product;
 import debug.DEBUG;
@@ -157,14 +160,94 @@ public class StockManagementModel {
         }
     }
 
-    public void doNewProduct(String message) {
-        // Implement the logic for adding a new product
-        reply.set("Adding new product: " + message);
+    public void doNewProduct(String description, double price, int quantity) {
+        try {
+            // Generate a new product number
+            String productNum = generateNewProductNumber();
+
+            // Create a new product with placeholder image
+            Product newProduct = new Product(productNum, description, price, quantity);
+
+            // Add the new product to the database
+            stockReader.modifyStock(newProduct);
+
+            String formattedText = String.format("""
+                    Added new product:
+                    Product Number: %s
+                    Description: %s
+                    Price: %.2f
+                    Quantity: %d""",
+                    newProduct.getProductNum(),
+                    newProduct.getDescription(),
+                    newProduct.getPrice(),
+                    newProduct.getQuantity());
+
+            reply.set(formattedText);
+
+            // Update image display (if applicable)
+            productImage = null;
+        } catch (StockException e) {
+            DEBUG.error("StockManagementModel::doNewProduct\n%s", e.getMessage());
+            reply.set("System Error: " + e.getMessage());
+            productImage = null;
+        }
     }
 
-    public void doAddImage(String message) {
-        // Implement the logic for adding an image
-        reply.set("Adding image: " + message);
+    private String generateNewProductNumber() throws StockException {
+        // Generate a new product number based on existing products
+        int maxProductNum = 0;
+        for (Product product : stockReader.getProducts()) {
+            int productNum = Integer.parseInt(product.getProductNum());
+            if (productNum > maxProductNum) {
+                maxProductNum = productNum;
+            }
+        }
+        return String.format("%04d", maxProductNum + 1);
+    }
+
+    // public void doUpdateImage(String productNum, String imagePath) {
+    // try {
+    // Product product = stockReader.getDetails(productNum);
+    // product.setImagePath(imagePath);
+    // stockReader.modifyStock(product);
+
+    // String formattedText = String.format("""
+    // Updated image for product: %s
+    // New image path: %s""",
+    // product.getDescription(),
+    // imagePath);
+
+    // reply.set(formattedText);
+
+    // // Update image display
+    // byte[] imgBytes = stockReader.getImage(productNum);
+    // if (imgBytes != null) {
+    // productImage = new Image(new ByteArrayInputStream(imgBytes));
+    // }
+    // } catch (StockException e) {
+    // DEBUG.error("StockManagementModel::doUpdateImage\n%s", e.getMessage());
+    // reply.set("System Error: " + e.getMessage());
+    // productImage = null;
+    // }
+    // }
+
+    public void updateProductImage(String productNum, String imagePath) {
+        try {
+            stockReader.updateProductImage(productNum, imagePath);
+
+            String formattedText = String.format("Updated image for product %s", productNum);
+            reply.set(formattedText);
+
+            // Update image display
+            byte[] imgBytes = stockReader.getImage(productNum);
+            if (imgBytes != null) {
+                productImage = new Image(new ByteArrayInputStream(imgBytes));
+            }
+        } catch (StockException e) {
+            DEBUG.error("StockManagementModel::updateProductImage\n%s", e.getMessage());
+            reply.set("System Error: " + e.getMessage());
+            productImage = null;
+        }
     }
 
     public void doFinish() {

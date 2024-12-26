@@ -16,6 +16,7 @@ import remote.RemoteStockRW_I;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Setup connection to the middle tier
@@ -114,6 +115,45 @@ public class F_StockRW extends F_StockR
             if (aR_StockRW == null)
                 connect();
             aR_StockRW.setStock(productNum, quantity);
+        } catch (RemoteException e) {
+            aR_StockRW = null;
+            throw new StockException("Net: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void addProduct(Product product) throws StockException {
+        DEBUG.trace("F_StockRW:addProduct()");
+        try {
+            if (aR_StockRW == null)
+                connect();
+            aR_StockRW.addProduct(product);
+        } catch (RemoteException e) {
+            aR_StockRW = null;
+            throw new StockException("Net: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Product> getProducts() throws StockException {
+        DEBUG.trace("F_StockRW:getProducts()");
+        try {
+            if (aR_StockRW == null)
+                connect();
+            return aR_StockRW.getProducts();
+        } catch (RemoteException e) {
+            aR_StockRW = null;
+            throw new StockException("Net: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateProductImage(String productNum, String imagePath) throws StockException {
+        DEBUG.trace("F_StockRW:updateProductImage()");
+        try {
+            if (aR_StockRW == null)
+                connect();
+            aR_StockRW.updateProductImage(productNum, imagePath);
         } catch (RemoteException e) {
             aR_StockRW = null;
             throw new StockException("Net: " + e.getMessage());
