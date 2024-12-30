@@ -1,9 +1,8 @@
-// filepath: /c:/Users/jakef/OneDrive/Desktop/project/CI553-CW-miniStore/middle/F_StockR.java
-package middle;
+package ci553.ministore.middle;
 
-import catalogue.Product;
-import debug.DEBUG;
-import remote.RemoteStockR_I;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.remote.RemoteStockR_I;
 import javafx.scene.image.Image;
 
 import java.rmi.Naming;

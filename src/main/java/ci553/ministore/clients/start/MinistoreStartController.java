@@ -1,4 +1,4 @@
-package clients.start;
+package ci553.ministore.clients.start;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import middle.MiddleFactory;
-import clients.customerjavafx.CustomerCheckStockController;
-import clients.cashierjavafx.CashierPlaceOrderController;
-import clients.staffjavafx.StaffLoginController;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.clients.customerjavafx.CustomerCheckStockController;
+import ci553.ministore.clients.cashierjavafx.CashierPlaceOrderController;
+import ci553.ministore.clients.staffjavafx.StaffLoginController;
 
 import java.io.IOException;
 

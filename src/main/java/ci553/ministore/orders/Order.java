@@ -1,10 +1,10 @@
-package orders;
+package ci553.ministore.orders;
 
-import catalogue.Basket;
-import catalogue.Product;
-import debug.DEBUG;
-import middle.OrderException;
-import middle.OrderProcessing;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.middle.OrderException;
+import ci553.ministore.middle.OrderProcessing;
 
 import java.util.stream.Collectors;
 
@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * The order processing system.<BR>
- * Manages the progression of customer orders, 
+ * Manages the progression of customer orders,
  *  instances of a Basket as they are progressed through the system.
  * These stages are:
  * <BR><B>Waiting to be processed<BR>
@@ -21,7 +21,7 @@ import java.util.*;
  * @author  Mike Smith University of Brighton
  * @version 3.0
  */
- 
+
 public class Order implements OrderProcessing
 {
   private enum State {Waiting, BeingPacked, ToBeCollected };
@@ -32,7 +32,7 @@ public class Order implements OrderProcessing
   {
     private State  stateIs;       // Order state
     private Basket basket;        // For this basket
-    
+
     public Folder( Basket anOrder )
     {
       stateIs = State.Waiting;
@@ -45,12 +45,12 @@ public class Order implements OrderProcessing
 
     public void newState( State newState ) { stateIs = newState; }
   }
-  
+
   // Active orders in the Catshop system
   private final ArrayList<Folder>  folders = new ArrayList<>();
   private static int theNextNumber = 1;          // Start at order 1
 
-  /**  
+  /**
    * Used to generate debug information
    * @param  basket an instance of a basket
    * @return Description of contents
@@ -83,7 +83,7 @@ public class Order implements OrderProcessing
   /**
    * Add a new order to the order processing system
    * @param bought A new order that is to be processed
-   */ 
+   */
   public synchronized void newOrder( Basket bought )
          throws OrderException
   {
@@ -129,7 +129,7 @@ public class Order implements OrderProcessing
     DEBUG.trace( "DEBUG: Order packed [%d]", orderNum );
     for ( int i=0; i < folders.size(); i++)
     {
-      if ( folders.get(i).getBasket().getOrderNum() == orderNum && 
+      if ( folders.get(i).getBasket().getOrderNum() == orderNum &&
            folders.get(i).getState()                == State.BeingPacked )
       {
         folders.get(i).newState( State.ToBeCollected );
@@ -161,7 +161,7 @@ public class Order implements OrderProcessing
   }
 
   /**
-   * Returns information about all the orders (there order number) 
+   * Returns information about all the orders (there order number)
    * in the order processing system
    * This consists of a map with the following keys:
    *<PRE>
@@ -212,7 +212,7 @@ public class Order implements OrderProcessing
   private List<Integer> orderNums( State inState )
   {
     return folders.stream()
-            .filter( folder -> folder.getState() == inState ) 
+            .filter( folder -> folder.getState() == inState )
             .map( folder -> folder.getBasket().getOrderNum() )
             .collect( Collectors.toList() );
   }

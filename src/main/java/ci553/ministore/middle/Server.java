@@ -1,8 +1,8 @@
-package middle;
+package ci553.ministore.middle;
 
-import remote.R_Order;
-import remote.R_StockR;
-import remote.R_StockRW;
+import ci553.ministore.remote.R_Order;
+import ci553.ministore.remote.R_StockR;
+import ci553.ministore.remote.R_StockRW;
 
 import java.net.InetAddress;
 import java.rmi.Naming;
@@ -26,7 +26,7 @@ class Server
     String stockRW = args.length < 2     // URL of stock RW
                     ? Names.STOCK_RW     //  default  location
                     : args[1];           //  supplied location
-                      
+
     String order    = args.length < 3    // URL of order manip
                     ? Names.ORDER        //  default  location
                     : args[2];           //  supplied location
@@ -62,12 +62,12 @@ class Server
       theStockRW = new R_StockRW(urlStockRW);         // Stock RW
       Naming.rebind( urlStockRW, theStockRW );        //  bind to url
       System.out.println( "StockRW bound to: " +      //  Inform world
-                           urlStockRW );              // 
+                           urlStockRW );              //
 
       theOrder = new R_Order(urlOrder);               // Order
       Naming.rebind( urlOrder, theOrder );            //  bind to url
       System.out.println( "Order   bound to: " +      //  Inform world
-                         urlOrder ); 
+                         urlOrder );
 
     }
     catch ( Exception err )                           // Error

@@ -1,4 +1,4 @@
-package clients.staffjavafx.packing;
+package ci553.ministore.clients.staffjavafx.packing;
 
 import java.io.IOException;
 
@@ -12,9 +12,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import clients.staffjavafx.dashboard.DashboardController;
-import middle.MiddleFactory;
-import debug.DEBUG;
+import ci553.ministore.clients.staffjavafx.dashboard.DashboardController;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.debug.DEBUG;
 
 public class PackingController {
     @FXML

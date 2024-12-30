@@ -1,4 +1,4 @@
-package middle;
+package ci553.ministore.middle;
 
 /**
  * Facade for read/write access to the stock list.
@@ -9,9 +9,9 @@ package middle;
  * @version 2.0
  */
 
-import catalogue.Product;
-import debug.DEBUG;
-import remote.RemoteStockRW_I;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.remote.RemoteStockRW_I;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;

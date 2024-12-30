@@ -1,11 +1,11 @@
 
-package orders;
+package ci553.ministore.orders;
 
-import catalogue.Basket;
-import catalogue.Product;
-import debug.DEBUG;
-import middle.OrderException;
-import middle.OrderProcessing;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.middle.OrderException;
+import ci553.ministore.middle.OrderProcessing;
 
 import java.util.stream.Collectors;
 
@@ -21,7 +21,7 @@ import java.util.Formatter;
   * <BR>-----------------------------------------
   * <P>
   * The order processing system.<BR>
-  * Manages the progression of customer orders, instances of a Basket as they are 
+  * Manages the progression of customer orders, instances of a Basket as they are
   * progressed through the system.
   * This is achieved by holding 3 seperate lists of orders, each list represents a specific
   * stage in the orders life cycle. These stages are:
@@ -31,7 +31,7 @@ import java.util.Formatter;
   * @author  Michael Alexander Smith
   * @version 2.0
   */
- 
+
 public class OrderX implements OrderProcessing
 {
   private static int theNextNumber = 1;          // Start at 1
@@ -76,7 +76,7 @@ public class OrderX implements OrderProcessing
   /**
    * Add a new order to the order processing system
    * @param bought a new order that is to be processed
-   */ 
+   */
   public synchronized void newOrder( Basket bought )
          throws OrderException
   {
@@ -172,7 +172,7 @@ public class OrderX implements OrderProcessing
          throws OrderException
   {
     DEBUG.trace( "DEBUG: get state of order system" );
-    Map < String, List<Integer> > res = 
+    Map < String, List<Integer> > res =
       new HashMap< String, List<Integer> >();
     res.put( "Waiting",       orderNos(theWaitingTray) );
     res.put( "BeingPicked",   orderNos(theBeingPickedTray) );
@@ -180,7 +180,7 @@ public class OrderX implements OrderProcessing
 
     return res;
   }
-  
+
   private List< Integer > orderNos( ArrayList<Basket> queue )
   {
     List <Integer> res = new ArrayList<Integer>();

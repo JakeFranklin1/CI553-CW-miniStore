@@ -1,10 +1,9 @@
-// filepath: /c:/Users/jakef/OneDrive/Desktop/project/CI553-CW-miniStore/dbAccess/StockRW.java
-package dbAccess;
+package ci553.ministore.dbAccess;
 
-import catalogue.Product;
-import debug.DEBUG;
-import middle.StockException;
-import middle.StockReadWriter;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.middle.StockReadWriter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package clients.staffjavafx.stockmanagement;
+package ci553.ministore.clients.staffjavafx.stockmanagement;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -14,18 +14,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import middle.MiddleFactory;
-import middle.StockException;
-import util.DialogFactory;
-import util.ImageHandler;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.util.DialogFactory;
+import ci553.ministore.util.ImageHandler;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
-import catalogue.Product;
-import clients.staffjavafx.dashboard.DashboardController;
-import debug.DEBUG;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.clients.staffjavafx.dashboard.DashboardController;
+import ci553.ministore.debug.DEBUG;
 
 @SuppressWarnings("unused")
 public class StockManagementController {

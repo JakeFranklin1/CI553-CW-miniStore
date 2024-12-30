@@ -1,8 +1,8 @@
-package middle;
+package ci553.ministore.middle;
 
 import java.util.List;
 
-import catalogue.Product;
+import ci553.ministore.catalogue.Product;
 
 /**
  * Interface for read/write access to the stock list.

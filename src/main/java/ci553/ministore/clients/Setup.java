@@ -1,8 +1,8 @@
-package clients;
+package ci553.ministore.clients;
 
-import dbAccess.DBAccess;
-import dbAccess.DBAccessFactory;
-import middle.StockException;
+import ci553.ministore.dbAccess.DBAccess;
+import ci553.ministore.dbAccess.DBAccessFactory;
+import ci553.ministore.middle.StockException;
 
 import java.sql.*;
 import java.util.ArrayList;

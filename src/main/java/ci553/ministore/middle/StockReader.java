@@ -1,6 +1,6 @@
-package middle;
+package ci553.ministore.middle;
 
-import catalogue.Product;
+import ci553.ministore.catalogue.Product;
 
 public interface StockReader {
     boolean exists(String pNum) throws StockException;

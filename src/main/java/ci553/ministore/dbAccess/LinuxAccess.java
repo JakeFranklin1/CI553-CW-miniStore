@@ -1,4 +1,4 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
 /**
   * Implements management of an mySQL database on Linux.

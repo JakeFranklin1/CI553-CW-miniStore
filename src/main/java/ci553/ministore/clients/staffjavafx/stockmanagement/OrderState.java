@@ -1,4 +1,4 @@
-package clients.staffjavafx.stockmanagement;
+package ci553.ministore.clients.staffjavafx.stockmanagement;
 
 public enum OrderState {
     ENTERING_PRODUCT,

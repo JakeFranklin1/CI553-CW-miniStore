@@ -1,16 +1,16 @@
-package clients.customerjavafx;
+package ci553.ministore.clients.customerjavafx;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import middle.MiddleFactory;
-import middle.StockReader;
-import middle.StockException;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.middle.StockReader;
+import ci553.ministore.middle.StockException;
 
 import java.io.ByteArrayInputStream;
 
-import catalogue.Product;
-import debug.DEBUG;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
 
 public class CustomerModel {
     private final StringProperty message = new SimpleStringProperty();

@@ -1,11 +1,11 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
 /**
   * Implements generic management of a database.
   * @author  Mike Smith University of Brighton
   * @version 2.0
   */
- 
+
 /**
  * Base class that defines the access to the database driver
  */

@@ -1,9 +1,8 @@
-// filepath: /c:/Users/jakef/OneDrive/Desktop/project/CI553-CW-miniStore/remote/R_StockR.java
-package remote;
+package ci553.ministore.remote;
 
-import catalogue.Product;
-import dbAccess.StockR;
-import middle.StockException;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.dbAccess.StockR;
+import ci553.ministore.middle.StockException;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

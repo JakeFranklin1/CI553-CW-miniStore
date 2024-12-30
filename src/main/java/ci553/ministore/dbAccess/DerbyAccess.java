@@ -1,11 +1,11 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
 /**
   * Apache Derby database access
   * @author  Mike Smith University of Brighton
   * @version 2.0
   */
- 
+
 class DerbyAccess extends DBAccess
 {
   private static final String URLdb =
@@ -30,4 +30,3 @@ class DerbyAccess extends DBAccess
     return URLdb;
   }
 }
-

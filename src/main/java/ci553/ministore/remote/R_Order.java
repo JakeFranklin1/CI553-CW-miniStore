@@ -1,8 +1,8 @@
-package remote;
+package ci553.ministore.remote;
 
-import catalogue.Basket;
-import middle.OrderException;
-import orders.Order;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.middle.OrderException;
+import ci553.ministore.orders.Order;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -33,7 +33,7 @@ public class      R_Order
          throws RemoteException, OrderException
   {
      aOrder.newOrder( bought );
-    
+
   }
 
   public int uniqueNumber()
@@ -41,26 +41,26 @@ public class      R_Order
   {
     return aOrder.uniqueNumber();
   }
-  
+
   public Basket getOrderToPack()
          throws RemoteException, OrderException
   {
       return aOrder.getOrderToPack();
   }
-  
+
   public boolean informOrderPacked( int orderNum )
          throws RemoteException, OrderException
   {
      return aOrder.informOrderPacked(orderNum);
   }
-  
+
   public boolean informOrderCollected( int orderNum )
          throws RemoteException, OrderException
   {
       return aOrder.informOrderCollected(orderNum);
   }
-  
-  
+
+
   public Map<String, List<Integer>> getOrderState()
           throws RemoteException, OrderException
   {

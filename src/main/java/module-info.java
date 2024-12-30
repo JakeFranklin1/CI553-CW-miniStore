@@ -3,6 +3,7 @@ module CI553.ministore {
     requires javafx.fxml;
     requires transitive javafx.graphics;
     requires java.sql;
+    requires java.rmi;
 
     opens ci553.ministore to javafx.fxml;
 

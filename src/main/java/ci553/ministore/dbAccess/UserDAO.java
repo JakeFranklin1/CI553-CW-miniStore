@@ -1,4 +1,4 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -8,8 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import middle.StockException;
-import util.PasswordUtil;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.util.PasswordUtil;
 
 public class UserDAO {
     private Connection theCon = null;

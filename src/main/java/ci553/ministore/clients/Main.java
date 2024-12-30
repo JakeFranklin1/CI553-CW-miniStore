@@ -1,15 +1,15 @@
-package clients;
+package ci553.ministore.clients;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import middle.LocalMiddleFactory;
-import middle.MiddleFactory;
-// import clients.staffjavafx.dashboard.DashboardController;
-import clients.start.MinistoreStartController;
-import debug.DEBUG;
+import ci553.ministore.middle.LocalMiddleFactory;
+import ci553.ministore.middle.MiddleFactory;
+// import ci553.ministore.clients.staffjavafx.dashboard.DashboardController;
+import ci553.ministore.clients.start.MinistoreStartController;
+import ci553.ministore.debug.DEBUG;
 
 public class Main extends Application {
 

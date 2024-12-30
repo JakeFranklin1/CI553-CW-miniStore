@@ -1,4 +1,4 @@
-package clients.staffjavafx.dashboard;
+package ci553.ministore.clients.staffjavafx.dashboard;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import middle.MiddleFactory;
-import clients.start.MinistoreStartController;
-import clients.staffjavafx.packing.PackingController;
-import clients.staffjavafx.stockmanagement.StockManagementController;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.clients.start.MinistoreStartController;
+import ci553.ministore.clients.staffjavafx.packing.PackingController;
+import ci553.ministore.clients.staffjavafx.stockmanagement.StockManagementController;
 
 public class DashboardController {
     @FXML

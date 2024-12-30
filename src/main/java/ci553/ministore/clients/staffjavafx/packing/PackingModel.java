@@ -1,13 +1,13 @@
-package clients.staffjavafx.packing;
+package ci553.ministore.clients.staffjavafx.packing;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import middle.MiddleFactory;
-import middle.OrderProcessing;
-import middle.StockReadWriter;
-import middle.OrderException;
-import catalogue.Basket;
-import debug.DEBUG;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.middle.OrderProcessing;
+import ci553.ministore.middle.StockReadWriter;
+import ci553.ministore.middle.OrderException;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.debug.DEBUG;
 
 import java.util.concurrent.atomic.AtomicReference;
 

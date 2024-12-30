@@ -1,4 +1,4 @@
-package clients.cashierjavafx;
+package ci553.ministore.clients.cashierjavafx;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import middle.MiddleFactory;
-import util.DialogFactory;
-import debug.DEBUG;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.util.DialogFactory;
+import ci553.ministore.debug.DEBUG;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -20,7 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import clients.start.MinistoreStartController;
+import ci553.ministore.clients.start.MinistoreStartController;
 
 public class CashierPlaceOrderController {
     @FXML

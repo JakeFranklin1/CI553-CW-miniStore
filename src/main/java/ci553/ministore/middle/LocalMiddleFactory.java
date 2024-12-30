@@ -3,11 +3,11 @@
  * @version 2.1
  */
 
-package middle;
+package ci553.ministore.middle;
 
-import dbAccess.StockR;
-import dbAccess.StockRW;
-import orders.Order;
+import ci553.ministore.dbAccess.StockR;
+import ci553.ministore.dbAccess.StockRW;
+import ci553.ministore.orders.Order;
 
 
 /**
@@ -22,12 +22,12 @@ public class LocalMiddleFactory implements MiddleFactory
   private static StockR  aStockR  = null;
   private static StockRW aStockRW = null;
   private static Order   aOrder   = null;
-  
+
   /**
    * Return an object to access the database for read only access.
    * All users share this same object.
    */
-  
+
   public StockReader makeStockReader() throws StockException
   {
     if ( aStockR == null )
@@ -39,19 +39,19 @@ public class LocalMiddleFactory implements MiddleFactory
    * Return an object to access the database for read/write access.
    * All users share this same object.
    */
-  
+
   public StockReadWriter makeStockReadWriter() throws StockException
   {
     if ( aStockRW == null )
       aStockRW = new StockRW();
     return aStockRW;
   }
-  
+
   /**
    * Return an object to access the order processing system.
    * All users share this same object.
    */
-   
+
   public OrderProcessing makeOrderProcessing() throws OrderException
   {
     if ( aOrder == null )
@@ -59,4 +59,3 @@ public class LocalMiddleFactory implements MiddleFactory
     return aOrder;
   }
 }
-

@@ -1,8 +1,8 @@
-package middle;
+package ci553.ministore.middle;
 
-import catalogue.Basket;
-import debug.DEBUG;
-import remote.RemoteOrder_I;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.remote.RemoteOrder_I;
 
 import java.rmi.Naming;
 import java.util.List;
@@ -28,7 +28,7 @@ public class F_Order implements OrderProcessing
   {
     theOrderURL = url;
   }
-  
+
   private void connect() throws OrderException
   {
     try                                            // Setup
@@ -39,9 +39,9 @@ public class F_Order implements OrderProcessing
     catch ( Exception e )                          // Failure to
     {                                              //  attach to the
       aR_Order = null;
-      throw new OrderException( "Com: " + 
+      throw new OrderException( "Com: " +
                                e.getMessage()  );  //  object
-      
+
     }
   }
 

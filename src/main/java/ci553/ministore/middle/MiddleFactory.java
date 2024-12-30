@@ -4,7 +4,7 @@
  * @version 2.0
  */
 
-package middle;
+package ci553.ministore.middle;
 
 /**
   * Provide access to middle tier components.
@@ -14,7 +14,7 @@ package middle;
 
 public interface MiddleFactory
 {
- 
+
   /**
    * Return an object to access the database for read only access
    * @return instance of StockReader
@@ -29,7 +29,7 @@ public interface MiddleFactory
    */
   public StockReadWriter makeStockReadWriter() throws StockException;
 
-  
+
   /**
    * Return an object to access the order processing system
    * @return instance of OrderProcessing
@@ -38,4 +38,3 @@ public interface MiddleFactory
   public OrderProcessing makeOrderProcessing() throws OrderException;
 
 }
-

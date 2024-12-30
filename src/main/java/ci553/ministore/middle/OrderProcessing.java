@@ -1,6 +1,6 @@
-package middle;
+package ci553.ministore.middle;
 
-import catalogue.Basket;
+import ci553.ministore.catalogue.Basket;
 
 import java.util.List;
 import java.util.Map;
@@ -19,17 +19,17 @@ public interface OrderProcessing
 
   public int  uniqueNumber()                       // Cashier
          throws OrderException;
-   
+
   public Basket getOrderToPack()                   // Packer
          throws OrderException;
- 
-  public boolean informOrderPacked(int orderNum)   // Packer 
+
+  public boolean informOrderPacked(int orderNum)   // Packer
          throws OrderException;
-         
+
   // not being used in this version
   public boolean informOrderCollected(int orderNum) // Collection
          throws OrderException;
-   
+
   // not being used in this version
   public Map<String,List<Integer>> getOrderState() // Display
          throws OrderException;

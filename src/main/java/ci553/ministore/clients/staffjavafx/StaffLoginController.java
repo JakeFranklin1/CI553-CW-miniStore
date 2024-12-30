@@ -1,7 +1,7 @@
-package clients.staffjavafx;
+package ci553.ministore.clients.staffjavafx;
 
-import dbAccess.UserDAO;
-import middle.StockException;
+import ci553.ministore.dbAccess.UserDAO;
+import ci553.ministore.middle.StockException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,14 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import middle.MiddleFactory;
+import ci553.ministore.middle.MiddleFactory;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 
-import clients.staffjavafx.dashboard.DashboardController;
-import clients.start.MinistoreStartController;
+import ci553.ministore.clients.staffjavafx.dashboard.DashboardController;
+import ci553.ministore.clients.start.MinistoreStartController;
 
 public class StaffLoginController {
     @FXML

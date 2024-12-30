@@ -1,4 +1,4 @@
-package middle;
+package ci553.ministore.middle;
 
 /**
  * Location of the various objects accessed remotely.

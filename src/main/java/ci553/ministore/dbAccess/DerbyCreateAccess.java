@@ -1,4 +1,4 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
 /**
   * Implements management of an Apache Derby database.
@@ -6,7 +6,7 @@ package dbAccess;
   * @author  Mike Smith University of Brighton
   * @version 2.0
   */
- 
+
 class DerbyCreateAccess extends DBAccess
 {
   private static final String URLdb =
@@ -24,4 +24,3 @@ class DerbyCreateAccess extends DBAccess
     return URLdb;
   }
 }
-

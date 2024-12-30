@@ -1,4 +1,4 @@
-package util;
+package ci553.ministore.util;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -10,8 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
-import catalogue.Product;
-import clients.cashierjavafx.CashierModel;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.clients.cashierjavafx.CashierModel;
 
 import java.util.Optional;
 

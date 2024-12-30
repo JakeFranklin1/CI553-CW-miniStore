@@ -1,4 +1,4 @@
-package util;
+package ci553.ministore.util;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Window;

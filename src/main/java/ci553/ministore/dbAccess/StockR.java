@@ -1,9 +1,9 @@
-package dbAccess;
+package ci553.ministore.dbAccess;
 
-import catalogue.Product;
-import debug.DEBUG;
-import middle.StockException;
-import middle.StockReader;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.middle.StockReader;
 
 import java.sql.*;
 import java.io.ByteArrayOutputStream;

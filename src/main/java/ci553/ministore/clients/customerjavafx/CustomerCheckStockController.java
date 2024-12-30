@@ -1,4 +1,4 @@
-package clients.customerjavafx;
+package ci553.ministore.clients.customerjavafx;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,12 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import middle.MiddleFactory;
-import debug.DEBUG;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.debug.DEBUG;
 import java.io.IOException;
 
-import clients.start.MinistoreStartController;
-import clients.cashierjavafx.CashierPlaceOrderController;
+import ci553.ministore.clients.start.MinistoreStartController;
+import ci553.ministore.clients.cashierjavafx.CashierPlaceOrderController;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;

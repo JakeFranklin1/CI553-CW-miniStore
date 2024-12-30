@@ -1,14 +1,14 @@
-package clients.cashierjavafx;
+package ci553.ministore.clients.cashierjavafx;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import middle.MiddleFactory;
-import middle.StockException;
-import middle.StockReadWriter;
-import catalogue.Basket;
-import catalogue.Product;
-import debug.DEBUG;
-import middle.OrderProcessing;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.middle.StockReadWriter;
+import ci553.ministore.catalogue.Basket;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
+import ci553.ministore.middle.OrderProcessing;
 
 public class CashierModel {
     private final StringProperty message = new SimpleStringProperty();

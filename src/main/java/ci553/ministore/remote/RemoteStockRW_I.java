@@ -3,10 +3,10 @@
  * @version 2.0
  */
 
-package remote;
+package ci553.ministore.remote;
 
-import catalogue.Product;
-import middle.StockException;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.middle.StockException;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

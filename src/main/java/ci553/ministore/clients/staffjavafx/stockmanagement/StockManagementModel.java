@@ -1,14 +1,14 @@
-package clients.staffjavafx.stockmanagement;
+package ci553.ministore.clients.staffjavafx.stockmanagement;
 
 import java.io.ByteArrayInputStream;
-import catalogue.Product;
-import debug.DEBUG;
+import ci553.ministore.catalogue.Product;
+import ci553.ministore.debug.DEBUG;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import middle.MiddleFactory;
-import middle.StockException;
-import middle.StockReadWriter;
+import ci553.ministore.middle.MiddleFactory;
+import ci553.ministore.middle.StockException;
+import ci553.ministore.middle.StockReadWriter;
 
 public class StockManagementModel {
     private final StringProperty message = new SimpleStringProperty();

@@ -1,4 +1,4 @@
-package clients.cashierjavafx;
+package ci553.ministore.clients.cashierjavafx;
 
 public enum OrderState {
     ENTERING_PRODUCT,
