@@ -1,10 +1,6 @@
 package clients.staffjavafx.stockmanagement;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-
 import catalogue.Product;
 import debug.DEBUG;
 import javafx.beans.property.SimpleStringProperty;

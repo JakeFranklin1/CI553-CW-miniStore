@@ -78,7 +78,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="screen-buttons" fx:id="stock_management_finished_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="FINISHED" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Button id="screen-buttons" fx:id="stock_management_finished_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="DELETE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>

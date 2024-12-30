@@ -43,7 +43,8 @@ public class StaffLoginController {
         try {
             userDAO = new UserDAO();
         } catch (StockException e) {
-            showAlert(Alert.AlertType.ERROR, "Database Error", "An error occurred while initializing the database connection.");
+            showAlert(Alert.AlertType.ERROR, "Database Error",
+                    "An error occurred while initializing the database connection.");
             e.printStackTrace();
         }
 
@@ -65,9 +66,8 @@ public class StaffLoginController {
             if (isValidUser) {
                 // Login successful, load the staff dashboard
                 loadStaffDashboard();
-                showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + username + "!");
             } else {
-                // Login failed
+                // Login failed, show alert
                 showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
             }
         } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
@@ -102,7 +102,7 @@ public class StaffLoginController {
 
             // Get the controller and pass the MiddleFactory instance
             MinistoreStartController controller = loader.getController();
-            controller.setMiddleFactory(mlf);  // Pass the MiddleFactory instance
+            controller.setMiddleFactory(mlf); // Pass the MiddleFactory instance
 
             Stage stage = (Stage) staff_go_back_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
