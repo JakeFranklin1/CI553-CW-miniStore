@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import middle.MiddleFactory;
 import util.DialogFactory;
 import debug.DEBUG;
@@ -18,13 +17,6 @@ import java.util.Optional;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
-import javafx.scene.control.Dialog;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.geometry.Insets;
 import javafx.util.Pair;
 
 import clients.start.MinistoreStartController;

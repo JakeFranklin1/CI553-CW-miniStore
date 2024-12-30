@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -27,6 +26,7 @@ import catalogue.Product;
 import clients.staffjavafx.dashboard.DashboardController;
 import debug.DEBUG;
 
+@SuppressWarnings("unused")
 public class StockManagementController {
     @FXML
     private Button stock_management_check_stock_btn;
