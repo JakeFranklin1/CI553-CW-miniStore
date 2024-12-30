@@ -16,6 +16,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import middle.MiddleFactory;
 import middle.StockException;
+import util.DialogFactory;
+import util.ImageHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +25,6 @@ import java.util.Optional;
 
 import catalogue.Product;
 import clients.staffjavafx.dashboard.DashboardController;
-import clients.utils.DialogFactory;
-import clients.utils.ImageHandler;
 import debug.DEBUG;
 
 public class StockManagementController {
@@ -107,16 +107,7 @@ public class StockManagementController {
     }
 
     private void processEnter() {
-        switch (state) {
-            case ENTERING_PRODUCT:
-                processCheck();
-                break;
-            case MANAGING_STOCK:
-                processAddStock();
-                break;
-            default:
-                break;
-        }
+        processCheck();
     }
 
     private void process(String action) {
@@ -206,19 +197,29 @@ public class StockManagementController {
 
     private void processCancel() {
         processClearOrder();
+        stock_image.setImage(null);
+        // state = OrderState.ENTERING_PRODUCT;
     }
 
     private void processCheck() {
         model.doCheck(stock_management_message.getText());
         updateImage();
-        state = OrderState.MANAGING_STOCK;
+        // state = OrderState.MANAGING_STOCK;
     }
 
     private void processAddStock() {
-        String productNum = stock_management_message.getText().trim();
+        String productNum = stock_management_message.getText();
 
+        // Check if input is null
+        if (productNum == null) {
+            model.replyProperty().set("Please enter a product number");
+            return;
+        }
+
+        // Trim and check if empty
+        productNum = productNum.trim();
         if (productNum.isEmpty()) {
-            model.replyProperty().set("Please enter a product number first");
+            model.replyProperty().set("Please enter a product number");
             return;
         }
 
@@ -226,54 +227,21 @@ public class StockManagementController {
             return;
         }
 
-        model.doCheck(productNum);
-        state = OrderState.MANAGING_STOCK;
-        Optional<Integer> quantity = promptForQuantity();
-
-        if (quantity.isPresent()) {
-            model.setCurrentQuantity(quantity.get());
-            model.doAdd(productNum);
-            updateImage();
-            state = OrderState.ENTERING_PRODUCT;
-        }
-    }
-
-    private Optional<Integer> promptForQuantity() {
-        String productNum = stock_management_message.getText().trim();
-
-        TextInputDialog dialog = new TextInputDialog("1");
-        dialog.setTitle("Add Stock");
-
         try {
-            // Get product details from stock reader
             Product product = model.getStockReader().getDetails(productNum);
-            dialog.setHeaderText(String.format("""
-                    New stock arrived for product: %s?
-                    Current stock level: %d
-                    Enter quantity to add:""",
-                    product.getDescription(),
-                    product.getQuantity()));
+            Optional<Integer> quantity = DialogFactory.showAddStockDialog(product);
 
-        } catch (StockException e) {
-            dialog.setHeaderText("Enter quantity to add:");
-        }
-
-        dialog.setContentText("Quantity:");
-
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            try {
-                int quantity = Integer.parseInt(result.get());
-                if (quantity > 0) {
-                    return Optional.of(quantity);
-                } else {
-                    model.replyProperty().set("Quantity must be positive");
-                }
-            } catch (NumberFormatException e) {
+            if (quantity.isPresent()) {
+                model.setCurrentQuantity(quantity.get());
+                model.doAdd(productNum);
+                updateImage();
+                // state = OrderState.ENTERING_PRODUCT;
+            } else {
                 model.replyProperty().set("Invalid quantity entered");
             }
+        } catch (StockException e) {
+            model.replyProperty().set("System Error: " + e.getMessage());
         }
-        return Optional.empty();
     }
 
     private void processCorrectStock() {
@@ -290,27 +258,12 @@ public class StockManagementController {
 
         try {
             Product product = model.getStockReader().getDetails(productNum);
-            int currentStock = product.getQuantity();
+            Optional<Integer> newStock = DialogFactory.showStockCorrectionDialog(product);
 
-            // Create dialog to prompt for new stock quantity
-            TextInputDialog dialog = new TextInputDialog(String.valueOf(currentStock));
-            dialog.setTitle("Correct Stock");
-            dialog.setHeaderText(String.format("Correct stock for product: %s\nCurrent stock level: %d",
-                    product.getDescription(), currentStock));
-            dialog.setContentText("New stock quantity:");
-
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent()) {
-                try {
-                    int newStock = Integer.parseInt(result.get());
-                    if (newStock >= 0) {
-                        model.doCorrectStock(productNum, newStock);
-                    } else {
-                        model.replyProperty().set("Quantity must be non-negative");
-                    }
-                } catch (NumberFormatException e) {
-                    model.replyProperty().set("Invalid quantity entered");
-                }
+            if (newStock.isPresent()) {
+                model.doCorrectStock(productNum, newStock.get());
+            } else {
+                model.replyProperty().set("Invalid quantity entered");
             }
         } catch (StockException e) {
             model.replyProperty().set("System Error: " + e.getMessage());

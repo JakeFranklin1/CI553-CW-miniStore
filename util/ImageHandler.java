@@ -1,4 +1,4 @@
-package clients.utils;
+package util;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Window;

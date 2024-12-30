@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import middle.MiddleFactory;
+import util.DialogFactory;
 import debug.DEBUG;
 
 import java.io.IOException;
@@ -209,32 +210,12 @@ public class CashierPlaceOrderController {
             return;
         }
 
-        // Prompt the user for the quantity
-        Optional<Integer> quantity = promptForQuantity();
+        Optional<Integer> quantity = DialogFactory.showQuantityPromptDialog();
         if (quantity.isPresent()) {
             model.setCurrentQuantity(quantity.get());
-            // Add the current product to the order
             model.addToOrder(message.getText());
-            // The reply will be updated by the model's addToOrder method
             state = OrderState.ENTERING_PRODUCT;
         }
-    }
-
-    private Optional<Integer> promptForQuantity() {
-        TextInputDialog dialog = new TextInputDialog("1");
-        dialog.setTitle("Quantity");
-        dialog.setHeaderText("Enter the quantity of the product to add to the order:");
-        dialog.setContentText("Quantity:");
-
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            try {
-                return Optional.of(Integer.parseInt(result.get()));
-            } catch (NumberFormatException e) {
-                DEBUG.error("Invalid quantity entered: %s", e.getMessage());
-            }
-        }
-        return Optional.empty();
     }
 
     private void processPurchase() {
@@ -250,58 +231,7 @@ public class CashierPlaceOrderController {
     }
 
     private void processRemoveItem() {
-        // Create a custom dialog
-        Dialog<Pair<String, Integer>> dialog = new Dialog<>();
-        dialog.setTitle("Remove Item");
-        dialog.setHeaderText("Remove items from the order:");
-
-        // Set the button types
-        ButtonType removeButtonType = new ButtonType("Remove", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(removeButtonType, ButtonType.CANCEL);
-
-        // Create the product number and quantity fields
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
-
-        TextField productNum = new TextField();
-        TextField quantity = new TextField();
-        Label currentQuantityLabel = new Label("");
-
-        grid.add(new Label("Product Number:"), 0, 0);
-        grid.add(productNum, 1, 0);
-        grid.add(new Label("Quantity to Remove:"), 0, 1);
-        grid.add(quantity, 1, 1);
-        grid.add(currentQuantityLabel, 1, 2);
-
-        // Update current quantity label when product number changes
-        productNum.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.isEmpty()) {
-                int inBasket = model.getProductQuantityInBasket(newValue);
-                currentQuantityLabel.setText(String.format("Current quantity in order: %d", inBasket));
-            } else {
-                currentQuantityLabel.setText("");
-            }
-        });
-
-        dialog.getDialogPane().setContent(grid);
-
-        // Convert the result to a pair when the remove button is clicked
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == removeButtonType) {
-                try {
-                    String pNum = productNum.getText();
-                    int qty = Integer.parseInt(quantity.getText());
-                    return new Pair<>(pNum, qty);
-                } catch (NumberFormatException e) {
-                    return null;
-                }
-            }
-            return null;
-        });
-
-        Optional<Pair<String, Integer>> result = dialog.showAndWait();
+        Optional<Pair<String, Integer>> result = DialogFactory.showRemoveItemDialog(model);
         result.ifPresent(pair -> {
             String pNum = pair.getKey();
             int qty = pair.getValue();
