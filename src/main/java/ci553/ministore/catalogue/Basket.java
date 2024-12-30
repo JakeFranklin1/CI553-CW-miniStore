@@ -1,4 +1,4 @@
-package catalogue;
+package ci553.ministore.catalogue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
