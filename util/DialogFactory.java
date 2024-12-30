@@ -1,6 +1,7 @@
 package util;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -10,7 +11,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 import catalogue.Product;
-import clients.cashierjavafx.CashierModelJavaFX;
+import clients.cashierjavafx.CashierModel;
 
 import java.util.Optional;
 
@@ -70,7 +71,7 @@ public final class DialogFactory {
         return Optional.empty();
     }
 
-    public static Optional<Pair<String, Integer>> showRemoveItemDialog(CashierModelJavaFX model) {
+    public static Optional<Pair<String, Integer>> showRemoveItemDialog(CashierModel model) {
         Dialog<Pair<String, Integer>> dialog = new Dialog<>();
         dialog.setTitle("Remove Item");
         dialog.setHeaderText("Remove items from the order:");
@@ -160,6 +161,16 @@ public final class DialogFactory {
             }
         }
         return Optional.empty();
+    }
+
+    public static boolean showDeleteConfirmationDialog(String productNum) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Product");
+        alert.setHeaderText("Are you sure you want to delete this product?");
+        alert.setContentText("Product Number: " + productNum);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 
 }

@@ -10,7 +10,7 @@ import catalogue.Product;
 import debug.DEBUG;
 import middle.OrderProcessing;
 
-public class CashierModelJavaFX {
+public class CashierModel {
     private final StringProperty message = new SimpleStringProperty();
     private final StringProperty reply = new SimpleStringProperty();
     private final StockReadWriter stockReader;
@@ -18,7 +18,7 @@ public class CashierModelJavaFX {
     private Basket basket;
     private int currentQuantity = 1;
 
-    public CashierModelJavaFX(MiddleFactory mf) {
+    public CashierModel(MiddleFactory mf) {
         try {
             this.middleFactory = mf; // Store middleware factory
             this.stockReader = mf.makeStockReadWriter();

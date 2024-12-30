@@ -60,4 +60,9 @@ public class R_StockRW extends UnicastRemoteObject implements RemoteStockRW_I {
             throws RemoteException, StockException {
         aStockRW.updateProductImage(productNum, imagePath);
     }
+
+    @Override
+    public synchronized void deleteProduct(String productNum) throws RemoteException, StockException {
+        aStockRW.deleteProduct(productNum);
+    }
 }

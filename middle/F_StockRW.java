@@ -159,4 +159,17 @@ public class F_StockRW extends F_StockR
             throw new StockException("Net: " + e.getMessage());
         }
     }
+
+    @Override
+    public void deleteProduct(String productNum) throws StockException {
+        DEBUG.trace("F_StockRW:deleteProduct()");
+        try {
+            if (aR_StockRW == null)
+                connect();
+            aR_StockRW.deleteProduct(productNum);
+        } catch (RemoteException e) {
+            aR_StockRW = null;
+            throw new StockException("Net: " + e.getMessage());
+        }
+    }
 }

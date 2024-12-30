@@ -68,10 +68,18 @@ public interface StockReadWriter extends StockReader {
 
     /**
      * Updates the image path for a product
-     * 
+     *
      * @param productNum The product number
      * @param imagePath  The new image path
      * @throws StockException if an error occurs
      */
     void updateProductImage(String productNum, String imagePath) throws StockException;
+
+    /**
+     * Deletes a product from the stock.
+     *
+     * @param productNum The product number
+     * @throws StockException if an error occurs while deleting the product
+     */
+    void deleteProduct(String productNum) throws StockException;
 }

@@ -1,5 +1,6 @@
 package clients.customerjavafx;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,11 +22,16 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class CustomerCheckStockController {
-    @FXML private TextField check_stock_message;
-    @FXML private TextArea check_stock_reply;
-    @FXML private ImageView check_stock_image;
-    @FXML private Button check_stock_check_btn;
-    @FXML private Button check_stock_clear_btn;
+    @FXML
+    private TextField check_stock_message;
+    @FXML
+    private TextArea check_stock_reply;
+    @FXML
+    private ImageView check_stock_image;
+    @FXML
+    private Button check_stock_check_btn;
+    @FXML
+    private Button check_stock_clear_btn;
 
     private CustomerModel model;
 
@@ -40,6 +46,20 @@ public class CustomerCheckStockController {
 
             // Add event handler for Enter key press
             check_stock_message.setOnKeyPressed(this::handleKeyPress);
+
+            // Add keyboard event handler to the scene
+            // Platform.runLater is used to ensure the scene is fully loaded
+            // before adding the event handler. This is necessary because
+            // I want the scene to handle key presses, not the text field.
+            Platform.runLater(() -> {
+                check_stock_message.getScene().setOnKeyPressed(event -> {
+                    String key = event.getText();
+                    if (key.matches("[0-9]")) {
+                        processNumber(key);
+                        check_stock_message.requestFocus();
+                    }
+                });
+            });
 
         } catch (Exception e) {
             DEBUG.error("CustomerCheckStockController::setMiddleFactory\n%s", e.getMessage());
@@ -63,10 +83,17 @@ public class CustomerCheckStockController {
         DEBUG.trace("CustomerCheckStockController::process: action = " + action);
 
         switch (action) {
-            case "1": case "2": case "3":
-            case "4": case "5": case "6":
-            case "7": case "8": case "9":
-            case "0": case "00":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "0":
+            case "00":
                 processNumber(action);
                 break;
             case "ENTER":
@@ -140,7 +167,7 @@ public class CustomerCheckStockController {
         }
     }
 
-        private void processDetails() {
+    private void processDetails() {
         String productNum = check_stock_message.getText();
         if (productNum != null && !productNum.isEmpty()) {
             switchToPlaceOrder(productNum);
@@ -171,7 +198,7 @@ public class CustomerCheckStockController {
 
             // Get the controller and pass the MiddleFactory instance
             MinistoreStartController controller = loader.getController();
-            controller.setMiddleFactory(model.getMiddleFactory());  // Use model's MiddleFactory instance
+            controller.setMiddleFactory(model.getMiddleFactory()); // Use model's MiddleFactory instance
 
             Stage stage = (Stage) check_stock_message.getScene().getWindow();
             stage.setScene(new Scene(root));

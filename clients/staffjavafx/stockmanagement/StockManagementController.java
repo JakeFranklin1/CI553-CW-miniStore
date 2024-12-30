@@ -1,5 +1,6 @@
 package clients.staffjavafx.stockmanagement;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,18 +76,19 @@ public class StockManagementController {
             // Add event handler for Enter key press
             stock_management_message.setOnKeyPressed(this::handleKeyPress);
 
-            // Add listener for message text changes
-            // stock_management_message.textProperty().addListener((observable, oldValue,
-            // newValue) -> {
-            // if (oldValue != null && !oldValue.equals(newValue)) {
-            // if (state != OrderState.ENTERING_PRODUCT) {
-            // state = OrderState.ENTERING_PRODUCT;
-            // String currentReply = model.replyProperty().get();
-            // model.replyProperty().set(currentReply + "\nProduct Number changed, please
-            // check stock again.");
-            // }
-            // }
-            // });
+            // Add keyboard event handler to the scene
+            // Platform.runLater is used to ensure the scene is fully loaded
+            // before adding the event handler. This is necessary because
+            // I want the scene to handle key presses, not the text field.
+            Platform.runLater(() -> {
+                stock_management_message.getScene().setOnKeyPressed(event -> {
+                    String key = event.getText();
+                    if (key.matches("[0-9]")) {
+                        processNumber(key);
+                        stock_management_message.requestFocus();
+                    }
+                });
+            });
 
         } catch (Exception e) {
             DEBUG.error("StockManagementController::setMiddleFactory\n%s", e.getMessage());
@@ -153,7 +155,7 @@ public class StockManagementController {
                 processAddImage();
                 break;
             case "DELETE":
-                processClearOrder();
+                processDeleteProduct();
                 break;
             case "MENU":
                 processMenu();
@@ -189,22 +191,18 @@ public class StockManagementController {
     }
 
     private void processClearOrder() {
-        // model.clearBasket(true);
         model.messageProperty().set("");
         model.replyProperty().set("");
-        // state = OrderState.ENTERING_PRODUCT;
     }
 
     private void processCancel() {
         processClearOrder();
         stock_image.setImage(null);
-        // state = OrderState.ENTERING_PRODUCT;
     }
 
     private void processCheck() {
         model.doCheck(stock_management_message.getText());
         updateImage();
-        // state = OrderState.MANAGING_STOCK;
     }
 
     private void processAddStock() {
@@ -235,7 +233,6 @@ public class StockManagementController {
                 model.setCurrentQuantity(quantity.get());
                 model.doAdd(productNum);
                 updateImage();
-                // state = OrderState.ENTERING_PRODUCT;
             } else {
                 model.replyProperty().set("Invalid quantity entered");
             }
@@ -318,6 +315,25 @@ public class StockManagementController {
             } catch (IOException e) {
                 model.replyProperty().set("Error copying image file: " + e.getMessage());
             }
+        }
+    }
+
+    private void processDeleteProduct() {
+        String productNum = stock_management_message.getText().trim();
+
+        if (productNum.isEmpty()) {
+            model.replyProperty().set("Please enter a product number first");
+            return;
+        }
+
+        if (!model.validateProduct(productNum)) {
+            return;
+        }
+
+        boolean confirmed = DialogFactory.showDeleteConfirmationDialog(productNum);
+        if (confirmed) {
+            model.doDeleteProduct(productNum);
+            updateImage();
         }
     }
 

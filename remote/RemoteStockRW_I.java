@@ -38,4 +38,6 @@ public interface RemoteStockRW_I
 
     void updateProductImage(String productNum, String imagePath)
             throws RemoteException, StockException;
+
+    void deleteProduct(String productNum) throws RemoteException, StockException;
 }

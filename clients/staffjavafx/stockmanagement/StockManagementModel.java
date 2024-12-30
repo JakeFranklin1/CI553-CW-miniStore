@@ -269,4 +269,15 @@ public class StockManagementModel {
             return false;
         }
     }
+
+    public void doDeleteProduct(String productNum) {
+        try {
+            stockReader.deleteProduct(productNum);
+            reply.set("Deleted product: " + productNum);
+            productImage = null;
+        } catch (StockException e) {
+            DEBUG.error("StockManagementModel::doDeleteProduct\n%s", e.getMessage());
+            reply.set("System Error: " + e.getMessage());
+        }
+    }
 }

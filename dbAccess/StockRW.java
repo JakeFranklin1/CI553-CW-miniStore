@@ -141,4 +141,17 @@ public class StockRW extends StockR implements StockReadWriter {
             throw new StockException("SQL updateProductImage: " + e.getMessage());
         }
     }
+
+    @Override
+    public synchronized void deleteProduct(String productNum) throws StockException {
+        DEBUG.trace("DB StockRW: deleteProduct(%s)", productNum);
+        try {
+            getStatementObject().executeUpdate(
+                    "DELETE FROM StockTable WHERE productNo = '" + productNum + "'");
+            getStatementObject().executeUpdate(
+                    "DELETE FROM ProductTable WHERE productNo = '" + productNum + "'");
+        } catch (SQLException e) {
+            throw new StockException("SQL deleteProduct: " + e.getMessage());
+        }
+    }
 }

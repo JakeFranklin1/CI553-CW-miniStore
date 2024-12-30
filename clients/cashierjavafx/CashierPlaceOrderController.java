@@ -1,5 +1,6 @@
 package clients.cashierjavafx;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +48,7 @@ public class CashierPlaceOrderController {
     @FXML
     private Button place_order_menu_btn;
 
-    private CashierModelJavaFX model;
+    private CashierModel model;
     private OrderState state;
     private MiddleFactory mlf;
 
@@ -55,7 +56,7 @@ public class CashierPlaceOrderController {
         this.mlf = mf;
         try {
             // Initialize model with provided MiddleFactory
-            model = new CashierModelJavaFX(mf);
+            model = new CashierModel(mf);
 
             // Bind text properties
             message.textProperty().bindBidirectional(model.messageProperty());
@@ -80,6 +81,20 @@ public class CashierPlaceOrderController {
                     model.clearBasket(true);
                 }
             }));
+
+            // Add keyboard event handler to the scene
+            // Platform.runLater is used to ensure the scene is fully loaded
+            // before adding the event handler. This is necessary because
+            // I want the scene to handle key presses, not the text field.
+            Platform.runLater(() -> {
+                message.getScene().setOnKeyPressed(event -> {
+                    String key = event.getText();
+                    if (key.matches("[0-9]")) {
+                        processNumber(key);
+                        message.requestFocus();
+                    }
+                });
+            });
 
         } catch (Exception e) {
             DEBUG.error("CashierPlaceOrderController::setMiddleFactory\n%s", e.getMessage());
