@@ -2,7 +2,7 @@ package ci553.ministore.clients;
 
 import ci553.ministore.dbAccess.DBAccess;
 import ci553.ministore.dbAccess.DBAccessFactory;
-import ci553.ministore.middle.StockException;
+// import ci553.ministore.middle.StockException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -186,16 +186,16 @@ public class Setup {
         }
     }
 
-    private static String m(int len, String s) {
-        if (s.length() >= len) {
-            return s.substring(0, len - 1) + " ";
-        } else {
-            StringBuilder res = new StringBuilder(len);
-            res.append(s);
-            for (int i = s.length(); i < len; i++)
-                res.append(' ');
-            return res.toString();
-        }
-    }
+    // private static String m(int len, String s) {
+    //     if (s.length() >= len) {
+    //         return s.substring(0, len - 1) + " ";
+    //     } else {
+    //         StringBuilder res = new StringBuilder(len);
+    //         res.append(s);
+    //         for (int i = s.length(); i < len; i++)
+    //             res.append(' ');
+    //         return res.toString();
+    //     }
+    // }
 
 }

@@ -191,18 +191,18 @@ public class Order implements OrderProcessing
    * @param inState The state to find order numbers in
    * @return A list of order numbers
    */
-  private List<Integer> orderNumsOldWay( State inState )
-  {
-    List <Integer> res = new ArrayList<>();
-    for ( Folder folder : folders )
-    {
-      if ( folder.getState() == inState )
-      {
-       res.add( folder.getBasket().getOrderNum() );
-      }
-    }
-    return res;
-  }
+//   private List<Integer> orderNumsOldWay( State inState )
+//   {
+//     List <Integer> res = new ArrayList<>();
+//     for ( Folder folder : folders )
+//     {
+//       if ( folder.getState() == inState )
+//       {
+//        res.add( folder.getBasket().getOrderNum() );
+//       }
+//     }
+//     return res;
+//   }
 
   /**
    * Return the list of order numbers in selected state

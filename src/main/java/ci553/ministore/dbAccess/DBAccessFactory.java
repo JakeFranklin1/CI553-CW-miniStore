@@ -7,8 +7,8 @@ package ci553.ministore.dbAccess;
 
 import ci553.ministore.debug.DEBUG;
 
-import java.io.File;
-import java.io.FileInputStream;
+// import java.io.File;
+// import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -108,15 +108,15 @@ public class DBAccessFactory {
      * @param path File name
      * @return Number of characters in file
      */
-    private static long length(String path) {
-        try {
-            File in = new File(path);
-            return in.length();
-        } catch (SecurityException err) {
-            DEBUG.error("Security error: length of file [%s]\n", path);
-            System.exit(0);
-        }
-        return -1;
-    }
+    // private static long length(String path) {
+    //     try {
+    //         File in = new File(path);
+    //         return in.length();
+    //     } catch (SecurityException err) {
+    //         DEBUG.error("Security error: length of file [%s]\n", path);
+    //         System.exit(0);
+    //     }
+    //     return -1;
+    // }
 
 }

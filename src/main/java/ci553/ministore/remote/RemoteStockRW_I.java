@@ -19,6 +19,7 @@ import java.util.List;
  * @version 2.0
  */
 
+@SuppressWarnings("unused")
 public interface RemoteStockRW_I
         extends RemoteStockR_I, Remote {
     boolean buyStock(String number, int amount)

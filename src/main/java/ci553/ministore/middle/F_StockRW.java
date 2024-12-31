@@ -15,7 +15,7 @@ import ci553.ministore.remote.RemoteStockRW_I;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+// import java.sql.SQLException;
 import java.util.List;
 
 /**

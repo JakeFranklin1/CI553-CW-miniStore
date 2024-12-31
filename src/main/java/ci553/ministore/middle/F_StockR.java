@@ -3,11 +3,11 @@ package ci553.ministore.middle;
 import ci553.ministore.catalogue.Product;
 import ci553.ministore.debug.DEBUG;
 import ci553.ministore.remote.RemoteStockR_I;
-import javafx.scene.image.Image;
+// import javafx.scene.image.Image;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.io.ByteArrayInputStream;
+// import java.io.ByteArrayInputStream;
 
 /**
  * Facade for read access to the stock list.
