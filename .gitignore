@@ -33,9 +33,15 @@ buildNumber.properties
 # IDE - VS Code
 .vscode/
 .settings/
-.classpath
-.project
-.factorypath
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
 
 # Mac OS
 .DS_Store
