@@ -22,7 +22,7 @@ import javafx.util.Pair;
 
 import ci553.ministore.clients.start.MinistoreStartController;
 
-public class CashierPlaceOrderController {
+public class CashierController {
     @FXML
     private TextField message;
     @FXML
@@ -250,7 +250,7 @@ public class CashierPlaceOrderController {
 
     private void processMenu() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

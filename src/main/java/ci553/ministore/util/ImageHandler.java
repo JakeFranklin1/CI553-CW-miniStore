@@ -5,6 +5,8 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 public class ImageHandler {
@@ -12,7 +14,9 @@ public class ImageHandler {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Product Image");
 
-        File imagesDir = new File("images");
+        // Use resources directory for images
+        String resourcePath = "src/main/resources/ci553/ministore/images";
+        File imagesDir = new File(resourcePath);
         if (!imagesDir.exists()) {
             imagesDir.mkdirs();
         }
@@ -27,7 +31,7 @@ public class ImageHandler {
 
     public static void copyImageFile(File source, String productNum) throws IOException {
         String destFileName = "Pic" + productNum + ".png";
-        File destFile = new File("images", destFileName);
-        Files.copy(source.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        Path destPath = Paths.get("src/main/resources/ci553/ministore/images", destFileName);
+        Files.copy(source.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
     }
 }

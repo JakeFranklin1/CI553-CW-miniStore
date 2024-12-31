@@ -1,4 +1,0 @@
---patch-module
-CI553.ministore=_
---add-reads
-CI553.ministore=ALL-UNNAMED

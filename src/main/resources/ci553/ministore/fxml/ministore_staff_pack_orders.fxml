@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="725.0" style="-fx-background-color: e5f4e5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.staffjavafx.packing.PackingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="725.0" style="-fx-background-color: e5f4e5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ci553.ministore.clients.staffjavafx.packing.PackingController">
     <children>
         <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="417.0" prefWidth="695.0" style="-fx-border-color: black; -fx-background-color: white;">
             <children>
@@ -26,7 +26,7 @@
                         <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Button id="screen-buttons" fx:id="pack_orders_packed_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="PACKED" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
+                        <Button id="screen-buttons" fx:id="pack_orders_packed_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="PACKED" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
@@ -34,7 +34,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="screen-buttons" fx:id="pack_orders_menu_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="MENU" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                        <Button id="screen-buttons" fx:id="pack_orders_menu_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="MENU" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>

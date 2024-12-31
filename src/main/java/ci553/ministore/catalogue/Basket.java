@@ -116,7 +116,7 @@ public class Basket extends ArrayList<Product> implements Serializable {
 
     /**
      * Returns a description of the products in the basket suitable for printing.
-     *
+     * Sorted by product number.
      * @return a string description of the basket products
      */
     public String getDetails() {

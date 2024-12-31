@@ -80,7 +80,7 @@ public class PackingController {
             if (model != null) {
                 model.cleanup();  // Clean up before switching scenes
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_dashboard.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

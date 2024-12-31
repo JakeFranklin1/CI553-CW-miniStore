@@ -16,12 +16,12 @@ import ci553.ministore.debug.DEBUG;
 import java.io.IOException;
 
 import ci553.ministore.clients.start.MinistoreStartController;
-import ci553.ministore.clients.cashierjavafx.CashierPlaceOrderController;
+import ci553.ministore.clients.cashierjavafx.CashierController;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class CustomerCheckStockController {
+public class CustomerController {
     @FXML
     private TextField check_stock_message;
     @FXML
@@ -176,10 +176,10 @@ public class CustomerCheckStockController {
 
     private void switchToPlaceOrder(String productNum) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_place_order.fxml"));
             Parent root = loader.load();
 
-            CashierPlaceOrderController controller = loader.getController();
+            CashierController controller = loader.getController();
             controller.setMiddleFactory(model.getMiddleFactory());
             controller.addProductToOrder(productNum);
 
@@ -193,7 +193,7 @@ public class CustomerCheckStockController {
 
     private void processMenu() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

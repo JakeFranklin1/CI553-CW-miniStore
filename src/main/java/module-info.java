@@ -6,6 +6,13 @@ module CI553.ministore {
     requires java.rmi;
 
     opens ci553.ministore to javafx.fxml;
+    opens ci553.ministore.clients.start to javafx.fxml;
+    opens ci553.ministore.clients.cashierjavafx to javafx.fxml;
+    opens ci553.ministore.clients.customerjavafx to javafx.fxml;
+    opens ci553.ministore.clients.staffjavafx to javafx.fxml;
+    opens ci553.ministore.clients.staffjavafx.dashboard to javafx.fxml;
+    opens ci553.ministore.clients.staffjavafx.packing to javafx.fxml;
+    opens ci553.ministore.clients.staffjavafx.stockmanagement to javafx.fxml;
 
     exports ci553.ministore;
     exports ci553.ministore.catalogue;

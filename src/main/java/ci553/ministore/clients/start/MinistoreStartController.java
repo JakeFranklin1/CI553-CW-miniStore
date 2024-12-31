@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ci553.ministore.middle.MiddleFactory;
-import ci553.ministore.clients.customerjavafx.CustomerCheckStockController;
-import ci553.ministore.clients.cashierjavafx.CashierPlaceOrderController;
+import ci553.ministore.clients.customerjavafx.CustomerController;
+import ci553.ministore.clients.cashierjavafx.CashierController;
 import ci553.ministore.clients.staffjavafx.StaffLoginController;
 
 import java.io.IOException;
@@ -40,11 +40,11 @@ public class MinistoreStartController {
 
     private void loadCheckStock() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_check_stock.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_check_stock.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
-            CustomerCheckStockController controller = loader.getController();
+            CustomerController controller = loader.getController();
             controller.setMiddleFactory(mlf);
 
             Stage stage = (Stage) check_stock_btn.getScene().getWindow();
@@ -57,11 +57,11 @@ public class MinistoreStartController {
 
     private void loadPlaceOrder() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_place_order.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
-            CashierPlaceOrderController controller = loader.getController();
+            CashierController controller = loader.getController();
             controller.setMiddleFactory(mlf);
 
             Stage stage = (Stage) start_order_btn.getScene().getWindow();
@@ -74,7 +74,7 @@ public class MinistoreStartController {
 
     private void loadStaffLogin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_login.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

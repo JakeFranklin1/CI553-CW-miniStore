@@ -26,19 +26,19 @@ class Setup {
                     "price          Float)",
 
             "insert into ProductTable values " +
-                    "('0001', '40 inch LED HD TV', 'images/pic0001.png', 269.00)",
+                    "('0001', '40 inch LED HD TV', 'ci553/ministore/images/pic0001.png', 269.00)",
             "insert into ProductTable values " +
-                    "('0002', 'DAB Radio',         'images/pic0002.png', 29.99)",
+                    "('0002', 'DAB Radio',         'ci553/ministore/images/pic0002.png', 29.99)",
             "insert into ProductTable values " +
-                    "('0003', 'Toaster',           'images/pic0003.png', 19.99)",
+                    "('0003', 'Toaster',           'ci553/ministore/images/pic0003.png', 19.99)",
             "insert into ProductTable values " +
-                    "('0004', 'Watch',             'images/pic0004.png', 29.99)",
+                    "('0004', 'Watch',             'ci553/ministore/images/pic0004.png', 29.99)",
             "insert into ProductTable values " +
-                    "('0005', 'Digital Camera',    'images/pic0005.png', 89.99)",
+                    "('0005', 'Digital Camera',    'ci553/ministore/images/pic0005.png', 89.99)",
             "insert into ProductTable values " +
-                    "('0006', 'MP3 player',        'images/pic0006.png', 7.99)",
+                    "('0006', 'MP3 player',        'ci553/ministore/images/pic0006.png', 7.99)",
             "insert into ProductTable values " +
-                    "('0007', '32Gb USB2 drive',   'images/pic0007.png', 6.99)",
+                    "('0007', '32Gb USB2 drive',   'ci553/ministore/images/pic0007.png', 6.99)",
 
             "drop table StockTable",
             "create table StockTable (" +

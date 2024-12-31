@@ -21,7 +21,7 @@ public class Main extends Application {
             MiddleFactory mlf = new LocalMiddleFactory();
 
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

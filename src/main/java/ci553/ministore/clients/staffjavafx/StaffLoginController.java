@@ -78,7 +78,7 @@ public class StaffLoginController {
 
     private void loadStaffDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_dashboard.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
@@ -97,7 +97,7 @@ public class StaffLoginController {
     @FXML
     private void handleBackAction() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

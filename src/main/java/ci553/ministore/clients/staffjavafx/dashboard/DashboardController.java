@@ -38,7 +38,7 @@ public class DashboardController {
 
     private void navigateToStockManagement() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_stock_management.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_stock_management.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
@@ -56,7 +56,7 @@ public class DashboardController {
 
     private void navigateToPacking() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_staff_pack_orders.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_pack_orders.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance
@@ -74,7 +74,7 @@ public class DashboardController {
 
     private void navigateToStart() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/ministore_start.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

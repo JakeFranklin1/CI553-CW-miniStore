@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="725.0" style="-fx-background-color: e5f4e5;"
     xmlns="http://javafx.com/javafx/21"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="clients.customerjavafx.CustomerCheckStockController">
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="ci553.ministore.clients.customerjavafx.CustomerCheckStockController">
     <children>
         <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="417.0" prefWidth="695.0" style="-fx-border-color: black; -fx-background-color: white;">
             <children>
@@ -31,7 +31,7 @@
                         <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Button id="screen-buttons" fx:id="check_stock_check_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CHECK STOCK" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
+                        <Button id="screen-buttons" fx:id="check_stock_check_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="CHECK STOCK" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="TOP">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
@@ -39,7 +39,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="screen-buttons" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR ORDER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <Button id="screen-buttons" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="CLEAR ORDER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -47,7 +47,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="screen-buttons" fx:id="check_stock_details_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="START ORDER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                        <Button id="screen-buttons" fx:id="check_stock_details_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="START ORDER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                             <font>
                                 <Font name="Arial Bold" size="15.0" />
                             </font>
@@ -94,7 +94,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button id="keypad-button" fx:id="oneBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="oneBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -102,7 +102,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="twoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="twoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -110,7 +110,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="fourBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="fourBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -118,7 +118,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="fiveBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="keypad-button" fx:id="fiveBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -126,7 +126,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="threeBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Button id="keypad-button" fx:id="threeBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -134,7 +134,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="sevenBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button id="keypad-button" fx:id="sevenBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -142,7 +142,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="eightBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button id="keypad-button" fx:id="eightBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -150,7 +150,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="sixBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="keypad-button" fx:id="sixBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -158,7 +158,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="nineBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button id="keypad-button" fx:id="nineBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -166,12 +166,12 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="blankBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="blankBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="zeroBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="zeroBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -179,7 +179,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="keypad-button" fx:id="zeroTimesTwoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/atm.css" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="keypad-button" fx:id="zeroTimesTwoBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../css/store.css" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -200,7 +200,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button id="enter-button" fx:id="check_stock_enter_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="ENTER" GridPane.halignment="CENTER">
+                        <Button id="enter-button" fx:id="check_stock_enter_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="ENTER" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>
@@ -208,7 +208,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="clear-button" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/atm.css" text="CLEAR" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="clear-button" fx:id="check_stock_clear_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../css/store.css" text="CLEAR" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                             <font>
                                 <Font name="System Bold Italic" size="24.0" />
                             </font>
@@ -216,7 +216,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="cancel-button" fx:id="check_stock_cancel_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/atm.css" text="CANCEL" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button id="cancel-button" fx:id="check_stock_cancel_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/store.css" text="CANCEL" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>
@@ -224,7 +224,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button id="logout-button" fx:id="check_stock_menu_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/atm.css" text="MENU" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Button id="logout-button" fx:id="check_stock_menu_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/store.css" text="MENU" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>

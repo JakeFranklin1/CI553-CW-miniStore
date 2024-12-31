@@ -9,6 +9,7 @@ import java.sql.*;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class StockR implements StockReader {
     private Connection theCon = null;
@@ -78,35 +79,37 @@ public class StockR implements StockReader {
         }
     }
 
-    public synchronized byte[] getImage(String pNum) throws StockException { // Change return type to byte[]
-        String filename = "default.png";
+        public synchronized byte[] getImage(String pNum) throws StockException {
+        String imagePath = "default.png";
         try {
             ResultSet rs = getStatementObject().executeQuery(
                     "select picture from ProductTable " +
-                            "  where  ProductTable.productNo = '" + pNum + "'"
-            );
+                            "  where  ProductTable.productNo = '" + pNum + "'");
 
-            boolean res = rs.next();
-            if (res)
-                filename = rs.getString("picture");
+            if (rs.next()) {
+                imagePath = rs.getString("picture");
+            }
             rs.close();
         } catch (SQLException e) {
             DEBUG.error("getImage()\n%s\n", e.getMessage());
             throw new StockException("SQL getImage: " + e.getMessage());
         }
 
-        DEBUG.trace("DB StockR: getImage -> %s", filename);
+        DEBUG.trace("DB StockR: getImage -> %s", imagePath);
 
-        try (FileInputStream fis = new FileInputStream(filename);
+        try (InputStream is = getClass().getResourceAsStream("/" + imagePath);
              ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            if (is == null) {
+                throw new IOException("Resource not found: " + imagePath);
+            }
             byte[] buffer = new byte[1024];
             int bytesRead;
-            while ((bytesRead = fis.read(buffer)) != -1) {
+            while ((bytesRead = is.read(buffer)) != -1) {
                 bos.write(buffer, 0, bytesRead);
             }
             return bos.toByteArray();
         } catch (IOException e) {
-            throw new StockException("Error reading image file: " + e.getMessage());
+            throw new StockException("Error reading image file: " + imagePath + " (" + e.getMessage() + ")");
         }
     }
 }
