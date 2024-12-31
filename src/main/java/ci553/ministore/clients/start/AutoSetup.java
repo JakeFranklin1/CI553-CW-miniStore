@@ -1,5 +1,6 @@
-package ci553.ministore.clients;
+package ci553.ministore.clients.start;
 
+import ci553.ministore.clients.Setup;
 import ci553.ministore.dbAccess.DBAccess;
 import ci553.ministore.dbAccess.DBAccessFactory;
 import java.sql.*;

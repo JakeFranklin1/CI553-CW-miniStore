@@ -1,4 +1,4 @@
-package ci553.ministore.clients;
+package ci553.ministore.clients.start;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

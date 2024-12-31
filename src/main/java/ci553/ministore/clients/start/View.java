@@ -1,4 +1,4 @@
-package ci553.ministore.clients;
+package ci553.ministore.clients.start;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ci553.ministore.middle.LocalMiddleFactory;
 import ci553.ministore.middle.MiddleFactory;
-import ci553.ministore.clients.start.MinistoreStartController;
 
 public class View {
     public void start(Stage primaryStage, String fxmlFile) {

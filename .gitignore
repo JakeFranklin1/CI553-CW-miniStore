@@ -44,4 +44,6 @@ replay_pid*
 
 # Database
 *.db
+*.dat
 derby.log
+catshop.db/
