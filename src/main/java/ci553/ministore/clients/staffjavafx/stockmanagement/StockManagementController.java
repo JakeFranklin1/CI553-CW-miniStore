@@ -310,7 +310,7 @@ public class StockManagementController {
         if (selectedFile != null) {
             try {
                 ImageHandler.copyImageFile(selectedFile, productNum);
-                model.updateProductImage(productNum, "ci553/ministore/images/Pic" + productNum + ".png");
+                model.updateProductImage(productNum, "ci553/ministore/images/pic" + productNum + ".png");
                 updateImage();
             } catch (IOException e) {
                 model.replyProperty().set("Error copying image file: " + e.getMessage());
@@ -339,7 +339,8 @@ public class StockManagementController {
 
     private void processMenu() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_staff_dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/ci553/ministore/fxml/ministore_staff_dashboard.fxml"));
             Parent root = loader.load();
 
             // Get the controller and pass the MiddleFactory instance

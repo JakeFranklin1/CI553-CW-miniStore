@@ -201,31 +201,38 @@ public class StockManagementModel {
         return String.format("%04d", maxProductNum + 1);
     }
 
-    // public void doUpdateImage(String productNum, String imagePath) {
+    // Version to use when creating JAR file for examiner. This is because
+    // JARS do not have access to the file system and are read-only.
+
+    // public void updateProductImage(String productNum, String imagePath) {
     // try {
-    // Product product = stockReader.getDetails(productNum);
-    // product.setImagePath(imagePath);
-    // stockReader.modifyStock(product);
+    // // Update image path in database
+    // stockReader.updateProductImage(productNum, imagePath);
+    // reply.set(String.format("Updated image for product %s", productNum));
 
-    // String formattedText = String.format("""
-    // Updated image for product: %s
-    // New image path: %s""",
-    // product.getDescription(),
-    // imagePath);
-
-    // reply.set(formattedText);
-
-    // // Update image display
-    // byte[] imgBytes = stockReader.getImage(productNum);
-    // if (imgBytes != null) {
-    // productImage = new Image(new ByteArrayInputStream(imgBytes));
+    // // Always use the product number for image path
+    // String imageFileName = String.format("/ci553/ministore/images/pic%s.png",
+    // productNum);
+    // try {
+    // productImage = new Image(getClass().getResourceAsStream(imageFileName));
+    // if (productImage.isError()) {
+    // // If image load fails, use placeholder
+    // productImage = new
+    // Image(getClass().getResourceAsStream("/ci553/ministore/images/placeholder.png"));
+    // }
+    // } catch (Exception e) {
+    // // If loading fails, use placeholder
+    // productImage = new
+    // Image(getClass().getResourceAsStream("/ci553/ministore/images/placeholder.png"));
     // }
     // } catch (StockException e) {
-    // DEBUG.error("StockManagementModel::doUpdateImage\n%s", e.getMessage());
+    // DEBUG.error("StockManagementModel::updateProductImage\n%s", e.getMessage());
     // reply.set("System Error: " + e.getMessage());
     // productImage = null;
     // }
     // }
+
+    // Use this version when running in IDE
 
     public void updateProductImage(String productNum, String imagePath) {
         try {

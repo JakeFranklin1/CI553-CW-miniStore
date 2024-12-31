@@ -2,12 +2,15 @@
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/catalogue/Basket.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/catalogue/BetterBasket.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/catalogue/Product.java
+/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/App.java
+/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/AutoSetup.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/Main.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/Setup.java
+/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/View.java
+/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/cashierjavafx/CashierController.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/cashierjavafx/CashierModel.java
-/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/cashierjavafx/CashierPlaceOrderController.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/cashierjavafx/OrderState.java
-/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/customerjavafx/CustomerCheckStockController.java
+/Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/customerjavafx/CustomerController.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/customerjavafx/CustomerModel.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/staffjavafx/StaffLoginController.java
 /Users/jake/university-year-2/ministore/src/main/java/ci553/ministore/clients/staffjavafx/dashboard/DashboardController.java
