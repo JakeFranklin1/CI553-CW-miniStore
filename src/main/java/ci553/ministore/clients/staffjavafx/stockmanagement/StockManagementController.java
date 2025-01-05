@@ -27,7 +27,10 @@ import ci553.ministore.catalogue.Product;
 import ci553.ministore.clients.staffjavafx.dashboard.DashboardController;
 import ci553.ministore.debug.DEBUG;
 
-@SuppressWarnings("unused")
+/**
+ * Controller class for the stock management interface.
+ * Handles user interactions and updates the model accordingly.
+ */
 public class StockManagementController {
     @FXML
     private Button stock_management_check_stock_btn;
@@ -60,6 +63,11 @@ public class StockManagementController {
     private OrderState state;
     private MiddleFactory mlf;
 
+    /**
+     * Sets the MiddleFactory instance and initializes the model.
+     *
+     * @param mlf The MiddleFactory instance.
+     */
     public void setMiddleFactory(MiddleFactory mlf) {
         this.mlf = mlf;
         try {
@@ -95,6 +103,11 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Handles button actions and delegates to the appropriate method.
+     *
+     * @param event The ActionEvent triggered by the button press.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -102,21 +115,34 @@ public class StockManagementController {
         process(buttonText);
     }
 
+    /**
+     * Handles key press events for the message TextField.
+     *
+     * @param event The KeyEvent triggered by the key press.
+     */
     private void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             processEnter();
         }
     }
 
+    /**
+     * Processes the Enter key press.
+     * Checks the stock for the product.
+     */
     private void processEnter() {
         processCheck();
     }
 
+    /**
+     * Processes the action based on the button text.
+     *
+     * @param action The action to be processed.
+     */
     private void process(String action) {
         DEBUG.trace("StockManagementController::process: action = " + action);
 
         switch (action) {
-
             case "1":
             case "2":
             case "3":
@@ -166,6 +192,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Updates the image view with the product image.
+     */
     private void updateImage() {
         Image image = model.getProductImage();
         if (image != null) {
@@ -175,6 +204,11 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Processes number input and appends it to the message.
+     *
+     * @param number The number to be appended.
+     */
     private void processNumber(String number) {
         String currentMessage = model.messageProperty().get();
         if (currentMessage == null) {
@@ -183,6 +217,9 @@ public class StockManagementController {
         model.messageProperty().set(currentMessage + number);
     }
 
+    /**
+     * Clears the last character from the message.
+     */
     private void processClear() {
         String currentMessage = model.messageProperty().get();
         if (currentMessage != null && currentMessage.length() > 0) {
@@ -190,21 +227,33 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Clears the entire order and resets the state.
+     */
     private void processClearOrder() {
         model.messageProperty().set("");
         model.replyProperty().set("");
     }
 
+    /**
+     * Cancels the current order by clearing it.
+     */
     private void processCancel() {
         processClearOrder();
         stock_image.setImage(null);
     }
 
+    /**
+     * Checks the stock for the product in the message.
+     */
     private void processCheck() {
         model.doCheck(stock_management_message.getText());
         updateImage();
     }
 
+    /**
+     * Adds stock to the product.
+     */
     private void processAddStock() {
         String productNum = stock_management_message.getText();
 
@@ -241,6 +290,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Corrects the stock for the product.
+     */
     private void processCorrectStock() {
         String productNum = stock_management_message.getText().trim();
 
@@ -267,6 +319,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Creates a new product.
+     */
     private void processNewProduct() {
         Optional<String> descriptionResult = DialogFactory.showDescriptionDialog();
         if (descriptionResult.isPresent() && !descriptionResult.get().trim().isEmpty()) {
@@ -300,6 +355,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Adds an image to the product.
+     */
     private void processAddImage() {
         String productNum = stock_management_message.getText().trim();
         if (productNum.isEmpty() || !model.validateProduct(productNum)) {
@@ -318,6 +376,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Deletes the product.
+     */
     private void processDeleteProduct() {
         String productNum = stock_management_message.getText().trim();
 
@@ -337,6 +398,9 @@ public class StockManagementController {
         }
     }
 
+    /**
+     * Navigates back to the staff dashboard.
+     */
     private void processMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(

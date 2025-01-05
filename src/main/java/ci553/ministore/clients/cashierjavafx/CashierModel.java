@@ -10,6 +10,10 @@ import ci553.ministore.catalogue.Product;
 import ci553.ministore.debug.DEBUG;
 import ci553.ministore.middle.OrderProcessing;
 
+/**
+ * Model class for the cashier interface.
+ * Handles business logic and updates the view through properties.
+ */
 public class CashierModel {
     private final StringProperty message = new SimpleStringProperty();
     private final StringProperty reply = new SimpleStringProperty();
@@ -18,6 +22,12 @@ public class CashierModel {
     private Basket basket;
     private int currentQuantity = 1;
 
+    /**
+     * Constructor for CashierModel.
+     * Initializes the model with the provided MiddleFactory.
+     * 
+     * @param mf The MiddleFactory instance.
+     */
     public CashierModel(MiddleFactory mf) {
         try {
             this.middleFactory = mf; // Store middleware factory
@@ -30,24 +40,48 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Gets the MiddleFactory instance.
+     * 
+     * @return The MiddleFactory instance.
+     */
     public MiddleFactory getMiddleFactory() {
         return middleFactory;
     }
 
-    // Properties for binding
+    /**
+     * Gets the message property for binding.
+     * 
+     * @return The message property.
+     */
     public StringProperty messageProperty() {
         return message;
     }
 
+    /**
+     * Gets the reply property for binding.
+     * 
+     * @return The reply property.
+     */
     public StringProperty replyProperty() {
         return reply;
     }
 
-    // Method to set the current quantity
+    /**
+     * Sets the current quantity for the product.
+     * 
+     * @param quantity The quantity to set.
+     */
     public void setCurrentQuantity(int quantity) {
         this.currentQuantity = quantity;
     }
 
+    /**
+     * Checks the stock for the given product number.
+     * Updates the reply property with the product details or an error message.
+     * 
+     * @param productNum The product number to check.
+     */
     public void doCheck(String productNum) {
         try {
             if (stockReader.exists(productNum)) {
@@ -75,6 +109,12 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Adds the product to the order.
+     * Updates the reply property with the basket details or an error message.
+     * 
+     * @param productNum The product number to add.
+     */
     public void addToOrder(String productNum) {
         try {
             if (stockReader.exists(productNum)) {
@@ -100,6 +140,10 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Completes the purchase and resets the basket.
+     * Updates the reply property with the order number or an error message.
+     */
     public void purchase() {
         try {
             OrderProcessing orderProcessing = middleFactory.makeOrderProcessing();
@@ -121,7 +165,9 @@ public class CashierModel {
         }
     }
 
-    // Method to add stock back to the database
+    /**
+     * Adds stock back to the database for all products in the basket.
+     */
     private void addStockBackToDatabase() {
         for (Product product : basket) {
             try {
@@ -132,6 +178,11 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Clears the basket and optionally adds stock back to the database.
+     * 
+     * @param addStockBack Whether to add stock back to the database.
+     */
     public void clearBasket(boolean addStockBack) {
         if (addStockBack) {
             addStockBackToDatabase();
@@ -139,7 +190,10 @@ public class CashierModel {
         basket.clear();
     }
 
-    // Method to remove the last item added to the basket
+    /**
+     * Removes the last item added to the basket.
+     * Updates the reply property with the basket details.
+     */
     public void removeLastItem() {
         if (!basket.isEmpty()) {
             Product lastProduct = basket.get(basket.size() - 1);
@@ -153,6 +207,12 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Removes a product from the basket by its product number.
+     * Updates the reply property with the basket details.
+     * 
+     * @param productNum The product number to remove.
+     */
     public void removeItemByProductNum(String productNum) {
         int quantity = basket.getProductQuantity(productNum);
         if (quantity > 0) {
@@ -166,10 +226,23 @@ public class CashierModel {
         }
     }
 
+    /**
+     * Gets the quantity of a product in the basket by its product number.
+     * 
+     * @param productNum The product number to check.
+     * @return The quantity of the product in the basket.
+     */
     public int getProductQuantityInBasket(String productNum) {
         return basket.getProductQuantity(productNum);
     }
 
+    /**
+     * Removes a specified quantity of a product from the basket.
+     * Updates the reply property with the basket details.
+     * 
+     * @param productNum The product number to remove.
+     * @param quantity   The quantity to remove.
+     */
     public void removeQuantityFromBasket(String productNum, int quantity) {
         basket.removeQuantityByProductNum(productNum, quantity);
         try {

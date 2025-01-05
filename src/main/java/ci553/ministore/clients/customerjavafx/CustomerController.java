@@ -21,6 +21,10 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * Controller class for the customer interface.
+ * Handles user interactions and updates the model accordingly.
+ */
 public class CustomerController {
     @FXML
     private TextField check_stock_message;
@@ -35,6 +39,11 @@ public class CustomerController {
 
     private CustomerModel model;
 
+    /**
+     * Sets the MiddleFactory instance and initializes the model.
+     * 
+     * @param mf The MiddleFactory instance.
+     */
     public void setMiddleFactory(MiddleFactory mf) {
         try {
             // Initialize model with provided MiddleFactory
@@ -66,6 +75,11 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Handles button actions and delegates to the appropriate method.
+     * 
+     * @param event The ActionEvent triggered by the button press.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -73,12 +87,22 @@ public class CustomerController {
         process(buttonText);
     }
 
+    /**
+     * Handles key press events for the message TextField.
+     * 
+     * @param event The KeyEvent triggered by the key press.
+     */
     private void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             processEnter();
         }
     }
 
+    /**
+     * Processes the action based on the button text.
+     * 
+     * @param action The action to be processed.
+     */
     private void process(String action) {
         DEBUG.trace("CustomerCheckStockController::process: action = " + action);
 
@@ -123,6 +147,11 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Processes number input and appends it to the message.
+     * 
+     * @param number The number to be appended.
+     */
     private void processNumber(String number) {
         String currentMessage = model.messageProperty().get();
         if (currentMessage == null) {
@@ -131,11 +160,18 @@ public class CustomerController {
         model.messageProperty().set(currentMessage + number);
     }
 
+    /**
+     * Processes the Enter key press.
+     * Checks the stock for the product and updates the image.
+     */
     private void processEnter() {
         model.doCheck(check_stock_message.getText());
         updateImage();
     }
 
+    /**
+     * Clears the last character from the message.
+     */
     private void processClear() {
         String currentMessage = model.messageProperty().get();
         if (currentMessage != null && currentMessage.length() > 0) {
@@ -143,21 +179,33 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Clears the entire order and resets the state.
+     */
     private void processClearOrder() {
         model.messageProperty().set("");
         model.replyProperty().set("");
         check_stock_image.setImage(null);
     }
 
+    /**
+     * Cancels the current order by clearing it.
+     */
     private void processCancel() {
         processClearOrder();
     }
 
+    /**
+     * Checks the stock for the product in the message.
+     */
     private void processCheck() {
         model.doCheck(check_stock_message.getText());
         updateImage();
     }
 
+    /**
+     * Updates the image view with the product image.
+     */
     private void updateImage() {
         Image image = model.getProductImage();
         if (image != null) {
@@ -167,6 +215,9 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Processes the details of the product and switches to the place order scene.
+     */
     private void processDetails() {
         String productNum = check_stock_message.getText();
         if (productNum != null && !productNum.isEmpty()) {
@@ -174,9 +225,15 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Switches to the place order scene and adds the product to the order.
+     * 
+     * @param productNum The product number to add to the order.
+     */
     private void switchToPlaceOrder(String productNum) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/ci553/ministore/fxml/ministore_place_order.fxml"));
             Parent root = loader.load();
 
             CashierController controller = loader.getController();
@@ -191,6 +248,9 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Navigates back to the main menu.
+     */
     private void processMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));

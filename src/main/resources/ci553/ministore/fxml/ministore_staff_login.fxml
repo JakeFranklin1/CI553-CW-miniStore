@@ -11,9 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-    xmlns="http://javafx.com/javafx/21"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="ci553.ministore.clients.staffjavafx.StaffLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ci553.ministore.clients.staffjavafx.StaffLoginController">
     <children>
         <AnchorPane id="login-pane" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: e5f4e5;">
             <children>
@@ -24,11 +22,6 @@
                         <Image url="@../img/store.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="55.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons provided by freepik">
-                    <font>
-                        <Font size="9.0" />
-                    </font>
-                </Text>
             </children>
         </AnchorPane>
         <Label ellipsisString="" layoutX="232.0" layoutY="14.0" prefHeight="114.0" prefWidth="337.0" text="MiniStore Staff Login" wrapText="true">
@@ -45,7 +38,7 @@
         </Button>
         <Label layoutX="235.0" layoutY="170.0" text="Account Number:" />
         <Label layoutX="235.0" layoutY="235.0" text="Password:" />
-        <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="424.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
+        <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="401.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
             <font>
                 <Font name="Helvetica" size="18.0" />
             </font>
@@ -53,7 +46,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Text>
-        <Text layoutX="238.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't want to be here?" wrappingWidth="189.66290283203125">
+        <Text layoutX="211.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't want to be here?" wrappingWidth="189.66290283203125">
             <font>
                 <Font name="Arial" size="18.0" />
             </font>

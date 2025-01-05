@@ -22,6 +22,10 @@ import javafx.util.Pair;
 
 import ci553.ministore.clients.start.MinistoreStartController;
 
+/**
+ * Controller class for the cashier interface.
+ * Handles user interactions and updates the model accordingly.
+ */
 public class CashierController {
     @FXML
     private TextField message;
@@ -52,6 +56,11 @@ public class CashierController {
     private OrderState state;
     private MiddleFactory mlf;
 
+    /**
+     * Sets the MiddleFactory instance and initializes the model.
+     * 
+     * @param mf The MiddleFactory instance.
+     */
     public void setMiddleFactory(MiddleFactory mf) {
         this.mlf = mf;
         try {
@@ -101,6 +110,11 @@ public class CashierController {
         }
     }
 
+    /**
+     * Handles button actions and delegates to the appropriate method.
+     * 
+     * @param event The ActionEvent triggered by the button press.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -108,12 +122,22 @@ public class CashierController {
         process(buttonText);
     }
 
+    /**
+     * Handles key press events for the message TextField.
+     * 
+     * @param event The KeyEvent triggered by the key press.
+     */
     private void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             processEnter();
         }
     }
 
+    /**
+     * Processes the action based on the button text.
+     * 
+     * @param action The action to be processed.
+     */
     private void process(String action) {
         DEBUG.trace("CashierPlaceOrderController::process: action = " + action);
 
@@ -167,6 +191,9 @@ public class CashierController {
         }
     }
 
+    /**
+     * Processes the Enter key press based on the current state.
+     */
     private void processEnter() {
         switch (state) {
             case ENTERING_PRODUCT:
@@ -180,6 +207,11 @@ public class CashierController {
         }
     }
 
+    /**
+     * Processes number input and appends it to the message.
+     * 
+     * @param number The number to be appended.
+     */
     private void processNumber(String number) {
         String currentMessage = model.messageProperty().get();
         if (currentMessage == null) {
@@ -188,6 +220,9 @@ public class CashierController {
         model.messageProperty().set(currentMessage + number);
     }
 
+    /**
+     * Clears the last character from the message.
+     */
     private void processClear() {
         String currentMessage = model.messageProperty().get();
         if (currentMessage != null && currentMessage.length() > 0) {
@@ -195,6 +230,9 @@ public class CashierController {
         }
     }
 
+    /**
+     * Clears the entire order and resets the state.
+     */
     private void processClearOrder() {
         model.clearBasket(true);
         model.messageProperty().set("");
@@ -202,15 +240,24 @@ public class CashierController {
         state = OrderState.ENTERING_PRODUCT;
     }
 
+    /**
+     * Cancels the current order by clearing it.
+     */
     private void processCancel() {
         processClearOrder();
     }
 
+    /**
+     * Checks the stock for the product in the message.
+     */
     private void processCheck() {
         model.doCheck(message.getText());
         state = OrderState.ADDING_TO_ORDER;
     }
 
+    /**
+     * Adds the product to the order after checking stock.
+     */
     private void processAddToOrder() {
         if (state != OrderState.ADDING_TO_ORDER) {
             model.replyProperty().set("Cannot add to order without checking stock first.");
@@ -225,6 +272,9 @@ public class CashierController {
         }
     }
 
+    /**
+     * Completes the purchase and resets the state.
+     */
     private void processPurchase() {
         // Complete the purchase
         model.purchase();
@@ -233,10 +283,16 @@ public class CashierController {
         state = OrderState.ENTERING_PRODUCT;
     }
 
+    /**
+     * Clears the last item from the order.
+     */
     private void processClearLast() {
         model.removeLastItem();
     }
 
+    /**
+     * Removes a specified quantity of a product from the order.
+     */
     private void processRemoveItem() {
         Optional<Pair<String, Integer>> result = DialogFactory.showRemoveItemDialog(model);
         result.ifPresent(pair -> {
@@ -248,6 +304,9 @@ public class CashierController {
         });
     }
 
+    /**
+     * Navigates back to the main menu.
+     */
     private void processMenu() {
         try {
             // Clear basket before loading new scene
@@ -268,6 +327,11 @@ public class CashierController {
         }
     }
 
+    /**
+     * Adds a product to the order with a default quantity of 1.
+     * 
+     * @param productNum The product number to be added.
+     */
     public void addProductToOrder(String productNum) {
         model.setCurrentQuantity(1); // Default quantity to 1
         model.addToOrder(productNum);
