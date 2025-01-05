@@ -9,8 +9,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * A collection of products,
- * used to record the products that are to be wished to be purchased.
+ * A collection of products, used to record the products that are to be wished to be purchased.
+ * This class extends ArrayList to manage a list of Product objects.
  *
  * @version 2.3
  */
@@ -21,8 +21,8 @@ public class Basket extends ArrayList<Product> implements Serializable {
     private static int nextOrderNumber = 1;
 
     /**
-     * Constructor for a basket which is
-     * used to represent a customer order/ wish list
+     * Constructor for a basket which is used to represent a customer order/wish list.
+     * Initializes the order number with the next available order number.
      */
     public Basket() {
         theOrderNum = nextOrderNumber; // Initialize with the next order number
@@ -64,9 +64,8 @@ public class Basket extends ArrayList<Product> implements Serializable {
     }
 
     /**
-     * Add a product to the Basket.
-     * Product is appended to the end of the existing products
-     * in the basket.
+     * Adds a product to the Basket.
+     * Product is appended to the end of the existing products in the basket.
      *
      * @param pr A product to be added to the basket
      * @return true if successfully adds the product
@@ -77,26 +76,25 @@ public class Basket extends ArrayList<Product> implements Serializable {
     }
 
     /**
-     * Remove the last product added to the Basket.
+     * Removes the last product added to the Basket.
      */
     public void removeLastItem() {
         if (!isEmpty()) {
-            remove(size() - 1);
+            remove(size() - 1); // Remove the last item in the list
         }
     }
 
     /**
-     * Remove a specific product from the Basket by product number.
+     * Removes a specific product from the Basket by product number.
      *
      * @param productNum The product number of the product to remove
      */
     public void removeByProductNum(String productNum) {
-        removeIf(product -> product.getProductNum().equals(productNum));
+        removeIf(product -> product.getProductNum().equals(productNum)); // Remove product if product number matches
     }
 
     /**
-     * Merges products with the same product number into a single product with the
-     * combined quantity.
+     * Merges products with the same product number into a single product with the combined quantity.
      *
      * @return a list of merged products
      */
@@ -117,6 +115,7 @@ public class Basket extends ArrayList<Product> implements Serializable {
     /**
      * Returns a description of the products in the basket suitable for printing.
      * Sorted by product number.
+     *
      * @return a string description of the basket products
      */
     public String getDetails() {
@@ -128,7 +127,9 @@ public class Basket extends ArrayList<Product> implements Serializable {
         if (theOrderNum != 0)
             fr.format("Order number: %03d\n", theOrderNum);
 
+        // Merge products with the same product number
         ArrayList<Product> mergedProducts = mergeProducts();
+        // Sort products by product number
         mergedProducts.sort((p1, p2) -> p1.getProductNum().compareTo(p2.getProductNum()));
 
         if (!mergedProducts.isEmpty()) {
@@ -149,6 +150,12 @@ public class Basket extends ArrayList<Product> implements Serializable {
         return sb.toString();
     }
 
+    /**
+     * Gets the quantity of a specific product in the basket by product number.
+     *
+     * @param productNum The product number to check
+     * @return The quantity of the product in the basket
+     */
     public int getProductQuantity(String productNum) {
         return stream()
                 .filter(p -> p.getProductNum().equals(productNum))
@@ -157,7 +164,7 @@ public class Basket extends ArrayList<Product> implements Serializable {
     }
 
     /**
-     * Remove a specific quantity of a product from the Basket
+     * Removes a specific quantity of a product from the Basket.
      *
      * @param productNum       The product number to remove
      * @param quantityToRemove The quantity to remove
@@ -165,14 +172,15 @@ public class Basket extends ArrayList<Product> implements Serializable {
     public void removeQuantityByProductNum(String productNum, int quantityToRemove) {
         int remainingToRemove = quantityToRemove;
 
+        // Iterate through the basket in reverse order to remove the specified quantity
         for (int i = size() - 1; i >= 0 && remainingToRemove > 0; i--) {
             Product p = get(i);
             if (p.getProductNum().equals(productNum)) {
                 if (p.getQuantity() <= remainingToRemove) {
                     remainingToRemove -= p.getQuantity();
-                    remove(i);
+                    remove(i); // Remove the product if its quantity is less than or equal to the remaining quantity to remove
                 } else {
-                    p.setQuantity(p.getQuantity() - remainingToRemove);
+                    p.setQuantity(p.getQuantity() - remainingToRemove); // Reduce the product quantity
                     remainingToRemove = 0;
                 }
             }
