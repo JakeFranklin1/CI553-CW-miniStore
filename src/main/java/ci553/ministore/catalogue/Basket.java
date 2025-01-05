@@ -9,7 +9,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * A collection of products, used to record the products that are to be wished to be purchased.
+ * A collection of products, used to record the products that are to be wished
+ * to be purchased.
  * This class extends ArrayList to manage a list of Product objects.
  *
  * @version 2.3
@@ -21,7 +22,8 @@ public class Basket extends ArrayList<Product> implements Serializable {
     private static int nextOrderNumber = 1;
 
     /**
-     * Constructor for a basket which is used to represent a customer order/wish list.
+     * Constructor for a basket which is used to represent a customer order/wish
+     * list.
      * Initializes the order number with the next available order number.
      */
     public Basket() {
@@ -94,7 +96,8 @@ public class Basket extends ArrayList<Product> implements Serializable {
     }
 
     /**
-     * Merges products with the same product number into a single product with the combined quantity.
+     * Merges products with the same product number into a single product with the
+     * combined quantity.
      *
      * @return a list of merged products
      */
@@ -178,7 +181,8 @@ public class Basket extends ArrayList<Product> implements Serializable {
             if (p.getProductNum().equals(productNum)) {
                 if (p.getQuantity() <= remainingToRemove) {
                     remainingToRemove -= p.getQuantity();
-                    remove(i); // Remove the product if its quantity is less than or equal to the remaining quantity to remove
+                    remove(i); // Remove the product if its quantity is less than or equal to the remaining
+                               // quantity to remove
                 } else {
                     p.setQuantity(p.getQuantity() - remainingToRemove); // Reduce the product quantity
                     remainingToRemove = 0;

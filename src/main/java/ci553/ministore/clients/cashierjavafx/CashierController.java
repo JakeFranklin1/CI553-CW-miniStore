@@ -58,7 +58,7 @@ public class CashierController {
 
     /**
      * Sets the MiddleFactory instance and initializes the model.
-     * 
+     *
      * @param mf The MiddleFactory instance.
      */
     public void setMiddleFactory(MiddleFactory mf) {
@@ -112,7 +112,7 @@ public class CashierController {
 
     /**
      * Handles button actions and delegates to the appropriate method.
-     * 
+     *
      * @param event The ActionEvent triggered by the button press.
      */
     @FXML
@@ -124,7 +124,7 @@ public class CashierController {
 
     /**
      * Handles key press events for the message TextField.
-     * 
+     *
      * @param event The KeyEvent triggered by the key press.
      */
     private void handleKeyPress(KeyEvent event) {
@@ -135,7 +135,7 @@ public class CashierController {
 
     /**
      * Processes the action based on the button text.
-     * 
+     *
      * @param action The action to be processed.
      */
     private void process(String action) {
@@ -209,7 +209,7 @@ public class CashierController {
 
     /**
      * Processes number input and appends it to the message.
-     * 
+     *
      * @param number The number to be appended.
      */
     private void processNumber(String number) {
@@ -274,12 +274,18 @@ public class CashierController {
 
     /**
      * Completes the purchase and resets the state.
+     * Will not proceed if basket is empty.
      */
     private void processPurchase() {
+        // Check if basket is empty
+        if (model.getBasket().isEmpty()) {
+            model.replyProperty().set("Cannot complete purchase: Basket is empty");
+            return;
+        }
+
         // Complete the purchase
         model.purchase();
         model.messageProperty().set("");
-        // model.replyProperty().set("");
         state = OrderState.ENTERING_PRODUCT;
     }
 
@@ -329,7 +335,7 @@ public class CashierController {
 
     /**
      * Adds a product to the order with a default quantity of 1.
-     * 
+     *
      * @param productNum The product number to be added.
      */
     public void addProductToOrder(String productNum) {

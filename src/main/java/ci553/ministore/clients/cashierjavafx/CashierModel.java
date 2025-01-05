@@ -25,7 +25,7 @@ public class CashierModel {
     /**
      * Constructor for CashierModel.
      * Initializes the model with the provided MiddleFactory.
-     * 
+     *
      * @param mf The MiddleFactory instance.
      */
     public CashierModel(MiddleFactory mf) {
@@ -42,7 +42,7 @@ public class CashierModel {
 
     /**
      * Gets the MiddleFactory instance.
-     * 
+     *
      * @return The MiddleFactory instance.
      */
     public MiddleFactory getMiddleFactory() {
@@ -51,7 +51,7 @@ public class CashierModel {
 
     /**
      * Gets the message property for binding.
-     * 
+     *
      * @return The message property.
      */
     public StringProperty messageProperty() {
@@ -60,7 +60,7 @@ public class CashierModel {
 
     /**
      * Gets the reply property for binding.
-     * 
+     *
      * @return The reply property.
      */
     public StringProperty replyProperty() {
@@ -69,7 +69,7 @@ public class CashierModel {
 
     /**
      * Sets the current quantity for the product.
-     * 
+     *
      * @param quantity The quantity to set.
      */
     public void setCurrentQuantity(int quantity) {
@@ -77,9 +77,18 @@ public class CashierModel {
     }
 
     /**
+     * Gets the current basket.
+     * 
+     * @return The current basket.
+     */
+    public Basket getBasket() {
+        return basket;
+    }
+
+    /**
      * Checks the stock for the given product number.
      * Updates the reply property with the product details or an error message.
-     * 
+     *
      * @param productNum The product number to check.
      */
     public void doCheck(String productNum) {
@@ -112,7 +121,7 @@ public class CashierModel {
     /**
      * Adds the product to the order.
      * Updates the reply property with the basket details or an error message.
-     * 
+     *
      * @param productNum The product number to add.
      */
     public void addToOrder(String productNum) {
@@ -180,7 +189,7 @@ public class CashierModel {
 
     /**
      * Clears the basket and optionally adds stock back to the database.
-     * 
+     *
      * @param addStockBack Whether to add stock back to the database.
      */
     public void clearBasket(boolean addStockBack) {
@@ -210,7 +219,7 @@ public class CashierModel {
     /**
      * Removes a product from the basket by its product number.
      * Updates the reply property with the basket details.
-     * 
+     *
      * @param productNum The product number to remove.
      */
     public void removeItemByProductNum(String productNum) {
@@ -228,7 +237,7 @@ public class CashierModel {
 
     /**
      * Gets the quantity of a product in the basket by its product number.
-     * 
+     *
      * @param productNum The product number to check.
      * @return The quantity of the product in the basket.
      */
@@ -239,7 +248,7 @@ public class CashierModel {
     /**
      * Removes a specified quantity of a product from the basket.
      * Updates the reply property with the basket details.
-     * 
+     *
      * @param productNum The product number to remove.
      * @param quantity   The quantity to remove.
      */
