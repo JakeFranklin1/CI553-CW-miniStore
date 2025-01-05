@@ -250,6 +250,9 @@ public class CashierController {
 
     private void processMenu() {
         try {
+            // Clear basket before loading new scene
+            model.clearBasket(true);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ci553/ministore/fxml/ministore_start.fxml"));
             Parent root = loader.load();
 
