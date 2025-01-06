@@ -13,7 +13,7 @@
     <children>
         <AnchorPane id="login-pane" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: e5f4e5;">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../img/store.png" />
                     </image>
@@ -28,7 +28,7 @@
                 <Font name="Arial" size="20.0" />
             </font>
         </Button>
-        <Label ellipsisString="" layoutX="288.0" layoutY="14.0" prefHeight="114.0" prefWidth="220.0" text="Staff Controls" wrapText="true">
+        <Label ellipsisString="" layoutX="288.0" layoutY="45.0" prefWidth="220.0" text="Staff Controls" wrapText="true">
             <font>
                 <Font name="Arial" size="36.0" />
             </font>
@@ -41,7 +41,7 @@
                 <Font name="Arial" size="20.0" />
             </font>
         </Button>
-      <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="410.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
+      <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="410.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
          <font>
             <Font name="Helvetica" size="18.0" />
          </font>
@@ -49,12 +49,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text layoutX="221.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't want to be here?" wrappingWidth="189.66290283203125">
+      <Text layoutX="215.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't want to be here?" wrappingWidth="189.66290283203125">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Text>
-      <Label layoutX="7.0" layoutY="329.0" prefHeight="41.0" prefWidth="150.0" text="Forgot your password? Email the internal IT team." wrapText="true" />
+      <Label layoutX="7.0" layoutY="329.0" prefHeight="41.0" prefWidth="150.0" text="Need help? Email the internal IT team." wrapText="true" />
       <Label layoutX="7.0" layoutY="377.0" text="Email: it@ministore.com" />
     </children>
 </AnchorPane>

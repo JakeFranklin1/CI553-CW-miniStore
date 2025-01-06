@@ -18,19 +18,19 @@
                         <Image url="@../img/store.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="11.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any issues using this software, our customer service team is always happy to help." wrappingWidth="187.21630859375">
+                <Text layoutX="10.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any issues using this software, our customer service team is always happy to help." wrappingWidth="187.21630859375">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="11.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: support@ministore.com" wrappingWidth="169.71444702148438">
+                <Text layoutX="10.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: support@ministore.com" wrappingWidth="169.71444702148438">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </Text>
             </children>
         </AnchorPane>
-        <Button fx:id="check_stock_btn" defaultButton="true" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Check Stock">
+        <Button fx:id="check_stock_btn" defaultButton="true" focusTraversable="false" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Check Stock">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -38,7 +38,7 @@
                 <Font name="Arial" size="22.0" />
             </font>
         </Button>
-        <Label ellipsisString="" layoutX="221.0" layoutY="14.0" prefHeight="114.0" prefWidth="353.0" text="Welcome to MiniStore" wrapText="true">
+        <Label ellipsisString="" layoutX="221.0" layoutY="45.0" prefWidth="353.0" text="Welcome to MiniStore" wrapText="true">
             <font>
                 <Font name="Arial" size="36.0" />
             </font>
@@ -56,7 +56,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Text>
-        <Button fx:id="start_order_btn" defaultButton="true" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Start Order">
+        <Button fx:id="start_order_btn" defaultButton="true" focusTraversable="false" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Start Order">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
