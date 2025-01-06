@@ -12,7 +12,7 @@ module CI553.ministore {
     requires org.apache.derby.tools;
 
     // Opens for FXML
-    opens ci553.ministore to javafx.fxml;
+    // opens ci553.ministore to javafx.fxml;
     opens ci553.ministore.clients.start to javafx.fxml;
     opens ci553.ministore.clients.cashierjavafx to javafx.fxml;
     opens ci553.ministore.clients.customerjavafx to javafx.fxml;
@@ -23,7 +23,7 @@ module CI553.ministore {
     opens ci553.ministore.dbAccess to org.apache.derby.commons;
 
     // Add missing exports
-    exports ci553.ministore;
+    // exports ci553.ministore;
     exports ci553.ministore.catalogue;
     exports ci553.ministore.clients;
     exports ci553.ministore.clients.start;

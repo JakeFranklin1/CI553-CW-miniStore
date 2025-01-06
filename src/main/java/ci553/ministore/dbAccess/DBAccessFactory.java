@@ -19,7 +19,6 @@ import java.io.InputStream;
  */
 
 // Pattern: Abstract Factory
-// Fix to be
 
 public class DBAccessFactory {
     private static String theAction = "";

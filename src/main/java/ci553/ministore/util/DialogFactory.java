@@ -15,12 +15,22 @@ import ci553.ministore.clients.cashierjavafx.CashierModel;
 
 import java.util.Optional;
 
+/**
+ * Utility class for creating various dialogs used in the MiniStore application.
+ * Provides static methods to show different types of dialogs for user input and confirmation.
+ */
 public final class DialogFactory {
 
+    // Private constructor to prevent instantiation
     private DialogFactory() {
         // Prevent instantiation
     }
 
+    /**
+     * Shows a dialog to input a product description.
+     *
+     * @return An Optional containing the entered description, or empty if cancelled
+     */
     public static Optional<String> showDescriptionDialog() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("New Product");
@@ -29,6 +39,11 @@ public final class DialogFactory {
         return dialog.showAndWait();
     }
 
+    /**
+     * Shows a dialog to input a product price.
+     *
+     * @return An Optional containing the entered price, or empty if cancelled
+     */
     public static Optional<String> showPriceDialog() {
         TextInputDialog dialog = new TextInputDialog("0.00");
         dialog.setTitle("New Product");
@@ -37,6 +52,12 @@ public final class DialogFactory {
         return dialog.showAndWait();
     }
 
+    /**
+     * Shows a dialog to input a product quantity.
+     *
+     * @param price The price of the product
+     * @return An Optional containing the entered quantity, or empty if cancelled
+     */
     public static Optional<String> showQuantityDialog(double price) {
         TextInputDialog dialog = new TextInputDialog("1");
         dialog.setTitle("New Product");
@@ -45,6 +66,12 @@ public final class DialogFactory {
         return dialog.showAndWait();
     }
 
+    /**
+     * Shows a dialog to correct the stock level of a product.
+     *
+     * @param product The product to correct the stock for
+     * @return An Optional containing the new stock quantity, or empty if cancelled
+     */
     public static Optional<String> showCorrectStockDialog(Product product) {
         TextInputDialog dialog = new TextInputDialog(String.valueOf(product.getQuantity()));
         dialog.setTitle("Correct Stock");
@@ -54,6 +81,11 @@ public final class DialogFactory {
         return dialog.showAndWait();
     }
 
+    /**
+     * Shows a dialog to prompt the user for a quantity.
+     *
+     * @return An Optional containing the entered quantity, or empty if cancelled or invalid
+     */
     public static Optional<Integer> showQuantityPromptDialog() {
         TextInputDialog dialog = new TextInputDialog("1");
         dialog.setTitle("Quantity");
@@ -71,6 +103,12 @@ public final class DialogFactory {
         return Optional.empty();
     }
 
+    /**
+     * Shows a dialog to remove an item from the order.
+     *
+     * @param model The CashierModel to interact with
+     * @return An Optional containing a Pair of product number and quantity to remove, or empty if cancelled or invalid
+     */
     public static Optional<Pair<String, Integer>> showRemoveItemDialog(CashierModel model) {
         Dialog<Pair<String, Integer>> dialog = new Dialog<>();
         dialog.setTitle("Remove Item");
@@ -94,6 +132,7 @@ public final class DialogFactory {
         grid.add(quantity, 1, 1);
         grid.add(currentQuantityLabel, 1, 2);
 
+        // Update current quantity label based on product number input
         productNum.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 int inBasket = model.getProductQuantityInBasket(newValue);
@@ -105,6 +144,7 @@ public final class DialogFactory {
 
         dialog.getDialogPane().setContent(grid);
 
+        // Convert dialog result to Pair of product number and quantity
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == removeButtonType) {
                 try {
@@ -121,6 +161,12 @@ public final class DialogFactory {
         return dialog.showAndWait();
     }
 
+    /**
+     * Shows a dialog to add stock to a product.
+     *
+     * @param product The product to add stock to
+     * @return An Optional containing the quantity to add, or empty if cancelled or invalid
+     */
     public static Optional<Integer> showAddStockDialog(Product product) {
         TextInputDialog dialog = new TextInputDialog("1");
         dialog.setTitle("Add Stock");
@@ -144,6 +190,12 @@ public final class DialogFactory {
         return Optional.empty();
     }
 
+    /**
+     * Shows a dialog to correct the stock level of a product.
+     *
+     * @param product The product to correct the stock for
+     * @return An Optional containing the new stock quantity, or empty if cancelled or invalid
+     */
     public static Optional<Integer> showStockCorrectionDialog(Product product) {
         TextInputDialog dialog = new TextInputDialog(String.valueOf(product.getQuantity()));
         dialog.setTitle("Correct Stock");
@@ -163,6 +215,12 @@ public final class DialogFactory {
         return Optional.empty();
     }
 
+    /**
+     * Shows a confirmation dialog to delete a product.
+     *
+     * @param productNum The product number to delete
+     * @return true if the user confirmed the deletion, false otherwise
+     */
     public static boolean showDeleteConfirmationDialog(String productNum) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Product");
@@ -172,5 +230,4 @@ public final class DialogFactory {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
-
 }
