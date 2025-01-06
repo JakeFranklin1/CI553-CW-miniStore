@@ -2,7 +2,8 @@
  * Module definition for the CI553 MiniStore application.
  * This module requires various JavaFX modules, Java SQL, and Java RMI.
  * It also requires Apache Derby modules for database operations.
- * The module opens specific packages for JavaFX FXML and exports packages for use by other modules.
+ * The module opens specific packages for JavaFX FXML and exports packages for
+ * use by other modules.
  */
 module ci553.ministore {
     // Requires JavaFX modules for UI components and FXML
