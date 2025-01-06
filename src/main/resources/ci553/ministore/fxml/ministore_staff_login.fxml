@@ -15,8 +15,14 @@
     <children>
         <AnchorPane id="login-pane" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: e5f4e5;">
             <children>
-                <Label layoutX="10.0" layoutY="318.0" prefHeight="41.0" prefWidth="150.0" text="Forgot your password? Email the internal IT team." wrapText="true" />
-                <Label layoutX="10.0" layoutY="366.0" text="Email: it@ministore.com" />
+                <Label layoutX="10.0" layoutY="318.0" prefHeight="41.0" prefWidth="165.0" text="Forgot your password? Email the internal IT team." wrapText="true">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
+                <Label layoutX="10.0" layoutY="366.0" text="Email: it@ministore.com">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
                 <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../img/store.png" />
