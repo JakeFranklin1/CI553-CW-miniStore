@@ -29,15 +29,15 @@
                 <Font name="Arial" size="36.0" />
             </font>
         </Label>
-        <TextField fx:id="staff_account_field" alignment="CENTER" layoutX="235.0" layoutY="195.0" prefHeight="26.0" prefWidth="350.0" promptText="Account Number" />
-        <PasswordField fx:id="staff_password_field" alignment="CENTER" layoutX="235.0" layoutY="265.0" prefHeight="26.0" prefWidth="350.0" promptText="Password" />
-        <Button fx:id="staff_login_button" defaultButton="true" layoutX="235.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="350.0" style="-fx-color: e5f4e5;" text="Login">
+        <TextField fx:id="staff_account_field" alignment="CENTER" layoutX="227.0" layoutY="169.0" prefHeight="26.0" prefWidth="350.0" promptText="Account Number" />
+        <PasswordField fx:id="staff_password_field" alignment="CENTER" layoutX="227.0" layoutY="239.0" prefHeight="26.0" prefWidth="350.0" promptText="Password" />
+        <Button fx:id="staff_login_button" defaultButton="true" layoutX="227.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="350.0" style="-fx-color: e5f4e5;" text="Login">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Label layoutX="235.0" layoutY="170.0" text="Username:" />
-        <Label layoutX="235.0" layoutY="235.0" text="Password:" />
+        <Label layoutX="227.0" layoutY="144.0" text="Username:" />
+        <Label layoutX="227.0" layoutY="209.0" text="Password:" />
         <Text fx:id="staff_go_back_btn" accessibleRole="BUTTON" fill="#ff6b6b" focusTraversable="true" layoutX="401.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go back." underline="true" wrappingWidth="98.0">
             <font>
                 <Font name="Helvetica" size="18.0" />
