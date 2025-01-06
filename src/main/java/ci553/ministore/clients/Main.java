@@ -11,11 +11,11 @@ public class Main {
     /**
      * Main method that serves as the entry point for the application.
      * Configures the automatic setup and launches the main application.
-     * 
+     *
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        // Disable automatic setup
+        // Toggle automatic setup
         AutoSetup.setRunAuto(false);
 
         // Launch the main application
