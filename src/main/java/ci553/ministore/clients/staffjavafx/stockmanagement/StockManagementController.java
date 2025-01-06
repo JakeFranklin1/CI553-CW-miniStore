@@ -60,7 +60,6 @@ public class StockManagementController {
     private ImageView stock_image;
 
     private StockManagementModel model;
-    private OrderState state;
     private MiddleFactory mlf;
 
     /**
@@ -77,9 +76,6 @@ public class StockManagementController {
             // Bind text properties
             stock_management_message.textProperty().bindBidirectional(model.messageProperty());
             stock_management_reply.textProperty().bind(model.replyProperty());
-
-            // Initialize state
-            state = OrderState.ENTERING_PRODUCT;
 
             // Add event handler for Enter key press
             stock_management_message.setOnKeyPressed(this::handleKeyPress);
