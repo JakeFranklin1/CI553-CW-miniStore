@@ -2,10 +2,15 @@ package ci553.ministore.clients.cashierjavafx;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 import ci553.ministore.middle.MiddleFactory;
 import ci553.ministore.middle.StockException;
 import ci553.ministore.middle.StockReadWriter;
+
+import java.io.ByteArrayInputStream;
+
 import ci553.ministore.catalogue.Basket;
+import ci553.ministore.catalogue.BetterBasket;
 import ci553.ministore.catalogue.Product;
 import ci553.ministore.debug.DEBUG;
 import ci553.ministore.middle.OrderProcessing;
@@ -19,8 +24,9 @@ public class CashierModel {
     private final StringProperty reply = new SimpleStringProperty();
     private final StockReadWriter stockReader;
     private final MiddleFactory middleFactory;
-    private Basket basket;
+    private BetterBasket basket;
     private int currentQuantity = 1;
+    private Image productImage;
 
     /**
      * Constructor for CashierModel.
@@ -33,7 +39,7 @@ public class CashierModel {
             this.middleFactory = mf; // Store middleware factory
             this.stockReader = mf.makeStockReadWriter();
             DEBUG.trace("CashierModelJavaFX: StockReader created successfully");
-            this.basket = new Basket();
+            this.basket = new BetterBasket();
         } catch (Exception e) {
             DEBUG.error("CashierModelJavaFX: Failed to create stock reader: %s", e.getMessage());
             throw new RuntimeException("Failed to create stock reader", e);
@@ -78,11 +84,20 @@ public class CashierModel {
 
     /**
      * Gets the current basket.
-     * 
+     *
      * @return The current basket.
      */
-    public Basket getBasket() {
+    public BetterBasket getBasket() {
         return basket;
+    }
+
+    /**
+     * Gets the product image.
+     *
+     * @return The product image.
+     */
+    public Image getProductImage() {
+        return productImage;
     }
 
     /**
@@ -107,11 +122,21 @@ public class CashierModel {
                             product.getQuantity());
 
                     reply.set(formattedText);
+
+                    // Load product image
+                    byte[] imgBytes = stockReader.getImage(productNum);
+                    if (imgBytes != null) {
+                        productImage = new Image(new ByteArrayInputStream(imgBytes));
+                    } else {
+                        productImage = null;
+                    }
                 } else {
                     reply.set("Product: " + product.getDescription() + " is currently out of stock");
+                    productImage = null;
                 }
             } else {
                 reply.set("Error: Unknown product number " + productNum);
+                productImage = null;
             }
         } catch (StockException e) {
             reply.set("System Error: " + e.getMessage());
@@ -135,6 +160,7 @@ public class CashierModel {
                         product.setQuantity(currentQuantity);
                         basket.add(product);
                         reply.set(basket.getDetails());
+                        productImage = null; // Clear the product image after adding to order
                     } else {
                         reply.set("Failed to purchase " + product.getDescription());
                     }
@@ -156,9 +182,9 @@ public class CashierModel {
     public void purchase() {
         try {
             OrderProcessing orderProcessing = middleFactory.makeOrderProcessing();
-            // Set order number before sending
-            basket.setOrderNum(Basket.getNextOrderNumber());
-            // Send basket to order processing
+            // Get order number before creating new order
+            int orderNum = orderProcessing.uniqueNumber();
+            basket.setOrderNum(orderNum);
             orderProcessing.newOrder(basket);
 
             int completedOrderNum = basket.getOrderNum();
@@ -166,8 +192,7 @@ public class CashierModel {
                     completedOrderNum));
 
             // Create new basket for next order
-            basket = new Basket();
-            Basket.incrementOrderNumber();
+            basket = new BetterBasket();
         } catch (Exception e) {
             DEBUG.error("CashierModelJavaFX::purchase\n%s", e.getMessage());
             reply.set("Error processing order: " + e.getMessage());

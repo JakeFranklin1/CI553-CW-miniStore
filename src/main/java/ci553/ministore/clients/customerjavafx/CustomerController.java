@@ -41,7 +41,7 @@ public class CustomerController {
 
     /**
      * Sets the MiddleFactory instance and initializes the model.
-     * 
+     *
      * @param mf The MiddleFactory instance.
      */
     public void setMiddleFactory(MiddleFactory mf) {
@@ -77,7 +77,7 @@ public class CustomerController {
 
     /**
      * Handles button actions and delegates to the appropriate method.
-     * 
+     *
      * @param event The ActionEvent triggered by the button press.
      */
     @FXML
@@ -89,7 +89,7 @@ public class CustomerController {
 
     /**
      * Handles key press events for the message TextField.
-     * 
+     *
      * @param event The KeyEvent triggered by the key press.
      */
     private void handleKeyPress(KeyEvent event) {
@@ -100,7 +100,7 @@ public class CustomerController {
 
     /**
      * Processes the action based on the button text.
-     * 
+     *
      * @param action The action to be processed.
      */
     private void process(String action) {
@@ -149,7 +149,7 @@ public class CustomerController {
 
     /**
      * Processes number input and appends it to the message.
-     * 
+     *
      * @param number The number to be appended.
      */
     private void processNumber(String number) {
@@ -227,7 +227,7 @@ public class CustomerController {
 
     /**
      * Switches to the place order scene and adds the product to the order.
-     * 
+     *
      * @param productNum The product number to add to the order.
      */
     private void switchToPlaceOrder(String productNum) {
@@ -238,7 +238,7 @@ public class CustomerController {
 
             CashierController controller = loader.getController();
             controller.setMiddleFactory(model.getMiddleFactory());
-            controller.addProductToOrder(productNum);
+            controller.addProductToOrder(productNum); // Add the product to the order
 
             Stage stage = (Stage) check_stock_message.getScene().getWindow();
             stage.setScene(new Scene(root));

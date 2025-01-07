@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ci553.ministore.middle.MiddleFactory;
 import ci553.ministore.util.DialogFactory;
 import ci553.ministore.debug.DEBUG;
@@ -51,6 +53,8 @@ public class CashierController {
     private Button place_order_cancel_btn;
     @FXML
     private Button place_order_menu_btn;
+    @FXML
+    private ImageView stock_image;
 
     private CashierModel model;
     private OrderState state;
@@ -252,6 +256,7 @@ public class CashierController {
      */
     private void processCheck() {
         model.doCheck(message.getText());
+        updateImage();
         state = OrderState.ADDING_TO_ORDER;
     }
 
@@ -268,6 +273,7 @@ public class CashierController {
         if (quantity.isPresent()) {
             model.setCurrentQuantity(quantity.get());
             model.addToOrder(message.getText());
+            clearImage();
             state = OrderState.ENTERING_PRODUCT;
         }
     }
@@ -342,5 +348,24 @@ public class CashierController {
         model.setCurrentQuantity(1); // Default quantity to 1
         model.addToOrder(productNum);
         state = OrderState.ENTERING_PRODUCT;
+    }
+
+    /**
+     * Updates the image view with the product image.
+     */
+    private void updateImage() {
+        Image image = model.getProductImage();
+        if (image != null) {
+            stock_image.setImage(image);
+        } else {
+            stock_image.setImage(null);
+        }
+    }
+
+    /**
+     * Clears the image view.
+     */
+    private void clearImage() {
+        stock_image.setImage(null);
     }
 }
