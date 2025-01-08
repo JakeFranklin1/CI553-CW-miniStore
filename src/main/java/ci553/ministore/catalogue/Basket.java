@@ -1,12 +1,9 @@
 package ci553.ministore.catalogue;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Formatter;
 import java.util.Locale;
-
-import ci553.ministore.debug.DEBUG;
 
 /**
  * A collection of products,
@@ -14,8 +11,7 @@ import ci553.ministore.debug.DEBUG;
  *
  * @version 2.2
  */
-public class Basket extends ArrayList<Product> implements Serializable {
-    private static final long serialVersionUID = 1;
+public class Basket extends ArrayList<Product> {
     private int theOrderNum = 0; // Order number
 
     /**

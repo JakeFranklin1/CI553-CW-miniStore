@@ -319,21 +319,31 @@ public class StockManagementController {
      * Creates a new product.
      */
     private void processNewProduct() {
+        // Show dialog to get product description
         Optional<String> descriptionResult = DialogFactory.showDescriptionDialog();
+
+        // Check if description is present and not empty
         if (descriptionResult.isPresent() && !descriptionResult.get().trim().isEmpty()) {
             String description = descriptionResult.get().trim();
 
+            // Show dialog to get product price
             Optional<String> priceResult = DialogFactory.showPriceDialog();
+
+            // Check if price is present
             if (priceResult.isPresent()) {
                 try {
+                    // Parse and round the price
                     double price = Double.parseDouble(priceResult.get().trim());
                     price = Math.round(price * 100.0) / 100.0;
 
+                    // Show dialog to get product quantity
                     Optional<String> quantityResult = DialogFactory.showQuantityDialog(price);
                     if (quantityResult.isPresent()) {
                         try {
+                            // Parse the quantity
                             int quantity = Integer.parseInt(quantityResult.get().trim());
                             if (quantity > 0) {
+                                // Call model to create new product
                                 model.doNewProduct(description, price, quantity);
                             } else {
                                 model.replyProperty().set("Quantity must be positive");
@@ -356,6 +366,7 @@ public class StockManagementController {
      */
     private void processAddImage() {
         String productNum = stock_management_message.getText().trim();
+
         if (productNum.isEmpty() || !model.validateProduct(productNum)) {
             return;
         }
