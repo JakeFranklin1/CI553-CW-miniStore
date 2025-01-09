@@ -16,7 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import ci553.ministore.middle.MiddleFactory;
 import ci553.ministore.middle.StockException;
-import ci553.ministore.util.DialogFactory;
+import ci553.ministore.util.DialogUtils;
 import ci553.ministore.util.ImageHandler;
 
 import java.io.File;
@@ -272,7 +272,7 @@ public class StockManagementController {
 
         try {
             Product product = model.getStockReader().getDetails(productNum);
-            Optional<Integer> quantity = DialogFactory.showAddStockDialog(product);
+            Optional<Integer> quantity = DialogUtils.showAddStockDialog(product);
 
             if (quantity.isPresent()) {
                 model.setCurrentQuantity(quantity.get());
@@ -303,7 +303,7 @@ public class StockManagementController {
 
         try {
             Product product = model.getStockReader().getDetails(productNum);
-            Optional<Integer> newStock = DialogFactory.showStockCorrectionDialog(product);
+            Optional<Integer> newStock = DialogUtils.showStockCorrectionDialog(product);
 
             if (newStock.isPresent()) {
                 model.doCorrectStock(productNum, newStock.get());
@@ -320,14 +320,14 @@ public class StockManagementController {
      */
     private void processNewProduct() {
         // Show dialog to get product description
-        Optional<String> descriptionResult = DialogFactory.showDescriptionDialog();
+        Optional<String> descriptionResult = DialogUtils.showDescriptionDialog();
 
         // Check if description is present and not empty
         if (descriptionResult.isPresent() && !descriptionResult.get().trim().isEmpty()) {
             String description = descriptionResult.get().trim();
 
             // Show dialog to get product price
-            Optional<String> priceResult = DialogFactory.showPriceDialog();
+            Optional<String> priceResult = DialogUtils.showPriceDialog();
 
             // Check if price is present
             if (priceResult.isPresent()) {
@@ -337,7 +337,7 @@ public class StockManagementController {
                     price = Math.round(price * 100.0) / 100.0;
 
                     // Show dialog to get product quantity
-                    Optional<String> quantityResult = DialogFactory.showQuantityDialog(price);
+                    Optional<String> quantityResult = DialogUtils.showQuantityDialog(price);
                     if (quantityResult.isPresent()) {
                         try {
                             // Parse the quantity
@@ -398,7 +398,7 @@ public class StockManagementController {
             return;
         }
 
-        boolean confirmed = DialogFactory.showDeleteConfirmationDialog(productNum);
+        boolean confirmed = DialogUtils.showDeleteConfirmationDialog(productNum);
         if (confirmed) {
             model.doDeleteProduct(productNum);
             updateImage();

@@ -17,12 +17,13 @@ import java.util.Optional;
 
 /**
  * Utility class for creating various dialogs used in the MiniStore application.
- * Provides static methods to show different types of dialogs for user input and confirmation.
+ * Provides static methods to show different types of dialogs for user input and
+ * confirmation.
  */
-public final class DialogFactory {
+public final class DialogUtils {
 
     // Private constructor to prevent instantiation
-    private DialogFactory() {
+    private DialogUtils() {
         // Prevent instantiation
     }
 
@@ -84,7 +85,8 @@ public final class DialogFactory {
     /**
      * Shows a dialog to prompt the user for a quantity.
      *
-     * @return An Optional containing the entered quantity, or empty if cancelled or invalid
+     * @return An Optional containing the entered quantity, or empty if cancelled or
+     *         invalid
      */
     public static Optional<Integer> showQuantityPromptDialog() {
         TextInputDialog dialog = new TextInputDialog("1");
@@ -107,7 +109,8 @@ public final class DialogFactory {
      * Shows a dialog to remove an item from the order.
      *
      * @param model The CashierModel to interact with
-     * @return An Optional containing a Pair of product number and quantity to remove, or empty if cancelled or invalid
+     * @return An Optional containing a Pair of product number and quantity to
+     *         remove, or empty if cancelled or invalid
      */
     public static Optional<Pair<String, Integer>> showRemoveItemDialog(CashierModel model) {
         Dialog<Pair<String, Integer>> dialog = new Dialog<>();
@@ -165,7 +168,8 @@ public final class DialogFactory {
      * Shows a dialog to add stock to a product.
      *
      * @param product The product to add stock to
-     * @return An Optional containing the quantity to add, or empty if cancelled or invalid
+     * @return An Optional containing the quantity to add, or empty if cancelled or
+     *         invalid
      */
     public static Optional<Integer> showAddStockDialog(Product product) {
         TextInputDialog dialog = new TextInputDialog("1");
@@ -194,7 +198,8 @@ public final class DialogFactory {
      * Shows a dialog to correct the stock level of a product.
      *
      * @param product The product to correct the stock for
-     * @return An Optional containing the new stock quantity, or empty if cancelled or invalid
+     * @return An Optional containing the new stock quantity, or empty if cancelled
+     *         or invalid
      */
     public static Optional<Integer> showStockCorrectionDialog(Product product) {
         TextInputDialog dialog = new TextInputDialog(String.valueOf(product.getQuantity()));

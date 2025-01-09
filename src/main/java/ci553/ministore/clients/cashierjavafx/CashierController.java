@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ci553.ministore.middle.MiddleFactory;
-import ci553.ministore.util.DialogFactory;
+import ci553.ministore.util.DialogUtils;
 import ci553.ministore.debug.DEBUG;
 
 import java.io.IOException;
@@ -269,7 +269,7 @@ public class CashierController {
             return;
         }
 
-        Optional<Integer> quantity = DialogFactory.showQuantityPromptDialog();
+        Optional<Integer> quantity = DialogUtils.showQuantityPromptDialog();
         if (quantity.isPresent()) {
             model.setCurrentQuantity(quantity.get());
             model.addToOrder(message.getText());
@@ -306,7 +306,7 @@ public class CashierController {
      * Removes a specified quantity of a product from the order.
      */
     private void processRemoveItem() {
-        Optional<Pair<String, Integer>> result = DialogFactory.showRemoveItemDialog(model);
+        Optional<Pair<String, Integer>> result = DialogUtils.showRemoveItemDialog(model);
         result.ifPresent(pair -> {
             String pNum = pair.getKey();
             int qty = pair.getValue();

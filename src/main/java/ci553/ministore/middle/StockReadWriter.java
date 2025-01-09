@@ -19,7 +19,7 @@ public interface StockReadWriter extends StockReader {
      * @param pNum   Product number
      * @param amount Quantity of product
      * @return StockNumber, Description, Price, Quantity
-     * @throws middle.StockException if issue
+     * @throws ci553.ministore.middle.StockException if issue
      */
     boolean buyStock(String pNum, int amount) throws StockException;
 
@@ -28,7 +28,7 @@ public interface StockReadWriter extends StockReader {
      *
      * @param pNum   Product number
      * @param amount Quantity of product
-     * @throws middle.StockException if issue
+     * @throws ci553.ministore.middle.StockException if issue
      */
     void addStock(String pNum, int amount) throws StockException;
 
@@ -37,7 +37,7 @@ public interface StockReadWriter extends StockReader {
      * Information modified: Description, Price
      *
      * @param detail Replace with this version of product
-     * @throws middle.StockException if issue
+     * @throws ci553.ministore.middle.StockException if issue
      */
     void modifyStock(Product detail) throws StockException;
 
@@ -46,7 +46,7 @@ public interface StockReadWriter extends StockReader {
      *
      * @param productNum The product number
      * @param quantity   The new stock quantity
-     * @throws StockException if an error occurs while setting the stock
+     * @throws ci553.ministore.middle.StockException if an error occurs while setting the stock
      */
     void setStock(String productNum, int quantity) throws StockException;
 
@@ -54,7 +54,7 @@ public interface StockReadWriter extends StockReader {
      * Retrieves the list of all products.
      *
      * @return List of products
-     * @throws StockException if an error occurs while retrieving the products
+     * @throws ci553.ministore.middle.StockException if an error occurs while retrieving the products
      */
     List<Product> getProducts() throws StockException;
 
@@ -62,7 +62,7 @@ public interface StockReadWriter extends StockReader {
      * Adds a new product to the stock.
      *
      * @param product The product to add
-     * @throws StockException if an error occurs while adding the product
+     * @throws ci553.ministore.middle.StockException if an error occurs while adding the product
      */
     void addProduct(Product product) throws StockException;
 
@@ -71,7 +71,7 @@ public interface StockReadWriter extends StockReader {
      *
      * @param productNum The product number
      * @param imagePath  The new image path
-     * @throws StockException if an error occurs
+     * @throws ci553.ministore.middle.StockException if an error occurs
      */
     void updateProductImage(String productNum, String imagePath) throws StockException;
 
@@ -79,7 +79,7 @@ public interface StockReadWriter extends StockReader {
      * Deletes a product from the stock.
      *
      * @param productNum The product number
-     * @throws StockException if an error occurs while deleting the product
+     * @throws ci553.ministore.middle.StockException if an error occurs while deleting the product
      */
     void deleteProduct(String productNum) throws StockException;
 }
