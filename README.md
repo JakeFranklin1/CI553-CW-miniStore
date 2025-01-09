@@ -6,3 +6,5 @@ The logins for the staff account are:
 
 USER1 + PASSWORD1
 USER2 + PASSWORD2
+
+This project uses Maven, please keep that in mind if trying to run in an IDE. There is a walkthrough in my report for this.
