@@ -16,7 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // Toggle automatic setup
-        AutoSetup.setRunAuto(false);
+        AutoSetup.setRunAuto(true);
 
         // Launch the main application
         App.main(args);

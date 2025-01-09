@@ -1,17 +1,17 @@
-#loginButton,
-#changePasswordButton,
-#changeOverdraftButton {
-    -fx-color: lightblue;
+#staff_login_button,
+#check_stock_btn,
+#start_order_btn {
+    -fx-color: #e5f4e5;
 }
 
-#loginButton:hover,
-#changePasswordButton:hover,
-#changeOverdraftButton:hover {
-    -fx-color: rgb(151, 189, 202);
+#staff_login_button:hover,
+#check_stock_btn:hover,
+#start_order_btn:hover {
+    -fx-color: #c2d0c2;
 }
 
-#loginButton:pressed, 
-#changePasswordButton:pressed, 
-#changeOverdraftButton:pressed {
-    -fx-color: lightblue;
+#staff_login_button:pressed,
+#check_stock_btn:pressed,
+#start_order_btn:pressed {
+    -fx-color: #beccbe;
 }

@@ -193,6 +193,7 @@ public class CashierModel {
 
             // Create new basket for next order
             basket = new BetterBasket();
+            productImage = null;
         } catch (Exception e) {
             DEBUG.error("CashierModelJavaFX::purchase\n%s", e.getMessage());
             reply.set("Error processing order: " + e.getMessage());

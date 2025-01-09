@@ -37,7 +37,7 @@
         </Label>
         <TextField fx:id="staff_account_field" alignment="CENTER" layoutX="227.0" layoutY="169.0" prefHeight="26.0" prefWidth="350.0" promptText="Account Number" />
         <PasswordField fx:id="staff_password_field" alignment="CENTER" layoutX="227.0" layoutY="239.0" prefHeight="26.0" prefWidth="350.0" promptText="Password" />
-        <Button fx:id="staff_login_button" defaultButton="true" layoutX="227.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="350.0" style="-fx-color: e5f4e5;" text="Login">
+        <Button fx:id="staff_login_button" defaultButton="true" layoutX="227.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="350.0" stylesheets="@../css/login.css" text="Login">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

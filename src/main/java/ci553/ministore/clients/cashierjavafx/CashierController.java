@@ -241,6 +241,7 @@ public class CashierController {
         model.clearBasket(true);
         model.messageProperty().set("");
         model.replyProperty().set("");
+        clearImage();
         state = OrderState.ENTERING_PRODUCT;
     }
 
@@ -292,6 +293,7 @@ public class CashierController {
         // Complete the purchase
         model.purchase();
         model.messageProperty().set("");
+        clearImage();
         state = OrderState.ENTERING_PRODUCT;
     }
 
@@ -306,12 +308,19 @@ public class CashierController {
      * Removes a specified quantity of a product from the order.
      */
     private void processRemoveItem() {
+        // Show a dialog to remove an item and get the result
         Optional<Pair<String, Integer>> result = DialogUtils.showRemoveItemDialog(model);
+
+        // If the result is present, process the removal
         result.ifPresent(pair -> {
-            String pNum = pair.getKey();
-            int qty = pair.getValue();
+            String pNum = pair.getKey(); // Get the product number from the pair
+            int qty = pair.getValue(); // Get the quantity to remove from the pair
+
+            // Check if the quantity is valid and within the range of the product quantity
+            // in the basket
             if (qty > 0 && qty <= model.getProductQuantityInBasket(pNum)) {
-                model.removeQuantityFromBasket(pNum, qty);
+                model.removeQuantityFromBasket(pNum, qty); // Remove the specified quantity from the basket
+                clearImage(); // Clear the image
             }
         });
     }

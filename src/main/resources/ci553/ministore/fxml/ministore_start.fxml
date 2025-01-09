@@ -30,7 +30,7 @@
                 </Text>
             </children>
         </AnchorPane>
-        <Button fx:id="check_stock_btn" defaultButton="true" focusTraversable="false" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Check Stock">
+        <Button fx:id="check_stock_btn" defaultButton="true" focusTraversable="false" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" stylesheets="@../css/login.css" text="Check Stock">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -56,7 +56,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Text>
-        <Button fx:id="start_order_btn" defaultButton="true" focusTraversable="false" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Start Order">
+        <Button fx:id="start_order_btn" defaultButton="true" focusTraversable="false" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" stylesheets="@../css/login.css" text="Start Order">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

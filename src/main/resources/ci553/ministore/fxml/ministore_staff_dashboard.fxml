@@ -20,7 +20,7 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Button fx:id="check_stock_btn" defaultButton="true" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Manage Stock">
+        <Button fx:id="check_stock_btn" defaultButton="true" focusTraversable="false" layoutX="221.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" stylesheets="@../css/login.css" text="Manage Stock">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -33,7 +33,7 @@
                 <Font name="Arial" size="36.0" />
             </font>
         </Label>
-        <Button fx:id="start_order_btn" defaultButton="true" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" style="-fx-color: e5f4e5;" text="Pack Orders">
+        <Button fx:id="start_order_btn" defaultButton="true" focusTraversable="false" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="166.0" stylesheets="@../css/login.css" text="Pack Orders">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
