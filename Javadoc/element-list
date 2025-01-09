@@ -1,0 +1,13 @@
+module:ci553.ministore
+ci553.ministore.catalogue
+ci553.ministore.clients
+ci553.ministore.clients.cashierjavafx
+ci553.ministore.clients.customerjavafx
+ci553.ministore.clients.staffjavafx
+ci553.ministore.clients.staffjavafx.dashboard
+ci553.ministore.clients.staffjavafx.packing
+ci553.ministore.clients.staffjavafx.stockmanagement
+ci553.ministore.clients.start
+ci553.ministore.dbAccess
+ci553.ministore.middle
+ci553.ministore.remote
